@@ -2,7 +2,6 @@
 import type { CollectionEntry } from 'astro:content';
 import ProjectCard from './ProjectCard.astro';
 import { CATEGORY_LABEL, CATEGORY_KEYS } from '@/lib/labels';
-import { sortByCategoryOrder } from '@/lib/variant';
 
 interface Props {
   projects: CollectionEntry<'projects'>[];
@@ -17,7 +16,26 @@ for (const p of visible) {
   counts[p.data.category] = (counts[p.data.category] ?? 0) + 1;
 }
 
-const sorted = sortByCategoryOrder(visible);
+/* 정렬 룰
+ *  1) featured 먼저
+ *  2) order(우선순위, 낮을수록 먼저, 미설정은 999로 취급)
+ *  3) year desc
+ */
+function parseYear(y: number | string | undefined): number {
+  if (typeof y === 'number') return y;
+  const m = String(y ?? '').match(/\d{4}/);
+  return m ? Number(m[0]) : 0;
+}
+
+const sorted = [...visible].sort((a, b) => {
+  if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
+  const oa = a.data.order ?? 999;
+  const ob = b.data.order ?? 999;
+  if (oa !== ob) return oa - ob;
+  return parseYear(b.data.year) - parseYear(a.data.year);
+});
+
+const PAGE_SIZE = 9;
 ---
 <section id="works" class="works">
   <div class="section-head">
@@ -34,25 +52,86 @@ const sorted = sortByCategoryOrder(visible);
     ))}
   </div>
 
-  <div class="masonry" id="masonry">
+  <div class="masonry" id="masonry" data-page-size={PAGE_SIZE}>
     {sorted.map(p => <ProjectCard entry={p} />)}
+  </div>
+
+  <div class="loadmore-wrap">
+    <button class="loadmore" id="loadmore-btn" type="button">
+      <span class="label">더보기</span>
+      <span class="count" id="loadmore-count"></span>
+      <span class="arrow">↓</span>
+    </button>
   </div>
 </section>
 
 <script>
   const filterEl = document.getElementById('filters');
-  const cards = document.querySelectorAll<HTMLElement>('#masonry .card');
-  if (filterEl) {
+  const masonry = document.getElementById('masonry');
+  const loadMoreBtn = document.getElementById('loadmore-btn');
+  const loadMoreCount = document.getElementById('loadmore-count');
+
+  if (filterEl && masonry && loadMoreBtn && loadMoreCount) {
+    const PAGE_SIZE = Number(masonry.dataset.pageSize ?? 9);
+    const cards = Array.from(masonry.querySelectorAll<HTMLElement>('.card'));
+
+    let currentCat = 'all';
+    let shown = PAGE_SIZE;
+
+    function applyVisibility() {
+      const inFilter = cards.filter(c =>
+        currentCat === 'all' || c.dataset.cat === currentCat
+      );
+
+      // 1) 모두 숨기고
+      cards.forEach(c => {
+        c.classList.add('is-hidden');
+        c.classList.remove('is-overflow');
+      });
+      // 2) 필터에 맞는 항목 중 처음 shown개만 표시
+      inFilter.forEach((c, i) => {
+        if (i < shown) {
+          c.classList.remove('is-hidden');
+        } else {
+          c.classList.add('is-hidden');
+          c.classList.add('is-overflow');
+        }
+      });
+
+      // 3) 더보기 버튼 상태 갱신
+      const remaining = Math.max(0, inFilter.length - shown);
+      if (remaining > 0) {
+        loadMoreBtn!.style.display = '';
+        loadMoreCount!.textContent = `+${Math.min(PAGE_SIZE, remaining)}`;
+      } else {
+        loadMoreBtn!.style.display = 'none';
+      }
+    }
+
     filterEl.addEventListener('click', e => {
       const target = e.target as HTMLElement;
       const btn = target.closest('.chip') as HTMLElement | null;
       if (!btn) return;
       filterEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
       btn.classList.add('active');
-      const cat = btn.getAttribute('data-cat');
-      cards.forEach(card => {
-        card.classList.toggle('is-hidden', cat !== 'all' && card.dataset.cat !== cat);
-      });
+      currentCat = btn.getAttribute('data-cat') ?? 'all';
+      shown = PAGE_SIZE; // 카테고리 바뀌면 다시 처음 9개로
+      applyVisibility();
     });
+
+    loadMoreBtn.addEventListener('click', () => {
+      shown += PAGE_SIZE;
+      applyVisibility();
+      // 새로 등장한 첫 카드로 부드럽게 스크롤
+      const firstNew = cards.find(c => !c.classList.contains('is-hidden') && c.classList.contains('is-overflow'));
+      if (firstNew) {
+        // 클래스 정리 후이므로 다음 프레임에 스크롤
+        requestAnimationFrame(() => {
+          firstNew.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      }
+    });
+
+    applyVisibility();
   }
 </script>

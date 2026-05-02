@@ -677,6 +677,55 @@ section {
 
 .card.is-hidden { display: none; }
 
+/* =================================================================
+   LOAD MORE
+   ================================================================= */
+.loadmore-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+  padding: 0 var(--gut);
+}
+.loadmore {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px 14px 24px;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 200ms ease, background 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 8px 20px rgba(21,22,26,0.12);
+}
+.loadmore:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--ink) 0%, #2A2C30 100%);
+  box-shadow: 0 12px 28px rgba(21,22,26,0.20);
+}
+.loadmore:active { transform: translateY(0); }
+.loadmore .count {
+  font-family: var(--num);
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(255,255,255,0.18);
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0;
+}
+.loadmore .arrow {
+  font-size: 16px;
+  transition: transform 200ms ease;
+}
+.loadmore:hover .arrow {
+  transform: translateY(2px);
+}
+
 /* Featured highlight cards */
 .card.feat .cover {
   aspect-ratio: 16 / 10;

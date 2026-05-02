@@ -168,13 +168,28 @@ git mv src/content/projects/game/unity-shooter src/content/projects/web/unity-sh
 
 기존 URL을 보존하고 싶으면 redirect 설정 필요 (Cloudflare Pages `_redirects` 파일).
 
-### 2.6 같은 카테고리 내 정렬 조정
+### 2.6 우선순위 / 정렬 / 더보기
 
-기본 정렬: `featured` 먼저 → 연도 desc → `order` asc.
-특정 항목을 위로 올리고 싶으면:
+**메인 갤러리 정렬 룰** (Works 섹션):
+1. `featured: true`인 항목이 먼저
+2. `order` 값이 작은 항목이 먼저 (미설정은 `999`로 취급되어 뒤로 밀림)
+3. `year` desc (최신이 먼저)
+
+**더보기 동작**:
+- 처음에는 정렬 순서대로 **9개**만 표시
+- "더보기 +N" 버튼을 누르면 9개씩 추가
+- 카테고리 필터를 바꾸면 다시 9개부터 시작
+
+**상위 9개에 강제로 노출하고 싶을 때**:
 ```yaml
-order: 1   # 작은 숫자가 먼저
+order: 1   # 1, 2, 3 ... 작을수록 상위
 ```
+또는
+```yaml
+featured: true   # 큰 카드(.feat)로 강조 + 무조건 최상위
+```
+
+> 같은 카테고리 안에서의 prev/next(상세 페이지 하단 네비게이션)는 별도 룰을 사용합니다 — `featured` → `year` desc → `order` asc.
 
 ---
 
