@@ -4,7 +4,8 @@ category: web
 year: 2022
 cover:
   style: mint
-  label: "이영호.com"
+  label: 이영호.com
+  image: ./image.png
 tags:
   - notion
   - cloudflare
@@ -14,7 +15,7 @@ links:
   notion: https://www.notion.so/24d57ea633b04940bc578208115eedca
   github: https://github.com/205sla/Portfolio
   site: https://xn--vj5bn0ab83a.com
-description: "이영호.com — Notion + Cloudflare 기반 개인 포트폴리오 사이트."
+description: 이영호.com — Notion + Cloudflare 기반 개인 포트폴리오 사이트.
 ---
 
 > 개인 포트폴리오 사이트

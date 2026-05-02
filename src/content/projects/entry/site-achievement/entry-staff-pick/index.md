@@ -4,6 +4,7 @@ category: entry
 subcategory: site-achievement
 cover:
   style: pink
+  image: ./스태프-선정-작품.png
 links:
   notion: https://www.notion.so/11d5b696de7b80afb60ec291faeee4b9
 description: 스태프 선정은 엔트리로 만들어진 다채롭고 뛰어난 작품을 소개하기 위해

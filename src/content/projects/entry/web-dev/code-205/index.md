@@ -4,6 +4,7 @@ category: entry
 subcategory: web-dev
 cover:
   style: pink
+  image: ./메인-화면.png
 links:
   github: https://github.com/205sla/CODE-205
 description: 블록 코딩 기반 알고리즘 문제 풀이 플랫폼입니다. 좌측 패널에서 문제 지문을 읽고, 우측 에디터로 블록을 조립하여 풀이합니다. 제출 시 **브라우저에서 테스트 케이스를 자동 채점**합니다.

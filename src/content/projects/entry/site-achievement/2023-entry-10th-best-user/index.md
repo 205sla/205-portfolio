@@ -4,6 +4,7 @@ category: entry
 subcategory: site-achievement
 cover:
   style: pink
+  image: ./시상-사진.jpg
 year: 2023
 tags:
   - 2023년

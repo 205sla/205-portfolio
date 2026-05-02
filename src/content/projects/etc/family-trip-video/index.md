@@ -3,6 +3,7 @@ title: 효율적인 가족 여행 영상 제작
 category: etc
 cover:
   style: cream
+  image: ./image-1.png
 links:
   notion: https://www.notion.so/3155b696de7b8077a7efd74b50ced47f
 description: 🔥 2025년 8월 가족 여행으로 29일간의 유럽 여행을 다녀왔다.

@@ -3,6 +3,7 @@ title: FTC 2020-2021 — ULTIMATE GOAL · Rising Star Award
 category: contest
 cover:
   style: cream
+  image: ./image-1.jpg
 links:
   notion: https://www.notion.so/ca07e69f37f94b5ba7e2f6fa7b40f94a
 description: 2020-2021 **FIRST Tech Challenge — ULTIMATE GOAL** 미션에 참여했습니다.

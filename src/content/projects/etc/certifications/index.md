@@ -3,6 +3,7 @@ title: 자격증
 category: etc
 cover:
   style: cream
+  image: ./image-1.jpg
 links:
   notion: https://www.notion.so/11e5b696de7b80b8a179dd14e3f9a48e
 description: 자격증에 관한 기록.

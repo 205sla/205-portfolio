@@ -4,6 +4,7 @@ category: entry
 subcategory: site-achievement
 cover:
   style: pink
+  image: ./image-1.png
 links:
   notion: https://www.notion.so/11d5b696de7b80aaacebd2e47d379d61
 description: 30개월 주기로 20명 이상의 인원을 모집하여 미니게임 합작을 진행하고 있습니다.

@@ -3,6 +3,7 @@ title: "[Unity] 체스스톤"
 category: game
 cover:
   style: mood
+  image: ./image-1.png
 year: 2022
 tags:
   - 2022년

@@ -3,6 +3,7 @@ title: 테마파크 덕후
 category: etc
 cover:
   style: cream
+  image: ./image.png
 links:
   notion: https://www.notion.so/11d5b696de7b80cc8890fd66bd76cb07
 description: 어릴 때 에버랜드 연관 회원권을 끊어 매달 2~3번은 갔었던 것 같아요.

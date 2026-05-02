@@ -4,6 +4,7 @@ category: entry
 subcategory: site-achievement
 cover:
   style: pink
+  image: ./image-1.jpg
 year: 2024
 tags:
   - 2024년

@@ -3,6 +3,7 @@ title: 구글 지역 가이드
 category: etc
 cover:
   style: cream
+  image: ./image-1.png
 links:
   notion: https://www.notion.so/c86ff7b3c0824fbe9125fd06856fd814
 description: 지역 가이드의 참여를 통해 많은 사용자가 자신에게 중요한 콘텐츠를 발견하고 필요한 정보를 더 쉽게 찾고 있으며, 소규모 비즈니스에 도움을 주고 있습니다.

@@ -3,6 +3,7 @@ title: 2019 국립과천과학관 과학동영상 공모대회 — 장려상
 category: contest
 cover:
   style: cream
+  image: ./image.png
 year: 2019
 tags:
   - 2019년

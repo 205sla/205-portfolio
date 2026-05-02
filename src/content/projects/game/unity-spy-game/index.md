@@ -3,6 +3,7 @@ title: "[Unity] 스파이 게임"
 category: game
 cover:
   style: mood
+  image: ./image.png
 year: 2022
 tags:
   - 2022년

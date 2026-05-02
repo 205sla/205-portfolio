@@ -4,6 +4,7 @@ category: entry
 subcategory: education
 cover:
   style: pink
+  image: ./image-1.png
 tags:
   - 주요활동
   - 교육활동

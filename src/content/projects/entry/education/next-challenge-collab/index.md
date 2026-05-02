@@ -4,6 +4,7 @@ category: entry
 subcategory: education
 cover:
   style: pink
+  image: ./image-1.png
 links:
   notion: https://www.notion.so/21e5b696de7b8073b647f9fdfbee704a
 description: 엔트리 넥스트 챌린지 출제자로 참여했습니다.

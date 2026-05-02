@@ -4,6 +4,7 @@ category: entry
 subcategory: web-dev
 cover:
   style: pink
+  image: ./화면.png
 links:
   github: https://github.com/205sla/Entry-Debugger
 description: 엔트리(Entry) 코딩 플랫폼에서 **변수와 리스트를 실시간으로 모니터링·수정**할 수 있는 크롬 확장프로그램입니다.

@@ -4,6 +4,7 @@ category: entry
 subcategory: education
 cover:
   style: pink
+  image: ./image.jpg
 year: 2023
 tags:
   - 주요활동

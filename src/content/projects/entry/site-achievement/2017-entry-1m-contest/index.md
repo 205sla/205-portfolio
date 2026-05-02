@@ -4,6 +4,7 @@ category: entry
 subcategory: site-achievement
 cover:
   style: pink
+  image: ./image.png
 year: 2017
 tags:
   - 2017년

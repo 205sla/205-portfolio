@@ -4,6 +4,7 @@ category: entry
 subcategory: education
 cover:
   style: pink
+  image: ./image.png
 tags:
   - 교육활동
 links:

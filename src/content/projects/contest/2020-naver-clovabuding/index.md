@@ -3,6 +3,7 @@ title: 2020 네이버 클로바버딩 공모전 수상
 category: contest
 cover:
   style: cream
+  image: ./image.png
 year: 2020
 tags:
   - 2020년

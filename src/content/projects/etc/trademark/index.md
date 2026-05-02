@@ -3,6 +3,7 @@ title: 상표권 취득
 category: etc
 cover:
   style: cream
+  image: ./image.jpg
 links:
   notion: https://www.notion.so/1d55b696de7b8078a585fac0806433cb
 description: "**\"205\"®** — 대한민국 특허청에 출원된 등록 상표 (출원번호 40-2023-0165693)."

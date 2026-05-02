@@ -3,6 +3,7 @@ title: "[Unreal] 한울"
 category: game
 cover:
   style: mood
+  image: ./image.png
 year: 2025
 tags:
   - "2025"

@@ -3,6 +3,7 @@ title: FTC 2021-2022 — FREIGHT FRENZY
 category: contest
 cover:
   style: cream
+  image: ./image-1.jpg
 links:
   notion: https://www.notion.so/e7663bebcdd5404a908fb7f39c129102
 description: 2021-2022 코리아로봇챔피언십 **FIRST Tech Challenge — FREIGHT FRENZY** 미션에 참여했습니다.

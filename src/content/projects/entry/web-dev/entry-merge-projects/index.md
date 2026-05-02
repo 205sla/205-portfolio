@@ -4,6 +4,7 @@ category: entry
 subcategory: web-dev
 cover:
   style: pink
+  image: ./image-1.png
 links:
   notion: https://www.notion.so/1ad5b696de7b80dea5decfdc474d3b62
 description: 🔥 **엔트리 프로젝트 파일 (.ent)을 합치는 프로그램을 개발했습니다.**

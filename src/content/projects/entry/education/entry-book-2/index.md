@@ -4,6 +4,7 @@ category: entry
 subcategory: education
 cover:
   style: pink
+  image: ./image.png
 year: 2024
 tags:
   - 주요활동

@@ -3,6 +3,7 @@ title: 2022 메타버스 개발자 경진대회
 category: contest
 cover:
   style: cream
+  image: ./image.png
 year: 2022
 tags:
   - 2022년

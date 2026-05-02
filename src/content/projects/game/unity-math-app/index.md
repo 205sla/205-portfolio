@@ -3,6 +3,7 @@ title: "[Unity] 수학 학습앱"
 category: game
 cover:
   style: mood
+  image: ./image.png
 year: 2023
 tags:
   - 2023년

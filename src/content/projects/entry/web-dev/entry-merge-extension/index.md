@@ -4,6 +4,7 @@ category: entry
 subcategory: web-dev
 cover:
   style: pink
+  image: ./화면.png
 links:
   github: https://github.com/205sla/EntryMerge-Extension
 description: 엔트리(Entry) 작품 파일(`.ent`)을 합쳐주는 크롬 확장프로그램입니다. **서버를 거치지 않고 브라우저에서 바로 처리**하므로 작품 데이터가 외부로 나가지 않습니다.

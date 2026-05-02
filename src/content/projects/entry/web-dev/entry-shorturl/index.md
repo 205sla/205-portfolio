@@ -4,6 +4,7 @@ category: entry
 subcategory: web-dev
 cover:
   style: pink
+  image: ./image-1.png
 tags:
   - Firebase
   - HTML

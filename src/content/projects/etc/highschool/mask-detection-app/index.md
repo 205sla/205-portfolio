@@ -4,6 +4,7 @@ category: etc
 subcategory: highschool
 cover:
   style: cream
+  image: ./image.svg
 links:
   notion: https://www.notion.so/9700bff4cfbe470a9532cfa1fa89dad1
 description: 화정고 시절 진행한 컴퓨터 비전 기반 마스크 착용 식별 프로그램 프로젝트.

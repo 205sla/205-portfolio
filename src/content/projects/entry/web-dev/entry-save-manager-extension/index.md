@@ -4,6 +4,7 @@ category: entry
 subcategory: web-dev
 cover:
   style: pink
+  image: ./화면.png
 links:
   github: https://github.com/205sla/Entry-Save
 description: 엔트리(Entry) 작품의 변수·리스트 데이터를 브라우저에 **저장·복원**하고, **다른 작품의 세이브까지 불러올 수 있게** 해 주는 크롬 확장 프로그램입니다.
