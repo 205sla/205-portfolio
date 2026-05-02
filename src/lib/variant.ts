@@ -1,5 +1,6 @@
 import type { CollectionEntry } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
+import { parseYear } from './year';
 
 const SHORT_LIMIT = 600;
 const LONG_HEADING_MIN = 3;
@@ -27,10 +28,8 @@ export function sortByCategoryOrder(
 ): CollectionEntry<'projects'>[] {
   return [...entries].sort((a, b) => {
     if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
-    const ya = typeof a.data.year === 'number' ? a.data.year
-             : Number.parseInt(String(a.data.year ?? 0).match(/\d{4}/)?.[0] ?? '0', 10);
-    const yb = typeof b.data.year === 'number' ? b.data.year
-             : Number.parseInt(String(b.data.year ?? 0).match(/\d{4}/)?.[0] ?? '0', 10);
+    const ya = parseYear(a.data.year);
+    const yb = parseYear(b.data.year);
     if (ya !== yb) return yb - ya;
     return (a.data.order ?? 0) - (b.data.order ?? 0);
   });
