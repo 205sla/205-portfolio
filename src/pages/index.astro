@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import WorksGallery from '@/components/WorksGallery.astro';
+import Awards from '@/components/Awards.astro';
 
 const projects = await getCollection('projects');
 ---
@@ -276,63 +277,7 @@ const projects = await getCollection('projects');
 </section>
 
 <!-- ========== AWARDS ========== -->
-<section id="awards" class="awards">
-  <div class="section-head">
-    <div class="label"><span class="idx">05</span>Awards</div>
-    <h2>지금까지 받은 <em>일곱 개의</em> <span class="accent">★</span></h2>
-  </div>
-  <div class="awards-list">
-    <a class="award-row" href="#">
-      <div class="yr">2023</div>
-      <div class="medal gold">★</div>
-      <div class="name">엔트리 우수 유저상<span class="sub">엔트리 10주년 기념</span></div>
-      <div class="org">엔트리</div>
-      <div class="arrow">→</div>
-    </a>
-    <a class="award-row" href="#">
-      <div class="yr">2020</div>
-      <div class="medal gold">★</div>
-      <div class="name">FTC Rising Star Award<span class="sub">코리아로봇챔피언십 · 퀄컴 장학팀 동시 수상</span></div>
-      <div class="org">FIRST Tech Challenge</div>
-      <div class="arrow">→</div>
-    </a>
-    <a class="award-row" href="#">
-      <div class="yr">2020</div>
-      <div class="medal silver">★</div>
-      <div class="name">네이버 클로바버딩 공모전 수상</div>
-      <div class="org">NAVER</div>
-      <div class="arrow">→</div>
-    </a>
-    <a class="award-row" href="#">
-      <div class="yr">2019</div>
-      <div class="medal bronze">★</div>
-      <div class="name">과학동영상 공모대회 · 장려상</div>
-      <div class="org">국립과천과학관</div>
-      <div class="arrow">→</div>
-    </a>
-    <a class="award-row" href="https://post.naver.com/viewer/postView.nhn?volumeNo=14835207&memberNo=25082732" target="_blank" rel="noopener">
-      <div class="yr">2018</div>
-      <div class="medal silver">★</div>
-      <div class="name">엔트리 4주년 공모전<span class="sub">「내가이등이드론상」</span></div>
-      <div class="org">엔트리</div>
-      <div class="arrow">↗</div>
-    </a>
-    <a class="award-row" href="https://blog.naver.com/PostView.naver?blogId=entrylabs&logNo=220986419658" target="_blank" rel="noopener">
-      <div class="yr">2017</div>
-      <div class="medal silver">★</div>
-      <div class="name">엔트리 100만 공모전<span class="sub">「작품설명상」</span></div>
-      <div class="org">엔트리</div>
-      <div class="arrow">↗</div>
-    </a>
-    <a class="award-row" href="#">
-      <div class="yr">—</div>
-      <div class="medal bronze">★</div>
-      <div class="name">롯데 어린이 환경 미술대회 · 장려</div>
-      <div class="org">롯데</div>
-      <div class="arrow">→</div>
-    </a>
-  </div>
-</section>
+<Awards />
 
 <!-- ========== FOOTER ========== -->
 <footer class="foot" id="contact">

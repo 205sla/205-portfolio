@@ -936,6 +936,15 @@ section {
   text-decoration: none; color: var(--ink);
   padding-left: 16px;
 }
+/* projectSlug / externalUrl 모두 없는 수상 — 클릭 비활성 */
+.award-row.is-static {
+  cursor: default;
+  pointer-events: none;
+}
+.award-row.is-static:hover {
+  background: none;
+  padding-left: 0;
+}
 .award-row .yr {
   font-family: var(--num); font-weight: 700;
   font-size: 22px; color: var(--ink);

@@ -1,0 +1,52 @@
+---
+import { AWARDS } from '@/data/awards';
+
+const total = AWARDS.length;
+
+function projectHref(slug: string) {
+  return `${import.meta.env.BASE_URL}projects/${slug}/`.replace(/\/{2,}/g, '/');
+}
+
+const numberWord = (n: number) => {
+  const map: Record<number, string> = {
+    1: '한', 2: '두', 3: '세', 4: '네', 5: '다섯',
+    6: '여섯', 7: '일곱', 8: '여덟', 9: '아홉', 10: '열',
+  };
+  return map[n] ?? String(n);
+};
+---
+<section id="awards" class="awards">
+  <div class="section-head">
+    <div class="label"><span class="idx">05</span>Awards</div>
+    <h2>지금까지 받은 <em>{numberWord(total)} 개의</em> <span class="accent">★</span></h2>
+  </div>
+  <div class="awards-list">
+    {AWARDS.map(a => {
+      const href = a.projectSlug
+        ? projectHref(a.projectSlug)
+        : a.externalUrl;
+      const isExternal = !a.projectSlug && !!a.externalUrl;
+      const isLinked = !!href;
+      const Tag = isLinked ? 'a' : 'div';
+      const arrow = isExternal ? '↗' : '→';
+
+      return (
+        <Tag
+          class={`award-row${isLinked ? '' : ' is-static'}`}
+          href={isLinked ? href : undefined}
+          target={isExternal ? '_blank' : undefined}
+          rel={isExternal ? 'noopener' : undefined}
+        >
+          <div class="yr">{a.year}</div>
+          <div class={`medal ${a.medal}`}>★</div>
+          <div class="name">
+            {a.name}
+            {a.sub && <span class="sub">{a.sub}</span>}
+          </div>
+          <div class="org">{a.org}</div>
+          {isLinked && <div class="arrow">{arrow}</div>}
+        </Tag>
+      );
+    })}
+  </div>
+</section>

@@ -447,9 +447,45 @@ const x = 1;
 
 `<section id="highlights">` 안의 `<a class="highlight ...">` 4개. 각 카드에 `href`, `<h4>`, `<p>` 자유 편집.
 
-### 6.5 Awards
+### 6.5 Awards (수상 내역)
 
-`<section id="awards">` 안의 `<a class="award-row">` 7개. 새 수상 추가 시 같은 패턴으로 `<a>` 추가하고 적절한 `medal` 클래스(gold/silver/bronze) 부여.
+데이터는 `src/data/awards.ts`의 `AWARDS` 배열에 분리되어 있습니다. 마크업은 `src/components/Awards.astro`가 처리하므로 텍스트나 링크를 만질 일은 거의 없고, **배열만 편집**하면 됩니다.
+
+#### 항목 추가
+`src/data/awards.ts`의 `AWARDS` 배열에 새 객체 추가:
+```ts
+{
+  year: 2026,
+  medal: 'gold',                                       // gold | silver | bronze
+  name: '제2회 인디 게임 콘테스트 우수상',
+  sub: '청소년 부문',                                   // (선택) 부제
+  org: '한국게임산업협회',
+  projectSlug: 'contest/2026-indie-game-contest',     // 연결할 상세 페이지
+}
+```
+
+#### 항목 수정
+배열에서 해당 객체의 필드를 직접 변경. 빌드하면 즉시 반영.
+
+#### 항목 삭제
+배열에서 해당 객체를 제거하면 끝. `<em>{n}개의</em>` 카운트도 자동 갱신.
+
+#### 클릭 동작 결정 룰
+| frontmatter | 동작 |
+|-------------|------|
+| `projectSlug: '...'` 있음 | `/projects/<slug>/` 로 이동 (사이트 내) |
+| `externalUrl: 'https://...'` 있음 (slug 없음) | 새 탭으로 외부 링크 (↗) |
+| 둘 다 없음 (예: 「롯데 어린이 환경 미술대회」) | 클릭 비활성. 화살표·hover 효과 모두 숨김 |
+
+#### projectSlug 작성법
+프로젝트 폴더 경로를 그대로 옮겨 적습니다:
+- `src/content/projects/contest/2020-naver-clovabuding/index.md` → `'contest/2020-naver-clovabuding'`
+- `src/content/projects/entry/site-achievement/2017-entry-1m-contest/index.md` → `'entry/site-achievement/2017-entry-1m-contest'`
+
+라우트는 자동으로 `/projects/<slug>/`로 매핑됩니다.
+
+#### 정렬
+배열의 입력 순서대로 표시됩니다. 보통 최신 → 오래된 순.
 
 ### 6.6 Footer (메인)
 
