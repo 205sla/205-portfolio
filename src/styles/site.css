@@ -159,6 +159,8 @@ button { font: inherit; cursor: pointer; }
 .hero-character img {
   width: 100%; height: auto;
   filter: drop-shadow(0 14px 30px rgba(0,0,0,0.08));
+  /* 말풍선 위치(컨테이너 -120px)에 캐릭터 본체를 맞춤 */
+  transform: translateX(-120px);
 }
 .hero-character .speech {
   position: absolute; top: -20px; left: -120px;
