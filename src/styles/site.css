@@ -1131,6 +1131,26 @@ footer.foot {
   margin-bottom: 56px;
   user-select: none;
   pointer-events: none;
+  animation: foot-205-glow 8s ease-in-out infinite;
+}
+@keyframes foot-205-glow {
+  0%, 18%, 38%, 58%, 100% {
+    -webkit-text-stroke-color: #4E5158;
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  /* 1차 — 분홍 점등 */
+  22%, 28% {
+    -webkit-text-stroke-color: #FF9DBE;
+    filter: drop-shadow(0 0 24px rgba(255, 157, 190, 0.55));
+  }
+  /* 2차 — 민트 점등 */
+  62%, 68% {
+    -webkit-text-stroke-color: #5DD3C8;
+    filter: drop-shadow(0 0 24px rgba(93, 211, 200, 0.55));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .foot-205 { animation: none; }
 }
 .foot-grid {
   display: grid;
