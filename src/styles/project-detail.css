@@ -45,7 +45,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 button { font: inherit; cursor: pointer; }
 
 /* ========== SCROLL BAR ========== */
