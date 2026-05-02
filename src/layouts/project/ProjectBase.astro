@@ -67,15 +67,8 @@ const title = `${entry.data.title} · 205.kr`;
 </footer>
 
 <script>
-  // scroll progress bar
-  const fill = document.getElementById('scroll-fill') as HTMLElement | null;
-  if (fill) {
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement;
-      const pct = (h.scrollTop / Math.max(1, (h.scrollHeight - h.clientHeight))) * 100;
-      fill.style.width = pct + '%';
-    }, { passive: true });
-  }
+  import { setupScrollProgress } from '@/scripts/scroll-progress';
+  setupScrollProgress('scroll-fill');
 
   // share button
   document.getElementById('share-btn')?.addEventListener('click', async () => {

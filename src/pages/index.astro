@@ -283,16 +283,8 @@ const projects = await getCollection('projects');
 </footer>
 
 <script>
-/* ===== Scroll progress ===== */
-const scrollI = document.getElementById('scroll-i');
-function updateProgress() {
-  const h = document.documentElement;
-  const max = h.scrollHeight - h.clientHeight;
-  const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
-  scrollI.style.width = pct + '%';
-}
-window.addEventListener('scroll', updateProgress, { passive: true });
-updateProgress();
+import { setupScrollProgress } from '@/scripts/scroll-progress';
+setupScrollProgress('scroll-i');
 
 /* ===== Side scroll dots active state ===== */
 const dots = document.querySelectorAll('.scroll-dots a');
