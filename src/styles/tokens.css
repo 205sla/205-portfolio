@@ -237,12 +237,44 @@
   --gutter-tablet:  40px;
   --gutter-desktop: 80px;
   --header-h: 64px;
+
+  /* ============ Page-level aliases ============
+     site.css와 project-detail.css에서 공유하는 짧은 별칭. 디자인 토큰
+     (--c205-*, --fg-*, --bg-*) 위에 얹은 페이지 레이어. 한 군데서만
+     수정하도록 여기에 모음. */
+  --max: 1240px;
+  --gut: 64px;
+  --content: 720px;
+  --ink:    #15161A;
+  --ink-2:  #3A3D44;
+  --ink-3:  #6B6F76;
+  --ink-4:  #9CA0A8;
+  --line:   #ECEDEF;
+  --line-2: #DDDEE2;
+  --bg:       #FFFFFF;
+  --bg-warm:  #FAF8F5;
+  --bg-cream: #F5F2EC;
+  --bg-cool:  #F4F5F7;
+  --pink:      #FF9DBE;
+  --pink-soft: #FFEFF5;
+  --mint:      #5DD3C8;
+  --mint-soft: #E5F7F4;
+  --mint-deep: #2E8F87;
+  --serif: "Maplestory", "Pretendard Variable", serif;
+  --hand:  "Hakgyoansim Tteokbokki", "Maplestory", sans-serif;
+  --num:   "OK Mallang", "Pretendard Variable", sans-serif;
 }
 
 /* ============================================================
    Base reset (light)
    ============================================================ */
-html { font-size: 16px; }
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+img { max-width: 100%; height: auto; display: block; }
+button { font: inherit; cursor: pointer; }
 body {
   font-family: var(--font-sans);
   font-weight: var(--fw-regular);

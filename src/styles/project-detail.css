@@ -2,30 +2,7 @@
 @import url("./tokens.css");
 
 :root {
-  --max: 1240px;
-  --gut: 64px;
-  --content: 720px;
-  --content-wide: 920px;
-  --ink: #15161A;
-  --ink-2: #3A3D44;
-  --ink-3: #6B6F76;
-  --ink-4: #9CA0A8;
-  --line: #ECEDEF;
-  --line-2: #DDDEE2;
-  --bg: #FFFFFF;
-  --bg-warm: #FAF8F5;
-  --bg-cream: #F5F2EC;
-  --bg-cool: #F4F5F7;
-  --pink: #FF9DBE;
-  --pink-soft: #FFEFF5;
-  --mint: #5DD3C8;
-  --mint-soft: #E5F7F4;
-  --mint-deep: #2E8F87;
-  --serif: "Maplestory", "Pretendard Variable", serif;
-  --hand: "Hakgyoansim Tteokbokki", "Maplestory", sans-serif;
-  --num: "OK Mallang", "Pretendard Variable", sans-serif;
-
-  /* category accents */
+  /* category accents (detail page only) */
   --cat-game:    #6E5AE6;
   --cat-game-soft: #F1EEFF;
   --cat-web:     #2E8F87;
@@ -38,15 +15,7 @@
   --cat-etc-soft: #FFEFF5;
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0; background: var(--bg); color: var(--ink);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-}
-img { max-width: 100%; height: auto; display: block; }
-button { font: inherit; cursor: pointer; }
+body { margin: 0; background: var(--bg); color: var(--ink); }
 
 /* ========== SCROLL BAR ========== */
 .scroll-bar {

@@ -3,38 +3,11 @@
    ============================================================ */
 @import url("./tokens.css");
 
-:root {
-  --max: 1240px;
-  --gut: 64px;
-  --ink: #15161A;
-  --ink-2: #3A3D44;
-  --ink-3: #6B6F76;
-  --ink-4: #9CA0A8;
-  --line: #ECEDEF;
-  --line-2: #DDDEE2;
-  --bg: #FFFFFF;
-  --bg-warm: #FAF8F5;
-  --bg-cream: #F5F2EC;
-  --bg-cool: #F4F5F7;
-  --pink: #FF9DBE;
-  --pink-soft: #FFEFF5;
-  --mint: #5DD3C8;
-  --mint-soft: #E5F7F4;
-  --mint-deep: #2E8F87;
-  --serif: "Maplestory", "Pretendard Variable", serif;
-  --hand: "Hakgyoansim Tteokbokki", "Maplestory", sans-serif;
-  --num: "OK Mallang", "Pretendard Variable", sans-serif;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--font-sans);
   font-feature-settings: "ss01", "case";
-  -webkit-font-smoothing: antialiased;
 }
 
 ::selection { background: var(--pink); color: #fff; }
