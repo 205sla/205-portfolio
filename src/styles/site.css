@@ -285,7 +285,7 @@ section {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: 80px;
-  align-items: start;
+  align-items: stretch; /* 좌측(코드 블록) 높이에 맞춰 우측(학력) 늘림 */
 }
 .about-text p {
   font-size: 20px; line-height: 1.7; color: var(--ink-2);
@@ -840,18 +840,28 @@ section {
    ================================================================= */
 .about-side {
   display: flex; flex-direction: column; gap: 32px;
+  height: 100%; /* about-grid 셀의 stretch 높이 채움 */
 }
 .timeline {
   border: 1px solid var(--line);
   border-radius: 14px;
   background: #fff;
   padding: 24px 28px;
+  flex: 1; /* about-side 안에서 남는 공간 모두 차지 */
+  display: flex; flex-direction: column;
 }
 .timeline h4 {
   font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
   text-transform: uppercase; color: var(--ink-4);
   margin: 0 0 16px;
+  flex-shrink: 0;
 }
+.timeline .tl-item:first-of-type { /* h4 다음 첫 항목 */ }
+.timeline > .tl-item ~ .tl-item, .timeline > .tl-item {
+  /* 4개 학력 항목이 균등하게 늘어나 코드 블록 끝까지 차지 */
+}
+/* 학력 항목들이 timeline 내 빈 공간을 균등 분배 */
+.timeline .tl-item { flex: 1 1 0; min-height: 56px; }
 .tl-item {
   display: grid; grid-template-columns: 80px 1fr;
   gap: 16px;
@@ -912,6 +922,92 @@ section {
 .links-card a.link-row .left { display: flex; align-items: center; }
 .links-card a.link-row .arrow { color: var(--ink-4); }
 .links-card a.link-row:hover .arrow { color: var(--mint-deep); }
+
+/* =================================================================
+   EXTERNAL CHANNELS (about 섹션 아래 가로 그리드)
+   ================================================================= */
+.external-channels {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.external-channels h4 {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink-4);
+  margin: 0 0 20px;
+}
+.channel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+@media (max-width: 1080px) { .channel-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 760px)  { .channel-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 420px)  { .channel-grid { grid-template-columns: 1fr; } }
+
+.channel-card {
+  --brand: var(--ink);
+  display: grid;
+  grid-template-columns: 44px 1fr 20px;
+  gap: 14px;
+  align-items: center;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 220ms var(--ease-standard, ease);
+  position: relative;
+  overflow: hidden;
+}
+.channel-card::before {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--brand);
+  opacity: 0.3;
+  transition: opacity 220ms ease;
+}
+.channel-card:hover {
+  border-color: var(--brand);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  text-decoration: none;
+  color: var(--ink);
+}
+.channel-card:hover::before { opacity: 1; }
+.channel-card .ico {
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--brand);
+  color: #fff;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.channel-card .ico svg { display: block; }
+.channel-card .text {
+  display: flex; flex-direction: column; gap: 2px;
+  min-width: 0;
+}
+.channel-card .text .lbl {
+  font-size: 14px; font-weight: 700; color: var(--ink);
+  letter-spacing: -0.01em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.channel-card .text .sub {
+  font-size: 12px; color: var(--ink-3);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.channel-card .arrow {
+  font-size: 14px;
+  color: var(--ink-4);
+  transition: all 220ms ease;
+}
+.channel-card:hover .arrow {
+  color: var(--brand);
+  transform: translate(2px, -2px);
+}
 
 /* =================================================================
    AWARDS

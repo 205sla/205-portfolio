@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import WorksGallery from '@/components/WorksGallery.astro';
 import Awards from '@/components/Awards.astro';
+import ExternalChannels from '@/components/ExternalChannels.astro';
 
 const projects = await getCollection('projects');
 ---
@@ -130,46 +131,10 @@ const projects = await getCollection('projects');
         </a>
       </div>
 
-      <div class="links-card">
-        <h4>외부 채널</h4>
-        <div class="grp">개발 / 콘텐츠</div>
-        <a class="link-row" href="https://github.com/205sla" target="_blank" rel="noopener">
-          <span class="left"><span class="ico">Gh</span>GitHub · 205sla</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="link-row" href="https://www.youtube.com/@205" target="_blank" rel="noopener">
-          <span class="left"><span class="ico">Yt</span>YouTube · 205와 엔트리</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="link-row" href="https://www.instagram.com/205_youngholee/" target="_blank" rel="noopener">
-          <span class="left"><span class="ico">Ig</span>Instagram · 205_youngholee</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="link-row" href="https://playentry.org/profile/56136825dadc91e1235b460d" target="_blank" rel="noopener">
-          <span class="left"><span class="ico">Et</span>Entry · lyh2315</span>
-          <span class="arrow">↗</span>
-        </a>
-
-        <div class="grp">검색 / 출판</div>
-        <a class="link-row" href="https://namu.wiki/w/%EC%9D%B4%EC%98%81%ED%98%B8(2003)" target="_blank" rel="noopener">
-          <span class="left"><span class="ico">N</span>나무위키 「이영호(2003)」</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="link-row" href="https://search.naver.com/search.naver?query=이영호" target="_blank" rel="noopener">
-          <span class="left"><span class="ico">N</span>네이버 인물 검색</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="link-row" href="https://www.yes24.com/24/AuthorFile/Author/437179" target="_blank" rel="noopener">
-          <span class="left"><span class="ico">Y</span>Yes24 작가 페이지</span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="link-row" href="https://www.kyobobook.co.kr/service/profile/information?chrcCode=1000260131" target="_blank" rel="noopener">
-          <span class="left"><span class="ico">K</span>교보문고 작가 페이지</span>
-          <span class="arrow">↗</span>
-        </a>
-      </div>
     </aside>
   </div>
+
+  <ExternalChannels />
 </section>
 
 <!-- ========== SKILLS ========== -->

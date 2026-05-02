@@ -493,15 +493,25 @@ const x = 1;
 
 **중요**: 메인과 상세 페이지의 footer는 **분리**되어 있음. 상세 페이지 footer는 `src/layouts/project/ProjectBase.astro` 안.
 
-### 6.7 외부 채널 (About 카드)
+### 6.7 외부 채널 (가로 그리드)
 
-`<aside class="about-side">` 안의 `<div class="links-card">`. 새 채널 추가 시:
-```html
-<a class="link-row" href="https://...">
-  <span class="left"><span class="ico">Tw</span>Twitter · @205</span>
-  <span class="arrow">↗</span>
-</a>
+데이터는 `src/data/channels.ts`의 `CHANNELS` 배열에 분리되어 있습니다. 마크업은 `src/components/ExternalChannels.astro`가 자동 생성합니다.
+
+#### 새 채널 추가
+`src/data/channels.ts`의 배열에 객체 추가:
+```ts
+{ label: 'Twitter', sub: '@205', url: 'https://twitter.com/205', icon: 'site' },
 ```
+
+#### 사용 가능한 아이콘 키 (`IconKey`)
+`github / youtube / instagram / entry / namu / naver / yes24 / kyobo / site / band`
+
+새 아이콘이 필요하면 `src/components/ExternalChannels.astro`의 `ICON` 상수에 SVG path와 컬러를 추가하고, `IconKey` 타입에 키를 추가하세요.
+
+#### 동작
+- 8개 채널이 4열(데스크탑) → 2열(태블릿) → 1열(모바일) 가로 그리드로 자동 배치
+- 카드별 시그니처 컬러 좌측 라인 + 아이콘 배경 + 호버 시 강조
+- 클릭 시 새 탭에서 해당 채널로 이동
 
 ---
 
