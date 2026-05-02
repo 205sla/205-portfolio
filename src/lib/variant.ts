@@ -14,7 +14,7 @@ export function resolveVariant(
   if (entry.data.variant) return entry.data.variant;
   if (entry.data.external_only) return 'empty';
 
-  const len = entry.body.replace(/\s+/g, '').length;
+  const len = (entry.body ?? '').replace(/\s+/g, '').length;
   if (len < 80) return 'empty';
 
   const h2Count = headings.filter(h => h.depth === 2).length;

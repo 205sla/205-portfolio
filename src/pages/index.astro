@@ -283,131 +283,18 @@ const projects = await getCollection('projects');
 </footer>
 
 <script>
-import { setupScrollProgress } from '@/scripts/scroll-progress';
-setupScrollProgress('scroll-i');
+  import { setupScrollProgress } from '@/scripts/scroll-progress';
+  import { setupSectionScrollDots } from '@/scripts/section-scroll-dots';
+  import { setupSecretChip } from '@/scripts/secret-chip';
+  import { setupCodeTyping } from '@/scripts/code-typing';
+  import { setupHeroEasterEgg } from '@/scripts/hero-easter-egg';
 
-/* ===== Side scroll dots active state ===== */
-const dots = document.querySelectorAll('.scroll-dots a');
-const sections = ['hero','about','skills','works','highlights','awards','contact']
-  .map(id => document.getElementById(id));
-function updateDots() {
-  const y = window.scrollY + window.innerHeight * 0.4;
-  let active = 0;
-  sections.forEach((s, i) => { if (s && s.offsetTop <= y) active = i; });
-  dots.forEach((d, i) => d.classList.toggle('active', i === active));
-}
-window.addEventListener('scroll', updateDots, { passive: true });
-updateDots();
-
-/* Filter chips: handled in WorksGallery.astro (with pagination logic). */
-
-/* ===== Skill secret toggle ===== */
-const secret = document.getElementById('secret-chip');
-secret.addEventListener('click', () => secret.classList.toggle('open'));
-
-/* ===== C++ typing animation ===== */
-const codeEl = document.getElementById('codetype');
-const runBtn = document.getElementById('runbtn');
-
-const tokens = [
-  { type:'pp', text: '#include' }, { type:'tx', text: ' <iostream>' },
-  { type:'br' },
-  { type:'kw', text: 'using' }, { type:'tx', text: ' ' }, { type:'kw', text:'namespace' }, { type:'tx', text:' std;' },
-  { type:'br' }, { type:'br' },
-  { type:'ty', text:'int' }, { type:'tx', text:' ' }, { type:'fn', text:'main' }, { type:'tx', text:'() {' },
-  { type:'br' },
-  { type:'tx', text:'    ' }, { type:'tx', text:'cout << ' }, { type:'st', text:'"열심히 공부하는 중!"' }, { type:'tx', text:' << endl;' },
-  { type:'br' },
-  { type:'tx', text:'}' },
-];
-
-function renderLines(lines) {
-  let html = '';
-  lines.forEach((ln, i) => {
-    html += `<div class="ln"><span class="gutter">${i+1}</span><span>${ln}</span></div>`;
-  });
-  return html;
-}
-
-function tokensToLines(tks) {
-  const lines = [['']];
-  tks.forEach(t => {
-    if (t.type === 'br') { lines.push(['']); return; }
-    const cls = t.type === 'tx' ? '' : t.type;
-    const last = lines[lines.length - 1];
-    last[0] += cls ? `<span class="${cls}">${t.text}</span>` : t.text;
-  });
-  return lines.map(l => l[0]);
-}
-
-let typingState = { idx: 0, charIdx: 0, running: false, timer: null };
-
-function startTyping() {
-  if (typingState.running) return;
-  typingState = { idx: 0, charIdx: 0, running: true, timer: null };
-  codeEl.innerHTML = '';
-  step();
-}
-
-function step() {
-  const partial = tokens.slice(0, typingState.idx + 1).map((t, i) => {
-    if (t.type === 'br') return t;
-    if (i < typingState.idx) return t;
-    return { ...t, text: t.text.substring(0, typingState.charIdx) };
-  });
-  const lines = tokensToLines(partial);
-  // append cursor to last line
-  if (lines.length) lines[lines.length - 1] += '<span class="cursor"></span>';
-  codeEl.innerHTML = renderLines(lines);
-
-  const cur = tokens[typingState.idx];
-  if (!cur) {
-    typingState.running = false;
-    return;
-  }
-  if (cur.type === 'br') {
-    typingState.idx++;
-    typingState.charIdx = 0;
-    typingState.timer = setTimeout(step, 40);
-    return;
-  }
-  if (typingState.charIdx < cur.text.length) {
-    typingState.charIdx++;
-    typingState.timer = setTimeout(step, 22 + Math.random() * 20);
-  } else {
-    typingState.idx++;
-    typingState.charIdx = 0;
-    typingState.timer = setTimeout(step, 40);
-  }
-}
-
-// Trigger typing on first scroll into view
-const codeBlock = document.getElementById('codeblock');
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      startTyping();
-      io.disconnect();
-    }
-  });
-}, { threshold: 0.3 });
-io.observe(codeBlock);
-
-runBtn.addEventListener('click', () => {
-  if (typingState.timer) clearTimeout(typingState.timer);
-  startTyping();
-});
-
-/* ===== Easter egg: click 205 hero number ===== */
-document.querySelectorAll('.hero-205 .digit').forEach(d => {
-  d.addEventListener('click', () => {
-    d.style.transition = 'transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1)';
-    d.style.transform = 'translateY(-30px) rotate(' + (Math.random() * 24 - 12) + 'deg)';
-    setTimeout(() => {
-      d.style.transform = '';
-    }, 800);
-  });
-});
+  setupScrollProgress('scroll-i');
+  setupSectionScrollDots();
+  setupSecretChip();
+  setupCodeTyping();
+  setupHeroEasterEgg();
+  // Filter chips: handled in WorksGallery.astro (with pagination logic).
 </script>
 
 </BaseLayout>
