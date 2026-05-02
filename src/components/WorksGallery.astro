@@ -35,7 +35,6 @@ const sorted = [...visible].sort((a, b) => {
   return parseYear(b.data.year) - parseYear(a.data.year);
 });
 
-const PAGE_SIZE = 9;
 ---
 <section id="works" class="works">
   <div class="section-head">
@@ -52,7 +51,7 @@ const PAGE_SIZE = 9;
     ))}
   </div>
 
-  <div class="masonry" id="masonry" data-page-size={PAGE_SIZE}>
+  <div class="masonry" id="masonry">
     {sorted.map(p => <ProjectCard entry={p} />)}
   </div>
 
@@ -72,23 +71,29 @@ const PAGE_SIZE = 9;
   const loadMoreCount = document.getElementById('loadmore-count');
 
   if (filterEl && masonry && loadMoreBtn && loadMoreCount) {
-    const PAGE_SIZE = Number(masonry.dataset.pageSize ?? 9);
     const cards = Array.from(masonry.querySelectorAll<HTMLElement>('.card'));
+    const ROWS_PER_PAGE = 2;
+
+    /** 한 페이지에 보여줄 카드 수 = (현재 grid 컬럼 수) × ROWS_PER_PAGE */
+    function getPageSize(): number {
+      const cols = window.getComputedStyle(masonry!)
+        .gridTemplateColumns.split(' ').filter(Boolean).length;
+      return Math.max(2, cols * ROWS_PER_PAGE);
+    }
 
     let currentCat = 'all';
-    let shown = PAGE_SIZE;
+    let pageSize = getPageSize();
+    let shown = pageSize;
 
     function applyVisibility() {
       const inFilter = cards.filter(c =>
         currentCat === 'all' || c.dataset.cat === currentCat
       );
 
-      // 1) 모두 숨기고
       cards.forEach(c => {
         c.classList.add('is-hidden');
         c.classList.remove('is-overflow');
       });
-      // 2) 필터에 맞는 항목 중 처음 shown개만 표시
       inFilter.forEach((c, i) => {
         if (i < shown) {
           c.classList.remove('is-hidden');
@@ -98,11 +103,10 @@ const PAGE_SIZE = 9;
         }
       });
 
-      // 3) 더보기 버튼 상태 갱신
       const remaining = Math.max(0, inFilter.length - shown);
       if (remaining > 0) {
         loadMoreBtn!.style.display = '';
-        loadMoreCount!.textContent = `+${Math.min(PAGE_SIZE, remaining)}`;
+        loadMoreCount!.textContent = `+${Math.min(pageSize, remaining)}`;
       } else {
         loadMoreBtn!.style.display = 'none';
       }
@@ -115,21 +119,33 @@ const PAGE_SIZE = 9;
       filterEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
       btn.classList.add('active');
       currentCat = btn.getAttribute('data-cat') ?? 'all';
-      shown = PAGE_SIZE; // 카테고리 바뀌면 다시 처음 9개로
+      shown = pageSize; // 카테고리 바뀌면 다시 처음 페이지로
       applyVisibility();
     });
 
     loadMoreBtn.addEventListener('click', () => {
-      shown += PAGE_SIZE;
+      shown += pageSize;
       applyVisibility();
-      // 새로 등장한 첫 카드로 부드럽게 스크롤
       const firstNew = cards.find(c => !c.classList.contains('is-hidden') && c.classList.contains('is-overflow'));
       if (firstNew) {
-        // 클래스 정리 후이므로 다음 프레임에 스크롤
         requestAnimationFrame(() => {
           firstNew.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
       }
+    });
+
+    /* resize 시 컬럼 수가 바뀌면 페이지 사이즈와 shown 보정 */
+    let resizeTimer: number | undefined;
+    window.addEventListener('resize', () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        const newPageSize = getPageSize();
+        if (newPageSize === pageSize) return;
+        const pages = Math.max(1, Math.ceil(shown / pageSize));
+        pageSize = newPageSize;
+        shown = pageSize * pages;
+        applyVisibility();
+      }, 120);
     });
 
     applyVisibility();

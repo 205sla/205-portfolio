@@ -485,16 +485,18 @@ section {
   color: #fff; background: rgba(255,255,255,0.15);
 }
 
+/* 카드 그리드 — mobile-first, 화면 폭에 따라 1→2→3→4→5열 */
 .masonry {
-  column-count: 3;
-  column-gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
 }
-@media (max-width: 1100px) { .masonry { column-count: 2; } }
-@media (max-width: 700px) { .masonry { column-count: 1; } }
+@media (min-width: 520px)  { .masonry { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 760px)  { .masonry { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1080px) { .masonry { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1360px) { .masonry { grid-template-columns: repeat(5, 1fr); } }
 
 .card {
-  break-inside: avoid;
-  margin-bottom: 24px;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 14px;
