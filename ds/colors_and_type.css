@@ -1,0 +1,389 @@
+/* ============================================================
+   Entry Portfolio Design System
+   colors_and_type.css — design tokens (color, type, spacing,
+   radius, shadow, motion) and semantic recipes (h1, h2, p…).
+   Brand palette per official 엔트리 BI 디자인 가이드 v2.2.
+   ============================================================ */
+
+/* ---------- Webfonts ---------- */
+
+/* Pretendard — modern Korean OFL sans, primary UI face */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css');
+
+/* D2Coding — NAVER's open mono, code/tech accents */
+@import url('https://cdn.jsdelivr.net/gh/Joungkyun/font-d2coding/d2coding.css');
+
+/* Maplestory — brand display face for "205" mark and playful display copy.
+   Uploaded OTF files (Light + Bold). Replaces the previous Caveat substitute. */
+@font-face {
+  font-family: "Maplestory";
+  src: url("fonts/Maplestory_OTF_Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maplestory";
+  src: url("fonts/Maplestory_OTF_Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Hakgyoansim Tteokbokki — handwriting display face for casual stickers,
+   margin notes, and "친구의 손글씨" tone. Bold weight only (Korean handwritten OTF). */
+@font-face {
+  font-family: "Hakgyoansim Tteokbokki";
+  src: url("fonts/Hakgyoansim_TteokbokkiOTFB.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* OK Mallang — soft rounded display face for numbers, stat callouts,
+   and big point copy. Two weights: W (Wide ≈ 400) + B (Bold ≈ 700).
+   Korean numerals + Hangul, friendly geometric tone. */
+@font-face {
+  font-family: "OK Mallang";
+  src: url("fonts/OkMallangW.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OK Mallang";
+  src: url("fonts/OkMallangB.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   :root — design tokens
+   ============================================================ */
+:root {
+
+  /* ============ COLOR — 205 (PRIMARY brand) ============ */
+  --c205-mint:        #5DD3C8;
+  --c205-mint-soft:   #E5F7F4;
+  --c205-mint-tint:   #BFEAE3;
+  --c205-mint-hover:  #46BFB4;
+  --c205-mint-deep:   #2E8F87;
+  --c205-mint-press:  #1F6F69;
+
+  --c205-pink:        #FF9DBE;
+  --c205-pink-soft:   #FFEFF5;
+  --c205-pink-tint:   #FFD4E2;
+  --c205-pink-hover:  #F47FA6;
+  --c205-pink-press:  #C75A82;
+
+  --c205-bg-mood:     #6E7378;
+  --c205-bg-mood-deep:#4F5358;
+  --c205-skin:        #FAF6F4;
+  --c205-ink:         #252628;
+
+  /* ============ COLOR — Entry (SECONDARY) ============ */
+  --brand-purple:        #6E5AE6;
+  --brand-purple-soft:   #F1EEFF;
+  --brand-purple-hover:  #5F4BD1;
+  --brand-purple-press:  #4F3DBA;
+
+  --brand-blue:          #5096F5;
+  --brand-blue-soft:     #EAF3FE;
+  --brand-blue-hover:    #3F82DE;
+  --brand-blue-press:    #316FC5;
+
+  --gradient-brand:      linear-gradient(135deg, #F1EEFF 0%, #EAF3FE 100%);
+  --gradient-205-glow:   radial-gradient(circle at 50% 55%, rgba(255,157,190,0.42) 0%, transparent 60%);
+
+  /* ============ COLOR — Surface / Foreground / Border ============ */
+  --bg-1:        #FFFFFF;
+  --bg-2:        #F8F9FB;
+  --bg-3:        #F2F4F6;
+  --bg-card:     #FFFFFF;
+  --bg-soft-purple: var(--brand-purple-soft);
+  --bg-soft-blue:   var(--brand-blue-soft);
+
+  --fg-1: #252628;
+  --fg-2: #4E5158;
+  --fg-3: #73767C;
+  --fg-4: #B8BAC1;
+  --fg-on-dark: #FFFFFF;
+  --fg-link:       var(--c205-mint-deep);
+  --fg-link-hover: var(--c205-mint-press);
+
+  --border-1: #E8E9EB;
+  --border-2: #D1D3D8;
+
+  /* ============ SHADOW ============ */
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(60, 50, 100, 0.06), 0 1px 3px rgba(60, 50, 100, 0.04);
+  --shadow-2: 0 4px 8px rgba(60, 50, 100, 0.08), 0 2px 4px rgba(60, 50, 100, 0.05);
+  --shadow-3: 0 12px 24px rgba(60, 50, 100, 0.12), 0 4px 8px rgba(60, 50, 100, 0.06);
+  --shadow-4: 0 20px 40px rgba(60, 50, 100, 0.18), 0 6px 12px rgba(60, 50, 100, 0.08);
+  --shadow-pink-glow:  0 0 0 4px rgba(255,157,190,0.30), 0 8px 24px rgba(255,157,190,0.25);
+  --shadow-mint-glow:  0 0 0 4px rgba(93,211,200,0.28), 0 8px 24px rgba(93,211,200,0.22);
+  --shadow-focus-ring: 0 0 0 3px rgba(110, 90, 230, 0.25);
+
+  /* ============ COLOR — Neutrals (warm, near-black) ============ */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F8F9FB;
+  --neutral-100: #F2F4F6;
+  --neutral-200: #E8E9EB;
+  --neutral-300: #D1D3D8;
+  --neutral-400: #B8BAC1;
+  --neutral-500: #8B8E96;
+  --neutral-600: #73767C;
+  --neutral-700: #4E5158;
+  --neutral-800: #34363B;
+  --neutral-900: #252628;
+
+  /* ============ COLOR — Semantic ============ */
+  --color-success: #22C58B;
+  --color-success-soft: #E2F8EE;
+  --color-warning: #FFC533;
+  --color-warning-soft: #FFF6DC;
+  --color-danger:  #FF5151;
+  --color-danger-soft: #FFE8E8;
+  --color-info:    var(--brand-blue);
+  --color-info-soft: var(--brand-blue-soft);
+
+
+
+  /* ============ TYPE — Family ============ */
+  --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo",
+               "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, sans-serif;
+  --font-mono: "D2Coding", "JetBrains Mono", "Cascadia Code",
+               "SF Mono", Menlo, Consolas, monospace;
+  --font-display: "Maplestory", var(--font-sans); /* brand display face for "205" mark + playful display */
+  --font-mark: "Maplestory", "Pretendard Variable", sans-serif; /* the 205 handwritten-style mark */
+  --font-hand: "Hakgyoansim Tteokbokki", "Maplestory", var(--font-sans); /* casual handwriting — stickers, notes, captions */
+  --font-point: "OK Mallang", var(--font-sans); /* rounded display — numbers, stats, point copy */
+  --font-num: "OK Mallang", "JetBrains Mono", var(--font-sans); /* tabular numerals for stats and counts */
+
+  /* ============ TYPE — Scale (rem-anchored at 16px) ============ */
+  --fs-12: 0.75rem;
+  --fs-13: 0.8125rem;
+  --fs-14: 0.875rem;
+  --fs-15: 0.9375rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-20: 1.25rem;
+  --fs-24: 1.5rem;
+  --fs-28: 1.75rem;
+  --fs-32: 2rem;
+  --fs-40: 2.5rem;
+  --fs-48: 3rem;
+  --fs-56: 3.5rem;
+  --fs-72: 4.5rem;
+
+  /* Weights */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* Line-heights — Korean needs more vertical air than Latin */
+  --lh-tight:   1.2;
+  --lh-snug:    1.35;
+  --lh-normal:  1.5;
+  --lh-relaxed: 1.6;   /* default body, tuned for Korean */
+  --lh-loose:   1.75;
+
+  /* Tracking — Korean tech sites tighten headlines */
+  --tracking-tight:  -0.02em;
+  --tracking-snug:   -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+
+  /* ============ SPACING — 4px base ============ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-14: 56px;
+  --space-18: 72px;
+  --space-24: 96px;
+
+  /* ============ RADIUS ============ */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+
+
+  /* ============ MOTION ============ */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-pop:      cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:      cubic-bezier(0, 0, 0.2, 1);
+  --dur-fast:    150ms;
+  --dur-base:    200ms;
+  --dur-medium:  320ms;
+  --dur-slow:    600ms;
+
+  /* ============ LAYOUT ============ */
+  --container-max: 1200px;
+  --container-hero: 1280px;
+  --gutter-mobile:  24px;
+  --gutter-tablet:  40px;
+  --gutter-desktop: 80px;
+  --header-h: 64px;
+}
+
+/* ============================================================
+   Base reset (light)
+   ============================================================ */
+html { font-size: 16px; }
+body {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-16);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-1);
+  background: var(--bg-1);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Korean-first: never break between Hangul syllables */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* Belt-and-suspenders: enforce on common interactive/inline-text elements */
+button, a, input, textarea, select, label,
+h1, h2, h3, h4, h5, h6, p, li, span, div {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* ============================================================
+   Semantic type recipes — apply via class or element selector
+   ============================================================ */
+
+/* Display — hero, BIG headlines */
+.t-display, .t-d1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-72);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+.t-d2 {
+  font-size: var(--fs-56);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+
+/* Headings */
+h1, .t-h1 {
+  font-size: var(--fs-40);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  margin: 0;
+}
+h2, .t-h2 {
+  font-size: var(--fs-32);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-1);
+  margin: 0;
+}
+h3, .t-h3 {
+  font-size: var(--fs-24);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-1);
+  margin: 0;
+}
+h4, .t-h4 {
+  font-size: var(--fs-20);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+  margin: 0;
+}
+h5, .t-h5 {
+  font-size: var(--fs-18);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-normal);
+  color: var(--fg-1);
+  margin: 0;
+}
+
+/* Body */
+p, .t-body {
+  font-size: var(--fs-16);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  margin: 0;
+}
+.t-body-lg {
+  font-size: var(--fs-18);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+}
+.t-body-sm {
+  font-size: var(--fs-14);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+}
+
+/* Meta — captions, timestamps, labels */
+.t-meta {
+  font-size: var(--fs-13);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-normal);
+  color: var(--fg-3);
+}
+
+
+/* Code / mono */
+code, .t-code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--neutral-100);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-xs);
+  color: var(--neutral-800);
+}
+pre, .t-pre {
+  font-family: var(--font-mono);
+  font-size: var(--fs-14);
+  line-height: var(--lh-normal);
+  background: var(--neutral-900);
+  color: #EFEEF8;
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+/* Links */
+a {
+  color: var(--fg-link);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+a:hover { color: var(--fg-link-hover); text-decoration: underline; }
+
+/* Focus ring (universal) */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
+  border-radius: var(--radius-sm);
+}

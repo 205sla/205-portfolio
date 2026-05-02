@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>프로젝트 상세 템플릿 · 205.kr</title>
+<link rel="stylesheet" href="ds/colors_and_type.css" />
+<link rel="stylesheet" href="project-detail.css" />
+</head>
+<body>
+
+<!-- top progress bar -->
+<div class="scroll-bar"><i id="scroll-fill"></i></div>
+
+<!-- nav -->
+<header class="nav">
+  <div class="left">
+    <a href="portfolio.html" class="brand">205</a>
+    <a href="portfolio.html#gallery" class="back">← 갤러리</a>
+    <div class="crumb">
+      <span>포트폴리오</span>
+      <span class="sep">／</span>
+      <span id="crumb-cat">게임 개발</span>
+      <span class="sep">／</span>
+      <span class="here" id="crumb-title">[Unity] 체스스톤</span>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="icobtn" title="공유">↗</button>
+    <button class="icobtn" title="목차">≡</button>
+    <button class="icobtn" title="다크 모드" id="theme-btn">◐</button>
+  </div>
+</header>
+
+<!-- demo tabs (switches between 3 length variants in a single doc) -->
+<div class="demo-tabs" role="tablist">
+  <span class="tag">Template Demo</span>
+  <button data-v="long"   class="active"><span>긴 페이지</span><span class="len">100+ 스크롤 · 게임 개발</span></button>
+  <button data-v="medium"><span>중간 페이지</span><span class="len">엔트리 활동</span></button>
+  <button data-v="short"><span>짧은 페이지</span><span class="len">공모전 수상</span></button>
+  <button data-v="empty"><span>빈 페이지</span><span class="len">기타 활동</span></button>
+</div>
+
+<!-- ============================================================
+     VARIANT A — LONG (game dev: [Unity] 체스스톤)
+     ============================================================ -->
+<main class="variant active" id="v-long" data-cat="game">
+
+  <section class="page-header">
+    <span class="cat-pill"><span class="ico">G</span>게임 개발</span>
+    <span class="icon-emoji">🎮</span>
+    <h1><span class="br">[Unity]</span> 체스스톤</h1>
+    <div class="meta-row">
+      <div class="field"><span class="lab">기간</span> <span class="val">2022.12</span></div>
+      <div class="field"><span class="lab">팀</span> <span class="val">1인 개발</span></div>
+      <div class="field"><span class="lab">태그</span>
+        <span class="tag">2022년</span>
+        <span class="tag">Unity</span>
+        <span class="tag">C#</span>
+        <span class="tag">개인 프로젝트</span>
+      </div>
+    </div>
+    <div class="external-row">
+      <a class="ext-btn" href="#">▶ 홍보 영상 보기</a>
+      <a class="ext-btn ghost" href="#">Play 스토어 ↗</a>
+      <a class="ext-btn ghost" href="#">GitHub 저장소 ↗</a>
+    </div>
+  </section>
+
+  <div class="layout">
+    <!-- left meta -->
+    <aside class="left">
+      <div class="mini-meta">
+        <div class="lab">발행</div>
+        <div class="v">2022.12</div>
+        <div class="lab">분량</div>
+        <div class="v">12분</div>
+        <div class="lab">카테고리</div>
+        <div class="v" style="font-size:13px;font-family:var(--font-sans);">게임 개발</div>
+      </div>
+    </aside>
+
+    <article class="body">
+      <!-- intro paragraph -->
+      <p>체스의 행마법과 카드 게임의 컬렉션 시스템을 결합한 1인 개발 모바일 게임. 기물별로 고유한 <span class="hl-purple">행동 스킬</span>을 부여하고, 매 턴 손에 든 카드를 통해 보드 위 유닛을 소환하거나 능력을 발동하는 방식으로 진행됩니다.</p>
+
+      <!-- video -->
+      <div class="video">
+        <div class="thumb">
+          <span class="label">▶ YOUTUBE · 02:14</span>
+          <div class="play">▶</div>
+          <div class="title">체스스톤 — 공식 홍보 영상</div>
+        </div>
+      </div>
+      <blockquote>홍보 영상</blockquote>
+
+      <!-- video 2 -->
+      <div class="video">
+        <div class="thumb">
+          <span class="label">▶ YOUTUBE · 04:38</span>
+          <div class="play">▶</div>
+          <div class="title">실행 영상 — 1인 데모 플레이</div>
+        </div>
+      </div>
+      <blockquote>실행 영상</blockquote>
+
+      <!-- screenshots column -->
+      <div class="columns col-2">
+        <div class="ph aspect-3-4 purple">메인 화면</div>
+        <div class="ph aspect-3-4 mint">매치 진입</div>
+      </div>
+
+      <hr class="fancy" />
+
+      <!-- DEV LOG -->
+      <h2 id="devlog">개발 일지</h2>
+      <p>처음으로 본격적으로 개발한 유니티 게임이라 시행착오가 많았다. 주요 트러블슈팅과 회고를 시간 순으로 기록한다.</p>
+
+      <h3 id="opening">오프닝 애니메이션</h3>
+      <p>타이틀 화면에서 카드가 보드로 흩뿌려지는 시퀀스를 구현하는 과정. <code>Coroutine</code>으로 카드 한 장당 0.04초씩 딜레이를 주어 자연스러운 흐름을 만들었다.</p>
+
+      <figure>
+        <div class="ph aspect-16-9 purple">오프닝 시퀀스 캡처</div>
+        <figcaption>카드가 흩뿌려지는 시점 — 0.04s × 32장</figcaption>
+      </figure>
+
+      <div class="callout story">
+        <span class="ico">💭</span>
+        <div>처음에는 <code>Update()</code> 안에서 처리했는데, 프레임 드랍이 심해 코루틴으로 바꿨다. 첫 코루틴이라 어색했지만 이후 거의 모든 비동기 처리를 코루틴으로 풀게 됐다.</div>
+      </div>
+
+      <h3 id="card-move">카드 이동</h3>
+      <p>드래그 시 손에서 보드로 카드가 이동하는 로직. 보드의 셀 좌표를 정수 그리드(0~7)로 두고, 카드의 월드 좌표를 셀 인덱스로 변환했다.</p>
+
+      <div class="code">
+        <div class="top">
+          <span class="lang">C#</span>
+          <span class="file">CardController.cs</span>
+          <button class="copy">복사</button>
+        </div>
+<pre><span class="cm">// 드래그 종료 시 가장 가까운 셀로 스냅</span>
+<span class="kw">public void</span> <span class="fn">OnEndDrag</span>(<span class="ty">PointerEventData</span> e) {
+    <span class="ty">Vector2Int</span> cell = <span class="ty">Board</span>.<span class="fn">WorldToCell</span>(transform.position);
+    <span class="kw">if</span> (<span class="ty">Board</span>.<span class="fn">IsValid</span>(cell) &amp;&amp; canPlay) {
+        <span class="fn">PlayCard</span>(cell);
+    } <span class="kw">else</span> {
+        <span class="fn">ReturnToHand</span>();
+    }
+}</pre>
+      </div>
+
+      <h3 id="diagonal">남도일 ↔ 신이치 모드 전환</h3>
+      <p>플레이어 캐릭터의 <strong>대각선 행마</strong>를 활성화하는 토글. 단순한 부울 플래그 같지만, 발동 가능한 카드 풀과 UI 색상까지 동시에 바뀌어야 했다.</p>
+
+      <div class="img-grid col-3">
+        <div class="ph aspect-1 purple">UI A</div>
+        <div class="ph aspect-1 pink">UI B</div>
+        <div class="ph aspect-1 mint">UI C</div>
+      </div>
+
+      <div class="callout tip">
+        <span class="ico">💡</span>
+        <div>그래도 ai의 도움 하나 없이 혼자 끝까지 만들었다는 점에서 의미가 컸다. 코드 품질은 부끄럽지만 전반적인 게임 루프 설계는 이후 모든 프로젝트의 기준점이 됐다.</div>
+      </div>
+
+      <hr />
+
+      <h2 id="json-bug">JSON 데이터 읽기 오류</h2>
+      <p>릴리스 직전 발견한, 유저 데이터 마이그레이션이 실패하던 버그. <span class="hl-yellow">앱 빌드에는 멀쩡</span>했지만 실 기기에서만 재현됐다.</p>
+
+      <details>
+        <summary>500줄짜리 카드 매니저 함수 (펼치기)<span class="meta-line">CardManager.cs · 524 lines</span></summary>
+        <div class="code in-toggle">
+          <div class="top">
+            <span class="lang">C#</span>
+            <span class="file">CardManager.cs</span>
+            <button class="copy">복사</button>
+          </div>
+<pre><span class="kw">public</span> <span class="ty">CardData</span> <span class="fn">LoadCard</span>(<span class="ty">string</span> id) {
+    <span class="kw">if</span> (string.IsNullOrEmpty(id)) <span class="kw">return null</span>;
+    <span class="kw">var</span> path = <span class="st">"cards/"</span> + id;
+    <span class="kw">var</span> json = <span class="ty">Resources</span>.<span class="fn">Load</span>&lt;<span class="ty">TextAsset</span>&gt;(path);
+    <span class="kw">if</span> (json == <span class="kw">null</span>) {
+        <span class="ty">Debug</span>.<span class="fn">LogWarning</span>(<span class="st">$"Card not found: {id}"</span>);
+        <span class="kw">return null</span>;
+    }
+    <span class="kw">try</span> {
+        <span class="kw">var</span> data = <span class="ty">JsonUtility</span>.<span class="fn">FromJson</span>&lt;<span class="ty">CardData</span>&gt;(json.text);
+        data.Validate();
+        <span class="kw">return</span> data;
+    } <span class="kw">catch</span> (<span class="ty">Exception</span> ex) {
+        <span class="ty">Debug</span>.<span class="fn">LogError</span>(ex);
+        <span class="kw">return null</span>;
+    }
+}
+<span class="cm">// ... (508 more lines)</span></pre>
+        </div>
+      </details>
+
+      <p>핵심 원인은 <code>Resources.Load</code>가 IL2CPP 빌드에서 대소문자를 가렸던 것. PC 에디터에서는 무시되던 차이가 안드로이드 빌드에서만 발생했다.</p>
+
+      <h3 id="lessons">정리하며</h3>
+      <p>1년이 지나 다시 보니 부끄러운 코드도 많지만, <span class="hl-pink">처음부터 끝까지 1인으로 출시</span>까지 끌고 간 경험이 가장 큰 자산이다.</p>
+
+      <div class="bookmark" style="cursor:pointer;">
+        <div class="info">
+          <div class="ttl">체스스톤 — Google Play</div>
+          <div class="desc">기물별 고유 스킬을 가진 1인 개발 인디 카드 보드 게임. 매 턴 카드를 통해 유닛을 소환하고 보드를 점령하세요.</div>
+          <div class="url"><span class="fav">P</span>play.google.com</div>
+        </div>
+        <div class="preview">PLAY 스토어<br>썸네일</div>
+      </div>
+
+      <div class="callout action">
+        <span class="ico">⌨</span>
+        <div><strong>GitHub에서 보기</strong> — 소스 코드 전체 공개</div>
+      </div>
+
+    </article>
+
+    <!-- TOC -->
+    <aside class="toc">
+      <h5>목차</h5>
+      <ul id="toc-list">
+        <li><a href="#devlog" class="active">개발 일지</a></li>
+        <li class="h3"><a href="#opening">오프닝 애니메이션</a></li>
+        <li class="h3"><a href="#card-move">카드 이동</a></li>
+        <li class="h3"><a href="#diagonal">남도일 ↔ 신이치 모드</a></li>
+        <li><a href="#json-bug">JSON 데이터 읽기 오류</a></li>
+        <li class="h3"><a href="#lessons">정리하며</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <!-- end nav -->
+  <section class="page-end">
+    <div class="row">
+      <a class="nav-card prev" href="#">
+        <span class="arrow">←</span>
+        <div class="stack">
+          <span class="lab">이전 게임</span>
+          <span class="ttl">[Unreal] 한울</span>
+        </div>
+      </a>
+      <a class="nav-card next" href="#">
+        <span class="arrow">→</span>
+        <div class="stack">
+          <span class="lab">다음 게임</span>
+          <span class="ttl">[Unity] 별빛 마법학교</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="related">
+      <h4>비슷한 태그의 다른 작업</h4>
+      <div class="grid">
+        <a class="card" href="#" data-cat="game">
+          <div class="cover">🎮</div>
+          <div class="b"><div class="cat">게임 개발</div><div class="ttl">[Unity] 별빛 마법학교</div></div>
+        </a>
+        <a class="card" href="#" data-cat="game">
+          <div class="cover" style="background:#F1EEFF;color:#6E5AE6;">♟</div>
+          <div class="b"><div class="cat">게임 개발</div><div class="ttl">[Unreal] 한울</div></div>
+        </a>
+        <a class="card" href="#" data-cat="entry">
+          <div class="cover" style="background:#EAF3FE;color:#5096F5;">▣</div>
+          <div class="b"><div class="cat">엔트리 활동</div><div class="ttl">엔트리 게임 모음</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     VARIANT B — MEDIUM (entry: SEF2023)
+     ============================================================ -->
+<main class="variant" id="v-medium" data-cat="entry">
+
+  <section class="page-header">
+    <span class="cat-pill"><span class="ico">E</span>엔트리 활동</span>
+    <span class="icon-emoji">🟧</span>
+    <h1>SEF2023 — Software Education Fair 발표 참가</h1>
+    <div class="meta-row">
+      <div class="field"><span class="lab">기간</span> <span class="val">2023.10</span></div>
+      <div class="field"><span class="lab">태그</span>
+        <span class="tag">2023년</span>
+        <span class="tag">엔트리</span>
+        <span class="tag">주요활동</span>
+        <span class="tag">교육활동</span>
+      </div>
+    </div>
+    <div class="external-row">
+      <a class="ext-btn" href="#">▶ 발표 영상 ↗</a>
+      <a class="ext-btn ghost" href="#">SEF 공식 사이트 ↗</a>
+    </div>
+  </section>
+
+  <div class="layout no-toc">
+    <article class="body">
+      <p>2023년 SEF(Software Education Fair) 본행사에서 엔트리 사용자 대표로 청소년 발표 세션에 초청받았습니다. 약 8분 분량의 라이트닝 토크 형식이며, 발표 주제는 "엔트리로 만든 게임이 노션 포트폴리오까지 가는 길".</p>
+
+      <h2 id="presentation">발표 영상</h2>
+      <div class="video">
+        <div class="thumb">
+          <span class="label">▶ YOUTUBE · 08:21</span>
+          <div class="play">▶</div>
+          <div class="title">SEF2023 청소년 발표 — 이영호</div>
+        </div>
+      </div>
+      <blockquote>발표 영상 풀 버전</blockquote>
+
+      <h2 id="sketch">행사 스케치</h2>
+      <p>코엑스 그랜드볼룸에서 이틀간 진행된 행사. 부스 운영과 본 발표를 병행했습니다.</p>
+
+      <div class="img-grid col-2">
+        <div class="ph aspect-4-3" style="background:#EAF3FE;color:#5096F5;">발표 1</div>
+        <div class="img" style="display:contents;">
+          <div class="ph aspect-4-3" style="background:#F5F2EC;color:#6B6F76;">발표 2</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="ico">🎤</span>
+        <div>본 발표는 청소년 SW 교육 세션의 마지막 슬롯이었습니다. 어린 친구들의 질문이 가장 기억에 남습니다.</div>
+      </div>
+
+      <h2 id="links">관련 링크</h2>
+      <p>SEF 본 사이트와 발표 자료는 아래에서 확인할 수 있습니다.</p>
+
+      <a class="bookmark" href="#" style="cursor:pointer;">
+        <div class="info">
+          <div class="ttl">SEF2023 공식 사이트</div>
+          <div class="desc">2023 Software Education Fair · 청소년 SW 교육 종합 박람회. 본 영상 및 세션 일정 안내.</div>
+          <div class="url"><span class="fav">S</span>sef.kr</div>
+        </div>
+        <div class="preview">SEF<br>2023</div>
+      </a>
+
+      <p>발표 슬라이드 원본은 <a href="#" class="ext">노션 페이지</a>에서 직접 확인할 수 있습니다.</p>
+
+    </article>
+  </div>
+
+  <section class="page-end">
+    <div class="row">
+      <a class="nav-card prev" href="#">
+        <span class="arrow">←</span>
+        <div class="stack"><span class="lab">이전 활동</span><span class="ttl">엔트리 어워드 2022</span></div>
+      </a>
+      <a class="nav-card next" href="#">
+        <span class="arrow">→</span>
+        <div class="stack"><span class="lab">다음 활동</span><span class="ttl">엔트리 게임 모음</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     VARIANT C — SHORT (contest: 클로바버딩 수상 — uses compact-card)
+     ============================================================ -->
+<main class="variant" id="v-short" data-cat="contest">
+
+  <section class="page-header">
+    <span class="cat-pill"><span class="ico">C</span>공모전 활동</span>
+    <span class="icon-emoji">🏆</span>
+    <h1>네이버 클로바버딩 공모전 수상 · 2020</h1>
+    <div class="meta-row">
+      <div class="field"><span class="lab">연도</span> <span class="val">2020</span></div>
+      <div class="field"><span class="lab">결과</span> <span class="val">Rising Star Award · 퀄컴 장학팀</span></div>
+      <div class="field"><span class="lab">팀</span> <span class="val">3인</span></div>
+      <div class="field"><span class="lab">태그</span>
+        <span class="tag gold">수상</span>
+        <span class="tag">CLOVA</span>
+        <span class="tag">AI</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="compact-card">
+    <div class="hero-img">
+      🏆
+      <span class="ribbon">RISING STAR AWARD · QUALCOMM 장학팀</span>
+    </div>
+    <div class="body">
+      <p>네이버 클로바버딩 챌린지 2020에서 음성 인식 기반 학습 도우미 프로젝트로 <strong>Rising Star Award (퀄컴 장학팀)</strong>을 수상했습니다.</p>
+      <p>대회 작품은 아래 링크에서 확인할 수 있습니다.</p>
+      <div class="row">
+        <a class="ext-btn" href="#" style="background:var(--cat-contest);color:#fff;">▶ 발표 영상 ↗</a>
+        <a class="ext-btn ghost" href="#">대회 페이지 ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="page-end">
+    <div class="row">
+      <a class="nav-card prev" href="#">
+        <span class="arrow">←</span>
+        <div class="stack"><span class="lab">이전 수상</span><span class="ttl">SK 청소년 SW 챌린지</span></div>
+      </a>
+      <a class="nav-card next" href="#">
+        <span class="arrow">→</span>
+        <div class="stack"><span class="lab">다음 수상</span><span class="ttl">정보올림피아드 동상</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     VARIANT D — EMPTY / external-only (etc)
+     ============================================================ -->
+<main class="variant" id="v-empty" data-cat="etc">
+
+  <section class="page-header">
+    <span class="cat-pill"><span class="ico">M</span>기타 활동</span>
+    <span class="icon-emoji">🎸</span>
+    <h1>일렉트릭 기타 — 학습 메모</h1>
+    <div class="meta-row">
+      <div class="field"><span class="lab">기간</span> <span class="val">2024 ~</span></div>
+      <div class="field"><span class="lab">태그</span>
+        <span class="tag">취미</span>
+        <span class="tag">학습</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="empty-state">
+    <div class="glyph">···</div>
+    <h3>이 페이지는 노션 원본에서 관리되고 있습니다</h3>
+    <p>아직 본문이 정리되지 않았거나, 외부에 자세한 내용이 있어요.<br>아래 링크로 이동하면 최신 기록을 볼 수 있어요.</p>
+    <div class="row">
+      <a class="ext-btn" href="#">노션 원본에서 보기 ↗</a>
+      <a class="ext-btn ghost" href="portfolio.html">갤러리로 돌아가기</a>
+    </div>
+  </div>
+
+  <section class="page-end">
+    <div class="row">
+      <a class="nav-card prev" href="#">
+        <span class="arrow">←</span>
+        <div class="stack"><span class="lab">이전 메모</span><span class="ttl">자격증 모음</span></div>
+      </a>
+      <a class="nav-card next" href="#">
+        <span class="arrow">→</span>
+        <div class="stack"><span class="lab">다음 메모</span><span class="ttl">알고리즘 공부</span></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     SITE FOOTER
+     ============================================================ -->
+<footer class="foot">
+  <div>
+    <span class="brand">205</span>
+    <span style="margin-left:14px;">© 이영호 · <a href="mailto:205@205.kr">205@205.kr</a></span>
+  </div>
+  <div>
+    <a href="https://205.kr">205.kr</a> · <a href="#">노션 원본</a>
+  </div>
+</footer>
+
+<script>
+  // demo tab switching
+  const tabs = document.querySelectorAll('.demo-tabs button');
+  const variants = document.querySelectorAll('.variant');
+  const crumbCat = document.getElementById('crumb-cat');
+  const crumbTitle = document.getElementById('crumb-title');
+  const titles = {
+    long:   { cat: '게임 개발', title: '[Unity] 체스스톤' },
+    medium: { cat: '엔트리 활동', title: 'SEF2023' },
+    short:  { cat: '공모전 활동', title: '클로바버딩 수상' },
+    empty:  { cat: '기타 활동', title: '일렉트릭 기타' },
+  };
+  tabs.forEach(t => t.addEventListener('click', () => {
+    const v = t.dataset.v;
+    tabs.forEach(x => x.classList.toggle('active', x === t));
+    variants.forEach(s => s.classList.toggle('active', s.id === 'v-' + v));
+    crumbCat.textContent = titles[v].cat;
+    crumbTitle.textContent = titles[v].title;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }));
+
+  // scroll progress bar
+  const fill = document.getElementById('scroll-fill');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop / Math.max(1, (h.scrollHeight - h.clientHeight))) * 100;
+    fill.style.width = pct + '%';
+  }, { passive: true });
+
+  // copy buttons
+  document.querySelectorAll('.code .copy').forEach(b => {
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      const pre = b.closest('.code').querySelector('pre');
+      navigator.clipboard?.writeText(pre.innerText);
+      b.textContent = '복사됨 ✓';
+      b.classList.add('copied');
+      setTimeout(() => { b.textContent = '복사'; b.classList.remove('copied'); }, 1400);
+    });
+  });
+
+  // TOC active highlight
+  const tocLinks = document.querySelectorAll('#toc-list a');
+  const sections = ['devlog','opening','card-move','diagonal','json-bug','lessons']
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+  function updateToc() {
+    const y = window.scrollY + 160;
+    let active = sections[0];
+    for (const s of sections) { if (s.offsetTop <= y) active = s; }
+    if (!active) return;
+    tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + active.id));
+  }
+  window.addEventListener('scroll', updateToc, { passive: true });
+  updateToc();
+</script>
+
+</body>
+</html>

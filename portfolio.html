@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>205 — 이영호 포트폴리오</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+
+<!-- Scroll progress bar -->
+<div class="scroll-bar"><i id="scroll-i"></i></div>
+
+<!-- Right-side scroll dots -->
+<nav class="scroll-dots" aria-label="Section navigation">
+  <a href="#hero" data-target="hero" class="active"><span>Hero</span></a>
+  <a href="#about" data-target="about"><span>About</span></a>
+  <a href="#skills" data-target="skills"><span>Skills</span></a>
+  <a href="#works" data-target="works"><span>Works</span></a>
+  <a href="#highlights" data-target="highlights"><span>Highlights</span></a>
+  <a href="#awards" data-target="awards"><span>Awards</span></a>
+  <a href="#contact" data-target="contact"><span>Contact</span></a>
+</nav>
+
+<!-- ========== NAV ========== -->
+<header class="nav">
+  <a class="brand" href="#hero">
+    <span class="num">205</span>
+    <span class="name">Lee&nbsp;Youngho</span>
+  </a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#highlights">Highlights</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="meta">
+    <span class="dot" aria-hidden="true"></span>
+    <span>현재 게임 개발 학습 중</span>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section id="hero" class="hero">
+  <div class="hero-meta">
+    <div class="left">
+      <span><strong>205.kr</strong> · Personal Portfolio · v2026</span>
+      <span>Last updated · 2026.04.28</span>
+    </div>
+    <div class="right">
+      <span><strong>Seoul, KR</strong> · 37.59°N 127.06°E</span>
+      <span>2003.01.05 — present</span>
+    </div>
+  </div>
+
+  <h1 class="hero-205" aria-label="205">
+    <span class="digit">2</span><span class="digit">0</span><span class="digit">5</span>
+  </h1>
+
+  <div class="hero-character" aria-hidden="true">
+    <div class="speech">안녕하세요!</div>
+    <img src="assets/205-arms.png" alt="" />
+  </div>
+
+  <div class="hero-tagline">
+    <p class="lead">
+      엔트리로 코딩에 입문해서, <strong>책 두 권</strong>을 쓰고
+      <strong>SEF2023</strong>에서 강연까지 했습니다.
+      이젠 <strong>게임 개발자</strong>로 한 걸음씩 옮겨가는 중이에요.
+    </p>
+    <div class="name-block">
+      <div class="ko">이영호</div>
+      <div class="en">YoungHo&nbsp;Lee</div>
+      <div class="role">Author · Speaker · Developer</div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>엔트리 자문단&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;나는야 엔트리 화가&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;나는야 엔트리 게임 개발자&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;SEF2023 연사&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;나무위키 등재&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;205&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;</span>
+    <span>엔트리 자문단&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;나는야 엔트리 화가&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;나는야 엔트리 게임 개발자&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;SEF2023 연사&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;나무위키 등재&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;205&nbsp;&nbsp;<i class="star">✦</i>&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="about">
+  <div class="section-head">
+    <div class="label"><span class="idx">01</span>About</div>
+    <h2>안녕하세요!<br/><em>엔트리로 이것저것 하는</em> <span class="accent">게임 개발자</span>입니다.</h2>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>초등학생 시절 코딩 교육 플랫폼인 <strong>엔트리</strong>로 개발을 처음 접했습니다. 개발이 너무 즐거워서 다른 친구들에게도 이 즐거움을 알리고자 다양한 활동을 하다 보니 <strong>SEF2023</strong>에 연사로도 참여하고 책도 두 권이나 쓰게 되었습니다.</p>
+      <p>엔트리로는 할 수 있는 거 다 해본 것 같아서 최근에는 <strong>게임 개발자</strong>로써 필요한 역량을 기르는데 힘쓰고 있습니다.</p>
+      <div class="hand-note">— 그냥 만드는 게 좋아요. 그게 다입니다.</div>
+
+      <div class="code-block" style="margin-top:32px;" id="codeblock">
+        <div class="top">
+          <i class="dot r"></i><i class="dot y"></i><i class="dot g"></i>
+          <span class="file">~/205/study.cpp</span>
+          <button class="runbtn" id="runbtn">▶ run</button>
+        </div>
+        <div class="body">
+          <div id="codetype"></div>
+          <div class="output" id="codeout" style="display:none;">
+            <span class="label">stdout</span>
+            <span id="outtext"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="about-side">
+      <div class="timeline">
+        <h4>학력</h4>
+        <a class="tl-item" href="http://www.e-kyhj.es.kr/wah/main/index.htm" target="_blank" rel="noopener">
+          <div class="yr">2010 — 2015</div>
+          <div class="school">화정 초등학교<span class="sub">(고양)</span></div>
+        </a>
+        <a class="tl-item" href="http://hwajung.ms.kr/" target="_blank" rel="noopener">
+          <div class="yr">2016 — 2018</div>
+          <div class="school">화정 중학교</div>
+        </a>
+        <a class="tl-item" href="https://hwajung.hs.kr/" target="_blank" rel="noopener">
+          <div class="yr">2019 — 2021</div>
+          <div class="school">화정 고등학교</div>
+        </a>
+        <a class="tl-item now" href="http://swcon.khu.ac.kr/" target="_blank" rel="noopener">
+          <div class="yr">2022 — Now</div>
+          <div class="school">경희대학교<span class="sub">소프트웨어융합학과 (휴학)</span></div>
+        </a>
+      </div>
+
+      <div class="links-card">
+        <h4>외부 채널</h4>
+        <div class="grp">개발 / 콘텐츠</div>
+        <a class="link-row" href="https://github.com/205sla" target="_blank" rel="noopener">
+          <span class="left"><span class="ico">Gh</span>GitHub · 205sla</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="link-row" href="https://www.youtube.com/@205" target="_blank" rel="noopener">
+          <span class="left"><span class="ico">Yt</span>YouTube · 205와 엔트리</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="link-row" href="https://www.instagram.com/205_youngholee/" target="_blank" rel="noopener">
+          <span class="left"><span class="ico">Ig</span>Instagram · 205_youngholee</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="link-row" href="https://playentry.org/profile/56136825dadc91e1235b460d" target="_blank" rel="noopener">
+          <span class="left"><span class="ico">Et</span>Entry · lyh2315</span>
+          <span class="arrow">↗</span>
+        </a>
+
+        <div class="grp">검색 / 출판</div>
+        <a class="link-row" href="https://namu.wiki/w/%EC%9D%B4%EC%98%81%ED%98%B8(2003)" target="_blank" rel="noopener">
+          <span class="left"><span class="ico">N</span>나무위키 「이영호(2003)」</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="link-row" href="https://search.naver.com/search.naver?query=이영호" target="_blank" rel="noopener">
+          <span class="left"><span class="ico">N</span>네이버 인물 검색</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="link-row" href="https://www.yes24.com/24/AuthorFile/Author/437179" target="_blank" rel="noopener">
+          <span class="left"><span class="ico">Y</span>Yes24 작가 페이지</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="link-row" href="https://www.kyobobook.co.kr/service/profile/information?chrcCode=1000260131" target="_blank" rel="noopener">
+          <span class="left"><span class="ico">K</span>교보문고 작가 페이지</span>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ========== SKILLS ========== -->
+<section id="skills">
+  <div class="section-head">
+    <div class="label"><span class="idx">02</span>Skills</div>
+    <h2>잘 하는 것, 그리고 <em>아직 응애인 것</em></h2>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-col">
+      <h3>Languages · 언어</h3>
+      <div class="skill-tier" data-level="1">
+        <div class="tier"><span class="lv"></span>고수</div>
+        <div class="items">
+          <span class="chip">한국어</span>
+          <span class="chip">엔트리</span>
+        </div>
+      </div>
+      <div class="skill-tier" data-level="2">
+        <div class="tier"><span class="lv"></span>중수</div>
+        <div class="items">
+          <span class="chip">C / C++</span>
+          <span class="chip">C#</span>
+        </div>
+      </div>
+      <div class="skill-tier" data-level="3">
+        <div class="tier"><span class="lv"></span>하수</div>
+        <div class="items">
+          <span class="chip">HTML</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">CSS</span>
+          <span class="chip">Python</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-col">
+      <h3>Tools · 도구</h3>
+      <div class="skill-tier" data-level="1">
+        <div class="tier"><span class="lv"></span>고수</div>
+        <div class="items">
+          <button class="chip secret" id="secret-chip" type="button">젓가락질</button>
+          <div class="secret-msg">포크도 잘 사용함 🍴 (이건 비밀이에요)</div>
+        </div>
+      </div>
+      <div class="skill-tier" data-level="2">
+        <div class="tier"><span class="lv"></span>중수</div>
+        <div class="items">
+          <span class="chip">Unity</span>
+        </div>
+      </div>
+      <div class="skill-tier" data-level="3">
+        <div class="tier"><span class="lv"></span>하수</div>
+        <div class="items">
+          <span class="chip">Unreal Engine</span>
+          <span class="chip">Firebase</span>
+        </div>
+      </div>
+      <div class="skill-tier" data-level="4">
+        <div class="tier"><span class="lv"></span>응애</div>
+        <div class="items">
+          <span class="chip">Blender</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WORKS / GALLERY ========== -->
+<section id="works" class="works">
+  <div class="section-head">
+    <div class="label"><span class="idx">03</span>Works</div>
+    <h2>만든 것들, <em>50+ 프로젝트</em></h2>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="chip active" data-cat="all">전체 <span class="count">52</span></button>
+    <button class="chip" data-cat="game">게임 개발 <span class="count">8</span></button>
+    <button class="chip" data-cat="web">웹 개발 <span class="count">10</span></button>
+    <button class="chip" data-cat="entry">엔트리 활동 <span class="count">18</span></button>
+    <button class="chip" data-cat="contest">공모전 <span class="count">8</span></button>
+    <button class="chip" data-cat="etc">기타 <span class="count">14</span></button>
+  </div>
+
+  <div class="masonry" id="masonry">
+    <!-- ============ GAME ============ -->
+    <a class="card feat" data-cat="game">
+      <div class="cover cover-mood" style="--ar: 16/10;">
+        <span class="yr">2026</span>
+        <span>한울</span>
+        <span class="badge">Unreal · 5인</span>
+      </div>
+      <div class="body">
+        <div class="cat">Game · Unreal</div>
+        <h3>[Unreal] 한울</h3>
+        <p>5인 팀 프로젝트. 레벨 디자인·시스템·머터리얼 담당. 처음 만지는 언리얼.</p>
+        <div class="tags"><span>Unreal</span><span>Level Design</span><span>Material</span></div>
+        <div class="meta"><span>2025</span><span>Team · 5</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="game">
+      <div class="cover cover-mint">
+        <span class="yr">2026</span>♟
+      </div>
+      <div class="body">
+        <div class="cat">Game · Unity</div>
+        <h3>심플한 퍼즐게임 (체인 퍼즐)</h3>
+        <p>엔트리로 아이디어를 구체화한 뒤 Unity로 옮긴 퍼즐. 3인 팀.</p>
+        <div class="tags"><span>Unity</span><span>Puzzle</span></div>
+        <div class="meta"><span>2026</span><span>Team · 3</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="game">
+      <div class="cover cover-pink">
+        <span class="yr">2022</span>♚
+      </div>
+      <div class="body">
+        <div class="cat">Game · Unity</div>
+        <h3>[Unity] 체스스톤</h3>
+        <p>하스스톤 + 체스. 카드 보드 게임. Play 스토어 출시.</p>
+        <div class="tags"><span>Unity</span><span>Released</span></div>
+        <div class="meta"><span>2022</span><span>Solo</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="game">
+      <div class="cover cover-cream">
+        <span class="yr">2023</span>𝝅
+      </div>
+      <div class="body">
+        <div class="cat">Game · Unity</div>
+        <h3>[Unity] 수학 학습앱</h3>
+        <p>중·고등학생 대상 수학 학습 앱. 1인 개발.</p>
+        <div class="tags"><span>Unity</span><span>EdTech</span></div>
+        <div class="meta"><span>2023</span><span>Solo</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="game">
+      <div class="cover cover-cream">
+        <span class="yr">2022</span>🕵
+      </div>
+      <div class="body">
+        <div class="cat">Game · Unity</div>
+        <h3>[Unity] 스파이 게임</h3>
+        <p>라이어 게임 변형. 수능 직후 첫 유니티 습작.</p>
+        <div class="tags"><span>Unity</span><span>First Project</span></div>
+        <div class="meta"><span>2022</span><span>Solo</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="game">
+      <div class="cover cover-mood">
+        <span class="yr">2025</span>⚛
+      </div>
+      <div class="body">
+        <div class="cat">Game Tools</div>
+        <h3>Shorts — 2D 충돌 시뮬레이션</h3>
+        <p>YouTube Shorts 자동 생성. Pygame headless + NVENC GPU 가속.</p>
+        <div class="tags"><span>Python</span><span>Pygame</span><span>NVENC</span></div>
+        <div class="meta"><span>2025</span><span>Solo</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="game">
+      <div class="cover cover-cream">
+        <span class="yr">2024</span>▦
+      </div>
+      <div class="body">
+        <div class="cat">Game Tools</div>
+        <h3>SOW Grid Editor</h3>
+        <p>타워 디펜스용 단일-HTML 맵 에디터. .ini 입출력 지원.</p>
+        <div class="tags"><span>HTML</span><span>Tool</span></div>
+        <div class="meta"><span>2024</span><span>Solo</span></div>
+      </div>
+    </a>
+
+    <!-- ============ WEB ============ -->
+    <a class="card feat" data-cat="web">
+      <div class="cover cover-pink" style="--ar: 16/9;">
+        <span class="yr">2024</span>
+        <span>코난</span>
+        <span class="badge">jQuery · 정적</span>
+      </div>
+      <div class="body">
+        <div class="cat">Web</div>
+        <h3>코난 몰아보기 사이트</h3>
+        <p>명탐정 코난 주요 에피소드 가이드. 정적 사이트 (HTML/JS/jQuery).</p>
+        <div class="tags"><span>HTML</span><span>jQuery</span><span>Static</span></div>
+        <div class="meta"><span>2024</span><span>Solo</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="web">
+      <div class="cover cover-mint">
+        <span class="yr">2022</span>205.kr
+      </div>
+      <div class="body">
+        <div class="cat">Web</div>
+        <h3>포트폴리오 사이트 제작</h3>
+        <p>이영호.com — Notion + Cloudflare 기반.</p>
+        <div class="tags"><span>Notion</span><span>Cloudflare</span></div>
+        <div class="meta"><span>2022</span><span>Solo</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="web">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>⌘
+      </div>
+      <div class="body">
+        <div class="cat">Web Tool</div>
+        <h3>엔트리 작품 합치기 프로그램</h3>
+        <p>여러 엔트리 작품을 하나로 합쳐주는 웹 도구. entry.205.kr</p>
+        <div class="tags"><span>JavaScript</span><span>Entry</span></div>
+        <div class="meta"><span>—</span><span>Solo</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="web">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>↗
+      </div>
+      <div class="body">
+        <div class="cat">Web Service</div>
+        <h3>엔트리 단축 링크</h3>
+        <p>엔트리.org — 엔트리 작품용 단축 URL 서비스.</p>
+        <div class="tags"><span>Firebase</span><span>Service</span></div>
+        <div class="meta"><span>—</span><span>Solo</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="web">
+      <div class="cover cover-mint">
+        <span class="yr">2024</span>{ }
+      </div>
+      <div class="body">
+        <div class="cat">Web</div>
+        <h3>도구 모음 사이트</h3>
+        <p>자주 쓰는 웹 도구를 한 곳에 모은 메타 사이트.</p>
+        <div class="tags"><span>HTML</span><span>JS</span></div>
+        <div class="meta"><span>2024</span><span>Solo</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="web">
+      <div class="cover cover-pink">
+        <span class="yr">2025</span>⚙
+      </div>
+      <div class="body">
+        <div class="cat">Web · Extension</div>
+        <h3>크롬 확장 3종</h3>
+        <p>일상에서 자주 쓰는 작은 도구를 확장 프로그램으로.</p>
+        <div class="tags"><span>Chrome</span><span>Extension</span></div>
+        <div class="meta"><span>2025</span><span>Solo</span></div>
+      </div>
+    </a>
+
+    <!-- ============ ENTRY ============ -->
+    <a class="card feat" data-cat="entry">
+      <div class="cover" style="--ar: 4/5; background: var(--bg-cream); flex-direction: column; padding: 20px;">
+        <span class="yr">2024</span>
+        <span style="font-size: 22px; font-family: var(--serif); font-weight: 700;">나는야 엔트리</span>
+        <span style="font-size: 32px; color: var(--pink); font-family: var(--serif);">게임 개발자</span>
+        <span class="badge">원큐패스</span>
+      </div>
+      <div class="body">
+        <div class="cat">Entry · Book</div>
+        <h3>「원큐패스 나는야 엔트리 게임 개발자」</h3>
+        <p>두 번째 책. 엔트리로 게임을 만드는 방법을 단계별로.</p>
+        <div class="tags"><span>저서</span><span>출간</span><span>Yes24</span></div>
+        <div class="meta"><span>2024</span><span>저자</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="entry">
+      <div class="cover cover-pink">
+        <span class="yr">2022</span>🎨
+      </div>
+      <div class="body">
+        <div class="cat">Entry · Book</div>
+        <h3>「나는야 엔트리 화가」</h3>
+        <p>첫 번째 책. 엔트리로 그림 그리는 코드를 배워요.</p>
+        <div class="tags"><span>저서</span><span>입문서</span></div>
+        <div class="meta"><span>2022</span><span>저자</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="entry">
+      <div class="cover cover-mood">
+        <span class="yr">2023</span>🎤
+      </div>
+      <div class="body">
+        <div class="cat">Entry · Talk</div>
+        <h3>SEF 2023 — EDC 발표자</h3>
+        <p>Software Education Festival 2023. 엔트리 활동의 정점.</p>
+        <div class="tags"><span>강연</span><span>SEF2023</span></div>
+        <div class="meta"><span>2023</span><span>Speaker</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="entry">
+      <div class="cover cover-mint">
+        <span class="yr">2023</span>★
+      </div>
+      <div class="body">
+        <div class="cat">Entry · Award</div>
+        <h3>엔트리 10주년 우수 유저상</h3>
+        <p>2023년 엔트리 10주년 시상. 누적 기여 인정.</p>
+        <div class="tags"><span>수상</span><span>주요활동</span></div>
+        <div class="meta"><span>2023</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="entry">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>YT
+      </div>
+      <div class="body">
+        <div class="cat">Entry · Channel</div>
+        <h3>205와 엔트리 — YouTube</h3>
+        <p>엔트리 튜토리얼·실험 채널. 짧고 친절하게.</p>
+        <div class="tags"><span>유튜브</span><span>교육활동</span></div>
+        <div class="meta"><span>2018 — Now</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="entry">
+      <div class="cover cover-mint">
+        <span class="yr">2024</span>📺
+      </div>
+      <div class="body">
+        <div class="cat">Entry · 영상</div>
+        <h3>엔트리 시작하기 가이드</h3>
+        <p>2024 영상 부문 선정.</p>
+        <div class="tags"><span>주요활동</span><span>영상</span></div>
+        <div class="meta"><span>2024</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="entry">
+      <div class="cover cover-pink">
+        <span class="yr">—</span>자문
+      </div>
+      <div class="body">
+        <div class="cat">Entry · 자문단</div>
+        <h3>엔트리 자문단 (2기 학생)</h3>
+        <p>커리큘럼·교재·콘테스트 심사 자문.</p>
+        <div class="tags"><span>주요활동</span></div>
+        <div class="meta"><span>2기</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="entry">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>👥
+      </div>
+      <div class="body">
+        <div class="cat">Entry · 합작</div>
+        <h3>엔트리 합작 진행 4회</h3>
+        <p>2017–2025, 4회 합작 진행자.</p>
+        <div class="tags"><span>주요활동</span></div>
+        <div class="meta"><span>2017 — 2025</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="entry">
+      <div class="cover cover-mint">
+        <span class="yr">—</span>🏆
+      </div>
+      <div class="body">
+        <div class="cat">Entry · 성과</div>
+        <h3>엔트리 스태프 선정</h3>
+        <p>누적 작품 1위 20개 · 최초 100k 조회수.</p>
+        <div class="tags"><span>주요활동</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="entry">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>🎬
+      </div>
+      <div class="body">
+        <div class="cat">Entry · 출연</div>
+        <h3>엔트리 10주년 다큐멘터리 출연</h3>
+        <p>엔트리 10주년 기념 영상.</p>
+        <div class="tags"><span>주요활동</span></div>
+        <div class="meta"><span>2023</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="entry">
+      <div class="cover cover-pink">
+        <span class="yr">—</span>🎓
+      </div>
+      <div class="body">
+        <div class="cat">Entry · 교육</div>
+        <h3>엔트리 비대면 실시간 강의</h3>
+        <p>온라인 라이브 강의. 학교·교사 대상.</p>
+        <div class="tags"><span>교육활동</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="entry">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>EBS
+      </div>
+      <div class="body">
+        <div class="cat">Entry · 콘텐츠</div>
+        <h3>이솦 EBS 등록</h3>
+        <p>엔트리 교육 콘텐츠 EBS 이솦 등록.</p>
+        <div class="tags"><span>교육활동</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <!-- ============ CONTEST ============ -->
+    <a class="card feat" data-cat="contest">
+      <div class="cover cover-mood" style="--ar: 16/10;">
+        <span class="yr">2020-21</span>
+        <span>FTC</span>
+        <span class="badge">Rising Star · Qualcomm</span>
+      </div>
+      <div class="body">
+        <div class="cat">Contest · Robotics</div>
+        <h3>FTC ULTIMATE GOAL — Rising Star</h3>
+        <p>코리아로봇챔피언십. Rising Star Award + 퀄컴 장학팀 동시 수상.</p>
+        <div class="tags"><span>로봇</span><span>2020</span><span>2021</span></div>
+        <div class="meta"><span>2020 — 2021</span><span>Team</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="contest">
+      <div class="cover cover-pink">
+        <span class="yr">2020</span>☁︎
+      </div>
+      <div class="body">
+        <div class="cat">Contest · Naver</div>
+        <h3>네이버 클로바버딩 공모전</h3>
+        <p>2020년 수상.</p>
+        <div class="tags"><span>2020</span><span>네이버</span></div>
+        <div class="meta"><span>2020</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="contest">
+      <div class="cover cover-mint">
+        <span class="yr">2019</span>🔬
+      </div>
+      <div class="body">
+        <div class="cat">Contest · 과학</div>
+        <h3>국립과천과학관 과학동영상 공모대회</h3>
+        <p>장려상 수상.</p>
+        <div class="tags"><span>2019</span><span>장려상</span></div>
+        <div class="meta"><span>2019</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="contest">
+      <div class="cover cover-cream">
+        <span class="yr">2018</span>🛸
+      </div>
+      <div class="body">
+        <div class="cat">Contest · Entry</div>
+        <h3>엔트리 4주년 공모전</h3>
+        <p>「내가이등이드론상」 — 이름이 길지만 진짜로 받았어요.</p>
+        <div class="tags"><span>2018</span><span>엔트리</span></div>
+        <div class="meta"><span>2018</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="contest">
+      <div class="cover cover-pink">
+        <span class="yr">2017</span>📜
+      </div>
+      <div class="body">
+        <div class="cat">Contest · Entry</div>
+        <h3>엔트리 100만 공모전 — 작품설명상</h3>
+        <p>작품 설명을 잘 썼다고 받은 상.</p>
+        <div class="tags"><span>2017</span><span>엔트리</span></div>
+        <div class="meta"><span>2017</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="contest">
+      <div class="cover cover-cream">
+        <span class="yr">2022</span>🌐
+      </div>
+      <div class="body">
+        <div class="cat">Contest · 메타버스</div>
+        <h3>메타버스 개발자 경진대회</h3>
+        <p>2022년 참가.</p>
+        <div class="tags"><span>2022</span></div>
+        <div class="meta"><span>2022</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="contest">
+      <div class="cover cover-mood">
+        <span class="yr">2021-22</span>🤖
+      </div>
+      <div class="body">
+        <div class="cat">Contest · Robotics</div>
+        <h3>FTC FREIGHT FRENZY</h3>
+        <p>퀄컴 장학팀.</p>
+        <div class="tags"><span>2021</span><span>2022</span></div>
+        <div class="meta"><span>2021 — 2022</span></div>
+      </div>
+    </a>
+
+    <!-- ============ ETC ============ -->
+    <a class="card feat" data-cat="etc">
+      <div class="cover cover-pink" style="--ar: 16/10;">
+        <span class="yr">—</span>
+        <span>나무위키</span>
+        <span class="badge">이영호(2003)</span>
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 등재</div>
+        <h3>나무위키 — 이영호(2003)</h3>
+        <p>나무위키에 항목이 있어요. 직접 쓰진 않았어요.</p>
+        <div class="tags"><span>등재</span><span>인정</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>™
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 공식</div>
+        <h3>「205」 상표권 취득</h3>
+        <p>KIPO 등록번호 40-2334925 (2025.03.24).</p>
+        <div class="tags"><span>상표권</span></div>
+        <div class="meta"><span>2025</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-mint">
+        <span class="yr">—</span>📰
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 언론</div>
+        <h3>언론 보도</h3>
+        <p>여러 매체 보도 모음.</p>
+        <div class="tags"><span>인정</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>📜
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 공식</div>
+        <h3>자격증</h3>
+        <p>보유 자격증 모음.</p>
+        <div class="tags"><span>공식</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-pink">
+        <span class="yr">—</span>🧮
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 학습</div>
+        <h3>알고리즘 공부</h3>
+        <p>BaekjoonHub 자동 푸시. 매일 한 문제씩.</p>
+        <div class="tags"><span>학습</span></div>
+        <div class="meta"><span>Now</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>📚
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 학습</div>
+        <h3>읽은 책</h3>
+        <p>개발·기획·자기계발 도서 정리.</p>
+        <div class="tags"><span>학습</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-mint">
+        <span class="yr">—</span>🎮
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 학습</div>
+        <h3>유니티 튜토리얼 모음</h3>
+        <p>Unity · Unreal · Blender · GAS.</p>
+        <div class="tags"><span>학습</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>↹
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 자동화</div>
+        <h3>UI 자동화</h3>
+        <p>반복 작업 자동화 스크립트.</p>
+        <div class="tags"><span>학습</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-pink">
+        <span class="yr">—</span>↺
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 시각화</div>
+        <h3>Movement Algorithms 시각화</h3>
+        <p>경희대 AI 수업 결과물.</p>
+        <div class="tags"><span>시각화</span><span>AI</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>🎢
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 취미</div>
+        <h3>테마파크 덕후</h3>
+        <p>구글 지역 가이드. 디테일 사랑꾼.</p>
+        <div class="tags"><span>취미</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-mint">
+        <span class="yr">—</span>📍
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 활동</div>
+        <h3>구글 지역 가이드</h3>
+        <p>여행지·테마파크 리뷰 누적.</p>
+        <div class="tags"><span>취미</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-pink">
+        <span class="yr">—</span>AR
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 기획</div>
+        <h3>디자인적 사고 — AR앱 기획</h3>
+        <p>학교 수업 결과물.</p>
+        <div class="tags"><span>기획</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-cream">
+        <span class="yr">—</span>🎬
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 영상</div>
+        <h3>가족 여행 영상 제작</h3>
+        <p>효율적인 영상 워크플로 실험.</p>
+        <div class="tags"><span>취미</span></div>
+        <div class="meta"><span>—</span></div>
+      </div>
+    </a>
+
+    <a class="card" data-cat="etc">
+      <div class="cover cover-mood">
+        <span class="yr">2019</span>🤖
+      </div>
+      <div class="body">
+        <div class="cat">Etc · 고등학교</div>
+        <h3>화정고 입시 챗봇</h3>
+        <p>고등학교 시절 입시 안내 챗봇.</p>
+        <div class="tags"><span>고등학교</span><span>챗봇</span></div>
+        <div class="meta"><span>2019</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ========== HIGHLIGHTS ========== -->
+<section id="highlights" class="highlights">
+  <div class="section-head">
+    <div class="label"><span class="idx">04</span>Highlights</div>
+    <h2>특히 자랑하고 싶은 <em>네 가지</em></h2>
+  </div>
+  <div class="highlight-grid">
+    <a class="highlight is-mood" href="https://www.yes24.com/24/AuthorFile/Author/437179" target="_blank" rel="noopener">
+      <div class="num">01 / 책</div>
+      <h4>「나는야 엔트리<br/>게임 개발자」 출간</h4>
+      <p>원큐패스 · Yes24 / 교보문고에서 만나요.</p>
+      <span class="arrow">→</span>
+    </a>
+    <a class="highlight is-pink" href="https://namu.wiki/w/%EC%9D%B4%EC%98%81%ED%98%B8(2003)" target="_blank" rel="noopener">
+      <div class="num">02 / 등재</div>
+      <h4>나무위키<br/>「이영호(2003)」</h4>
+      <p>본인이 작성하지 않았다는 게 포인트.</p>
+      <span class="arrow">→</span>
+    </a>
+    <a class="highlight is-mint" href="#works">
+      <div class="num">03 / 사이트</div>
+      <h4>코난 정주행<br/>가이드 사이트</h4>
+      <p>주요 에피소드를 한눈에. jQuery 정적 사이트.</p>
+      <span class="arrow">→</span>
+    </a>
+    <a class="highlight" href="#works">
+      <div class="num">04 / 강연</div>
+      <h4>SEF2023<br/>EDC 발표자</h4>
+      <p>Software Education Festival 2023.</p>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ========== AWARDS ========== -->
+<section id="awards" class="awards">
+  <div class="section-head">
+    <div class="label"><span class="idx">05</span>Awards</div>
+    <h2>지금까지 받은 <em>일곱 개의</em> <span class="accent">★</span></h2>
+  </div>
+  <div class="awards-list">
+    <a class="award-row" href="#">
+      <div class="yr">2023</div>
+      <div class="medal gold">★</div>
+      <div class="name">엔트리 우수 유저상<span class="sub">엔트리 10주년 기념</span></div>
+      <div class="org">엔트리</div>
+      <div class="arrow">→</div>
+    </a>
+    <a class="award-row" href="#">
+      <div class="yr">2020</div>
+      <div class="medal gold">★</div>
+      <div class="name">FTC Rising Star Award<span class="sub">코리아로봇챔피언십 · 퀄컴 장학팀 동시 수상</span></div>
+      <div class="org">FIRST Tech Challenge</div>
+      <div class="arrow">→</div>
+    </a>
+    <a class="award-row" href="#">
+      <div class="yr">2020</div>
+      <div class="medal silver">★</div>
+      <div class="name">네이버 클로바버딩 공모전 수상</div>
+      <div class="org">NAVER</div>
+      <div class="arrow">→</div>
+    </a>
+    <a class="award-row" href="#">
+      <div class="yr">2019</div>
+      <div class="medal bronze">★</div>
+      <div class="name">과학동영상 공모대회 · 장려상</div>
+      <div class="org">국립과천과학관</div>
+      <div class="arrow">→</div>
+    </a>
+    <a class="award-row" href="https://post.naver.com/viewer/postView.nhn?volumeNo=14835207&memberNo=25082732" target="_blank" rel="noopener">
+      <div class="yr">2018</div>
+      <div class="medal silver">★</div>
+      <div class="name">엔트리 4주년 공모전<span class="sub">「내가이등이드론상」</span></div>
+      <div class="org">엔트리</div>
+      <div class="arrow">↗</div>
+    </a>
+    <a class="award-row" href="https://blog.naver.com/PostView.naver?blogId=entrylabs&logNo=220986419658" target="_blank" rel="noopener">
+      <div class="yr">2017</div>
+      <div class="medal silver">★</div>
+      <div class="name">엔트리 100만 공모전<span class="sub">「작품설명상」</span></div>
+      <div class="org">엔트리</div>
+      <div class="arrow">↗</div>
+    </a>
+    <a class="award-row" href="#">
+      <div class="yr">—</div>
+      <div class="medal bronze">★</div>
+      <div class="name">롯데 어린이 환경 미술대회 · 장려</div>
+      <div class="org">롯데</div>
+      <div class="arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="foot" id="contact">
+  <div class="foot-205">205</div>
+  <div class="foot-grid">
+    <div>
+      <h5>Contact</h5>
+      <div class="big">메일 보내주세요.</div>
+      <p>강연·자문·협업·그냥 인사 — 무엇이든.</p>
+      <a class="email" href="mailto:205@205.kr">→ 205@205.kr</a>
+      <a class="email" href="mailto:youngholee205205@gmail.com">→ youngholee205205@gmail.com</a>
+    </div>
+    <div>
+      <h5>Site</h5>
+      <a href="https://205.kr">205.kr</a>
+      <a href="http://xn--vj5bn0ab83a.com">이영호.com</a>
+      <a href="https://entry.205.kr">entry.205.kr</a>
+      <a href="https://xn--bj0bp4l.org">엔트리.org</a>
+    </div>
+    <div>
+      <h5>Channels</h5>
+      <a href="https://github.com/205sla" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.youtube.com/@205" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.instagram.com/205_youngholee/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://band.us/@entryband" target="_blank" rel="noopener">엔트리 밴드</a>
+    </div>
+    <div>
+      <h5>Credits</h5>
+      <p>Icons8 · <a href="https://icons8.com/" target="_blank" rel="noopener" style="display:inline; color:var(--mint);">icons8.com</a></p>
+      <p style="margin-top: 8px;">원본 노션 · <a href="https://notion.so" target="_blank" rel="noopener" style="display:inline; color:var(--mint);">notion.so</a></p>
+      <p style="margin-top: 8px;">디자인 · 205 Design System</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 이영호 / 205 · All works are mine, all words are mine.</span>
+    <span class="tm">™ KIPO 40-2334925</span>
+  </div>
+</footer>
+
+<script>
+/* ===== Scroll progress ===== */
+const scrollI = document.getElementById('scroll-i');
+function updateProgress() {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+  scrollI.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+updateProgress();
+
+/* ===== Side scroll dots active state ===== */
+const dots = document.querySelectorAll('.scroll-dots a');
+const sections = ['hero','about','skills','works','highlights','awards','contact']
+  .map(id => document.getElementById(id));
+function updateDots() {
+  const y = window.scrollY + window.innerHeight * 0.4;
+  let active = 0;
+  sections.forEach((s, i) => { if (s && s.offsetTop <= y) active = i; });
+  dots.forEach((d, i) => d.classList.toggle('active', i === active));
+}
+window.addEventListener('scroll', updateDots, { passive: true });
+updateDots();
+
+/* ===== Filter chips ===== */
+const filterEl = document.getElementById('filters');
+const cards = document.querySelectorAll('#masonry .card');
+filterEl.addEventListener('click', e => {
+  const btn = e.target.closest('.chip');
+  if (!btn) return;
+  filterEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  const cat = btn.dataset.cat;
+  cards.forEach(card => {
+    card.classList.toggle('is-hidden', cat !== 'all' && card.dataset.cat !== cat);
+  });
+});
+
+/* ===== Skill secret toggle ===== */
+const secret = document.getElementById('secret-chip');
+secret.addEventListener('click', () => secret.classList.toggle('open'));
+
+/* ===== C++ typing animation ===== */
+const codeEl = document.getElementById('codetype');
+const outBox = document.getElementById('codeout');
+const outText = document.getElementById('outtext');
+const runBtn = document.getElementById('runbtn');
+
+const tokens = [
+  { type:'pp', text: '#include' }, { type:'tx', text: ' <iostream>' },
+  { type:'br' },
+  { type:'kw', text: 'using' }, { type:'tx', text: ' ' }, { type:'kw', text:'namespace' }, { type:'tx', text:' std;' },
+  { type:'br' }, { type:'br' },
+  { type:'ty', text:'int' }, { type:'tx', text:' ' }, { type:'fn', text:'main' }, { type:'tx', text:'() {' },
+  { type:'br' },
+  { type:'tx', text:'    ' }, { type:'tx', text:'cout << ' }, { type:'st', text:'"열심히 공부하는 중!"' }, { type:'tx', text:' << endl;' },
+  { type:'br' },
+  { type:'tx', text:'}' },
+];
+
+function renderLines(lines) {
+  let html = '';
+  lines.forEach((ln, i) => {
+    html += `<div class="ln"><span class="gutter">${i+1}</span><span>${ln}</span></div>`;
+  });
+  return html;
+}
+
+function tokensToLines(tks) {
+  const lines = [['']];
+  tks.forEach(t => {
+    if (t.type === 'br') { lines.push(['']); return; }
+    const cls = t.type === 'tx' ? '' : t.type;
+    const last = lines[lines.length - 1];
+    last[0] += cls ? `<span class="${cls}">${t.text}</span>` : t.text;
+  });
+  return lines.map(l => l[0]);
+}
+
+let typingState = { idx: 0, charIdx: 0, running: false, timer: null };
+
+function startTyping() {
+  if (typingState.running) return;
+  typingState = { idx: 0, charIdx: 0, running: true, timer: null };
+  outBox.style.display = 'none';
+  codeEl.innerHTML = '';
+  step();
+}
+
+function step() {
+  const partial = tokens.slice(0, typingState.idx + 1).map((t, i) => {
+    if (t.type === 'br') return t;
+    if (i < typingState.idx) return t;
+    return { ...t, text: t.text.substring(0, typingState.charIdx) };
+  });
+  const lines = tokensToLines(partial);
+  // append cursor to last line
+  if (lines.length) lines[lines.length - 1] += '<span class="cursor"></span>';
+  codeEl.innerHTML = renderLines(lines);
+
+  const cur = tokens[typingState.idx];
+  if (!cur) {
+    typingState.running = false;
+    return;
+  }
+  if (cur.type === 'br') {
+    typingState.idx++;
+    typingState.charIdx = 0;
+    typingState.timer = setTimeout(step, 40);
+    return;
+  }
+  if (typingState.charIdx < cur.text.length) {
+    typingState.charIdx++;
+    typingState.timer = setTimeout(step, 22 + Math.random() * 20);
+  } else {
+    typingState.idx++;
+    typingState.charIdx = 0;
+    typingState.timer = setTimeout(step, 40);
+  }
+}
+
+function runCode() {
+  outBox.style.display = 'block';
+  outText.textContent = '';
+  const target = '열심히 공부하는 중!';
+  let i = 0;
+  function tick() {
+    outText.textContent = target.substring(0, i++);
+    if (i <= target.length) setTimeout(tick, 40);
+  }
+  tick();
+}
+
+// Trigger typing on first scroll into view
+const codeBlock = document.getElementById('codeblock');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      startTyping();
+      // run after typing finishes (~6s)
+      setTimeout(runCode, 5500);
+      io.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+io.observe(codeBlock);
+
+runBtn.addEventListener('click', () => {
+  if (typingState.timer) clearTimeout(typingState.timer);
+  startTyping();
+  setTimeout(runCode, 5500);
+});
+
+/* ===== Easter egg: click 205 hero number ===== */
+document.querySelectorAll('.hero-205 .digit').forEach(d => {
+  d.addEventListener('click', () => {
+    d.style.transition = 'transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1)';
+    d.style.transform = 'translateY(-30px) rotate(' + (Math.random() * 24 - 12) + 'deg)';
+    setTimeout(() => {
+      d.style.transform = '';
+    }, 800);
+  });
+});
+</script>
+
+</body>
+</html>
