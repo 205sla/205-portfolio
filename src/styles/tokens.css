@@ -17,14 +17,14 @@
    Uploaded OTF files (Light + Bold). Replaces the previous Caveat substitute. */
 @font-face {
   font-family: "Maplestory";
-  src: url("/fonts/Maplestory_OTF_Light.otf") format("opentype");
+  src: url("/205-portfolio/fonts/Maplestory_OTF_Light.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Maplestory";
-  src: url("/fonts/Maplestory_OTF_Bold.otf") format("opentype");
+  src: url("/205-portfolio/fonts/Maplestory_OTF_Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -34,7 +34,7 @@
    margin notes, and "친구의 손글씨" tone. Bold weight only (Korean handwritten OTF). */
 @font-face {
   font-family: "Hakgyoansim Tteokbokki";
-  src: url("/fonts/Hakgyoansim_TteokbokkiOTFB.otf") format("opentype");
+  src: url("/205-portfolio/fonts/Hakgyoansim_TteokbokkiOTFB.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -45,14 +45,14 @@
    Korean numerals + Hangul, friendly geometric tone. */
 @font-face {
   font-family: "OK Mallang";
-  src: url("/fonts/OkMallangW.otf") format("opentype");
+  src: url("/205-portfolio/fonts/OkMallangW.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "OK Mallang";
-  src: url("/fonts/OkMallangB.otf") format("opentype");
+  src: url("/205-portfolio/fonts/OkMallangB.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

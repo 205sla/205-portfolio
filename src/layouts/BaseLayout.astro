@@ -23,8 +23,8 @@ const {
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://205.kr" />
-  <link rel="icon" href="/favicon.ico" />
+  <meta property="og:url" content={Astro.site?.toString() ?? 'https://205sla.github.io/205-portfolio/'} />
+  <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
 </head>
 <body class={bodyClass}>
   <slot />

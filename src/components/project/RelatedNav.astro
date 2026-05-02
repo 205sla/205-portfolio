@@ -11,7 +11,8 @@ interface Props {
 const { prev, next, related = [] } = Astro.props;
 
 function hrefOf(e: CollectionEntry<'projects'>) {
-  return `/projects/${e.id.replace(/\/index$/, '').replace(/\.md$/, '')}/`;
+  const slug = e.id.replace(/\/index$/, '').replace(/\.md$/, '');
+  return `${import.meta.env.BASE_URL}projects/${slug}/`.replace(/\/{2,}/g, '/');
 }
 ---
 <section class="page-end">

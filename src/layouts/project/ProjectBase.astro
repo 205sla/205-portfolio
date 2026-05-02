@@ -21,7 +21,7 @@ const title = `${entry.data.title} · 205.kr`;
   <meta name="description" content={entry.data.description} />
   <meta property="og:title" content={entry.data.title} />
   <meta property="og:description" content={entry.data.description} />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
 </head>
 <body>
 
@@ -31,8 +31,8 @@ const title = `${entry.data.title} · 205.kr`;
 <!-- nav -->
 <header class="nav">
   <div class="left">
-    <a href="/" class="brand">205</a>
-    <a href="/#works" class="back">← 갤러리</a>
+    <a href={import.meta.env.BASE_URL} class="brand">205</a>
+    <a href={`${import.meta.env.BASE_URL}#works`} class="back">← 갤러리</a>
     <div class="crumb">
       <span>포트폴리오</span>
       <span class="sep">／</span>
