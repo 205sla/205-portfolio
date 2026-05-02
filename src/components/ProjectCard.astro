@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { CATEGORY_LABEL } from '@/lib/labels';
 
 interface Props {
   entry: CollectionEntry<'projects'>;
@@ -11,6 +12,7 @@ const {
   catLabel, category, featured,
 } = entry.data;
 
+const cat = CATEGORY_LABEL[category];
 const slug = entry.id.replace(/\/index$/, '').replace(/\.md$/, '');
 const href = `${import.meta.env.BASE_URL}projects/${slug}/`.replace(/\/{2,}/g, '/');
 const coverClass = `cover cover-${cover.style ?? 'cream'}`;
@@ -18,12 +20,20 @@ const styleAttr = cover.aspect ? `--ar: ${cover.aspect.replace('-', '/')};` : un
 const teamLabel = team
   ? (team.startsWith('1') || team.includes('1인') ? 'Solo' : team)
   : undefined;
+
+// fallback: 명시적 cover.icon/label이 없으면 카테고리 이모지로 큰 시각 요소 표시
+const hasExplicitCenter = !!(cover.icon || cover.label);
+const fallbackIcon = cat.emoji;
 ---
 <a class={`card${featured ? ' feat' : ''}`} data-cat={category} href={href}>
   <div class={coverClass} style={styleAttr}>
+    <span class="cover-cat">{cat.ko}</span>
     {year && <span class="yr">{year}</span>}
-    {cover.label && <span>{cover.label}</span>}
-    {cover.icon && <span>{cover.icon}</span>}
+    {cover.label && <span class="cover-label">{cover.label}</span>}
+    {cover.icon && <span class="cover-icon">{cover.icon}</span>}
+    {!hasExplicitCenter && (
+      <span class="cover-icon cover-icon-fallback" aria-hidden="true">{fallbackIcon}</span>
+    )}
     {cover.badge && <span class="badge">{cover.badge}</span>}
   </div>
   <div class="body">

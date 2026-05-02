@@ -517,21 +517,124 @@ section {
   font-family: var(--serif); font-weight: 700;
   font-size: 56px; color: var(--ink);
   letter-spacing: -0.03em;
+  isolation: isolate;
 }
-.card .cover.cover-mint { background: var(--mint-soft); color: var(--mint-deep); }
-.card .cover.cover-pink { background: var(--pink-soft); color: #C75A82; }
-.card .cover.cover-mood { background: #2A2C30; color: #fff; }
-.card .cover.cover-cream { background: var(--bg-cream); }
+
+/* 카테고리별 톤 + 그라데이션 */
+.card .cover.cover-mint  {
+  background: linear-gradient(135deg, #E5F7F4 0%, #BFEAE3 60%, #5DD3C8 130%);
+  color: var(--mint-deep);
+}
+.card .cover.cover-pink  {
+  background: linear-gradient(135deg, #FFEFF5 0%, #FFD4E2 60%, #FF9DBE 130%);
+  color: #C75A82;
+}
+.card .cover.cover-mood  {
+  background: linear-gradient(135deg, #2A2C30 0%, #1F2024 60%, #3A3D44 130%);
+  color: #fff;
+}
+.card .cover.cover-cream {
+  background: linear-gradient(135deg, #FAF8F5 0%, #F0EBE0 60%, #DCD4C2 130%);
+  color: var(--ink);
+}
+
+/* 도트 패턴 오버레이 (모든 cover 공통) */
+.card .cover::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, currentColor 0.8px, transparent 0);
+  background-size: 18px 18px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 320ms var(--ease-standard, ease), background-size 320ms var(--ease-standard, ease);
+}
+.card:hover .cover::before {
+  opacity: 0.16;
+  background-size: 14px 14px;
+}
+
+/* 우측 하단 글로우 (호버 시 활성화) */
+.card .cover::after {
+  content: "";
+  position: absolute;
+  right: -30%; bottom: -30%;
+  width: 70%; height: 70%;
+  background: radial-gradient(circle, currentColor 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 320ms var(--ease-standard, ease);
+  pointer-events: none;
+  z-index: 0;
+}
+.card:hover .cover::after { opacity: 0.18; }
+
+/* 큰 중앙 아이콘/라벨 */
+.card .cover .cover-icon,
+.card .cover .cover-label {
+  position: relative;
+  z-index: 1;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  transition: transform 320ms var(--ease-pop, cubic-bezier(0.34,1.56,0.64,1));
+}
+.card .cover .cover-label {
+  font-size: 36px;
+  text-align: center;
+  padding: 0 16px;
+  word-break: keep-all;
+}
+.card:hover .cover .cover-icon,
+.card:hover .cover .cover-label {
+  transform: scale(1.08) rotate(-2deg);
+}
+
+/* fallback 카테고리 이모지는 아주 크고 살짝 흐릿하게 (배경 시각 요소처럼) */
+.card .cover .cover-icon-fallback {
+  font-size: 96px;
+  opacity: 0.55;
+  filter: saturate(1.1);
+}
+.card.feat .cover .cover-icon-fallback { font-size: 140px; }
+
+/* 좌상단 카테고리 칩 */
+.card .cover .cover-cat {
+  position: absolute; top: 14px; left: 14px;
+  z-index: 2;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.06em;
+  background: rgba(255,255,255,0.85);
+  color: var(--ink);
+  padding: 4px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.card .cover.cover-mood .cover-cat {
+  background: rgba(255,255,255,0.16);
+  color: #fff;
+}
+
+/* 우상단 연도 (기존 + z-index) */
 .card .cover .yr {
   position: absolute; top: 14px; right: 14px;
+  z-index: 2;
   font-family: var(--num); font-size: 14px; font-weight: 700;
   background: rgba(255,255,255,0.85); color: var(--ink);
   padding: 4px 10px; border-radius: 999px;
   letter-spacing: 0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 .card .cover.cover-mood .yr { background: rgba(255,255,255,0.18); color: #fff; }
+
+/* 좌하단 배지 (기존 + z-index) */
 .card .cover .badge {
   position: absolute; bottom: 14px; left: 14px;
+  z-index: 2;
   font-size: 11px; font-weight: 600;
   background: var(--ink); color: #fff;
   padding: 4px 10px; border-radius: 999px;
