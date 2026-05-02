@@ -88,6 +88,9 @@ const title = `${entry.data.title} · 205.kr`;
     }
   });
 
+  // scroll reveal animation
+  import('@/scripts/reveal').then(m => m.setupReveal());
+
   // copy buttons in code blocks
   document.querySelectorAll<HTMLButtonElement>('.code .copy').forEach(b => {
     b.addEventListener('click', e => {

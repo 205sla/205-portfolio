@@ -28,5 +28,9 @@ const {
 </head>
 <body class={bodyClass}>
   <slot />
+  <script>
+    import { setupReveal } from '@/scripts/reveal';
+    setupReveal();
+  </script>
 </body>
 </html>
