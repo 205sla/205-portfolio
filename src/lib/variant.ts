@@ -1,6 +1,6 @@
 import type { CollectionEntry } from 'astro:content';
 import type { MarkdownHeading } from 'astro';
-import { parseYear } from './year';
+import { sortProjects } from './sort';
 
 const SHORT_LIMIT = 600;
 const LONG_HEADING_MIN = 3;
@@ -23,23 +23,11 @@ export function resolveVariant(
   return 'medium';
 }
 
-export function sortByCategoryOrder(
-  entries: CollectionEntry<'projects'>[],
-): CollectionEntry<'projects'>[] {
-  return [...entries].sort((a, b) => {
-    if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
-    const ya = parseYear(a.data.year);
-    const yb = parseYear(b.data.year);
-    if (ya !== yb) return yb - ya;
-    return (a.data.order ?? 0) - (b.data.order ?? 0);
-  });
-}
-
 export function findAdjacent(
   entries: CollectionEntry<'projects'>[],
   current: CollectionEntry<'projects'>,
 ): { prev: CollectionEntry<'projects'> | null; next: CollectionEntry<'projects'> | null } {
-  const sameCategory = sortByCategoryOrder(
+  const sameCategory = sortProjects(
     entries.filter(e => e.data.category === current.data.category && !e.data.draft),
   );
   const idx = sameCategory.findIndex(e => e.id === current.id);

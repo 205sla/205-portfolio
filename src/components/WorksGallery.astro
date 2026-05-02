@@ -2,7 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import ProjectCard from './ProjectCard.astro';
 import { CATEGORY_LABEL, CATEGORY_KEYS } from '@/lib/labels';
-import { parseYear } from '@/lib/year';
+import { sortProjects } from '@/lib/sort';
 
 interface Props {
   projects: CollectionEntry<'projects'>[];
@@ -17,18 +17,7 @@ for (const p of visible) {
   counts[p.data.category] = (counts[p.data.category] ?? 0) + 1;
 }
 
-/* 정렬 룰
- *  1) featured 먼저
- *  2) order(우선순위, 낮을수록 먼저, 미설정은 999로 취급)
- *  3) year desc
- */
-const sorted = [...visible].sort((a, b) => {
-  if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
-  const oa = a.data.order ?? 999;
-  const ob = b.data.order ?? 999;
-  if (oa !== ob) return oa - ob;
-  return parseYear(b.data.year) - parseYear(a.data.year);
-});
+const sorted = sortProjects(visible);
 
 ---
 <section id="works" class="works">
