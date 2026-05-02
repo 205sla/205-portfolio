@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { CATEGORY_LABEL } from '@/lib/labels';
+import { projectHref } from '@/lib/href';
 
 interface Props {
   entry: CollectionEntry<'projects'>;
@@ -14,8 +15,7 @@ const {
 } = entry.data;
 
 const cat = CATEGORY_LABEL[category];
-const slug = entry.id.replace(/\/index$/, '').replace(/\.md$/, '');
-const href = `${import.meta.env.BASE_URL}projects/${slug}/`.replace(/\/{2,}/g, '/');
+const href = projectHref(entry);
 
 const hasCoverImage = !!cover.image;
 const coverClass = `cover cover-${cover.style ?? 'cream'}${hasCoverImage ? ' has-image' : ''}`;

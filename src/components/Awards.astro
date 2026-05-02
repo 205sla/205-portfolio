@@ -1,11 +1,8 @@
 ---
 import { AWARDS } from '@/data/awards';
+import { projectHrefBySlug } from '@/lib/href';
 
 const total = AWARDS.length;
-
-function projectHref(slug: string) {
-  return `${import.meta.env.BASE_URL}projects/${slug}/`.replace(/\/{2,}/g, '/');
-}
 
 const numberWord = (n: number) => {
   const map: Record<number, string> = {
@@ -23,7 +20,7 @@ const numberWord = (n: number) => {
   <div class="awards-list">
     {AWARDS.map(a => {
       const href = a.projectSlug
-        ? projectHref(a.projectSlug)
+        ? projectHrefBySlug(a.projectSlug)
         : a.externalUrl;
       const isExternal = !a.projectSlug && !!a.externalUrl;
       const isLinked = !!href;
