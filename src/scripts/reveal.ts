@@ -4,8 +4,8 @@
  * `prefers-reduced-motion: reduce`인 사용자에게는 적용 안 함.
  */
 
+/* 메인 페이지(/) 전용. 프로젝트 상세 페이지에서는 호출하지 않음. */
 const SELECTORS = [
-  // 메인 페이지
   '.section-head',
   '.about-grid',
   '.skills-grid',
@@ -14,13 +14,6 @@ const SELECTORS = [
   '.highlight-grid > *',
   '.awards-list > *',
   '.foot-grid > *',
-  // 상세 페이지
-  '.page-header',
-  '.layout > .body > *',
-  '.compact-card',
-  '.empty-state',
-  '.related',
-  '.page-end > .row',
 ];
 
 export function setupReveal() {
