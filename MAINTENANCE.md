@@ -3,7 +3,7 @@
 > 본 문서는 사이트를 운영하면서 자주 하게 될 작업을 정리합니다.
 > 콘텐츠 추가·수정·삭제부터 디자인 토큰 변경, 배포 흐름, 문제 해결까지 한 곳에서 다룹니다.
 
-**한 줄 요약**: 새 항목은 `src/content/projects/<카테고리>/<슬러그>/index.md` 만들면 끝. `git push`하면 Cloudflare Pages가 자동 배포.
+**한 줄 요약**: 새 항목은 `src/content/projects/<카테고리>/<슬러그>/index.md` 만들면 끝. `git push`하면 GitHub Actions가 GitHub Pages로 자동 배포.
 
 ---
 
@@ -109,7 +109,7 @@ git push origin main
 - 같은 카테고리 내 prev/next 자동 재계산
 - variant 자동 판정 (본문 길이로 long/medium/short/empty)
 - TOC (목차)는 H2가 있으면 자동
-- Cloudflare Pages가 푸시 감지 → 2~3분 내 라이브
+- GitHub Actions가 푸시 감지 → 빌드 후 GitHub Pages로 배포 (보통 1~2분)
 
 ### 2.2 항목 수정
 
@@ -166,7 +166,7 @@ git mv src/content/projects/game/unity-shooter src/content/projects/web/unity-sh
 #   cover.style: mint   ← 카테고리 default를 web에 맞게
 ```
 
-기존 URL을 보존하고 싶으면 redirect 설정 필요 (Cloudflare Pages `_redirects` 파일).
+기존 URL을 보존하고 싶으면 redirect 설정 필요. GitHub Pages는 `_redirects` 같은 native 리다이렉트가 없으므로, 옛 경로에 meta refresh가 들어간 stub HTML을 두거나(예: `public/old-path/index.html`에 `<meta http-equiv="refresh" content="0;url=/new-path/">`), Cloudflare 같은 프록시를 앞단에 두고 거기서 처리해야 함.
 
 ### 2.6 우선순위 / 정렬 / 더보기
 
@@ -570,24 +570,27 @@ npm run preview    # 로컬 서버로 dist/ 결과 확인
 
 `astro check`가 frontmatter zod 스키마 위반을 잡아냅니다. 위반 시 어느 파일·어느 필드가 문제인지 즉시 출력.
 
-### 8.2 Cloudflare Pages 자동 배포
+### 8.2 GitHub Pages 자동 배포
 
-GitHub `main` 브랜치에 푸시하면 자동 빌드:
-- preset: **Astro**
-- build command: `npm run build`
-- output directory: `dist`
-- root directory: (비움 — 레포 루트)
-- Node 버전: `NODE_VERSION=20` (환경변수)
+GitHub `main` 브랜치에 푸시하면 GitHub Actions가 자동 빌드 후 Pages로 배포 ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)):
+- runner: `ubuntu-latest`
+- Node: 22 (`actions/setup-node@v4`, `cache: npm`)
+- build: `npm ci` → `npm run build`
+- 아티팩트: `dist/` → `actions/upload-pages-artifact@v3` → `actions/deploy-pages@v4`
+- 라이브 URL: https://205sla.github.io/205-portfolio/
 
-PR마다 unique preview URL 생성 → 변경사항 미리 검증 가능.
+배포 상태는 GitHub 레포의 **Actions** 탭에서 확인. PR 단위 preview URL은 현재 미설정 — 검증은 로컬 `npm run preview`로.
 
-### 8.3 커스텀 도메인
+### 8.3 커스텀 도메인 (현재 미연결)
 
-Cloudflare DNS에 Pages 라우팅:
-- `205.kr` → 메인
-- `이영호.com` (`xn--vj5bn0ab83a.com`) → 별칭
+현재는 GitHub Pages 기본 URL(`205sla.github.io/205-portfolio/`) 사용. `205.kr` 등을 연결하려면 ([astro.config.mjs](astro.config.mjs) 주석 참조):
 
-배포 setup은 한 번만 하면 됨 (Cloudflare Dashboard → Pages → Custom Domains).
+1. `astro.config.mjs`에서 `site: 'https://205.kr'`, `base: '/'`로 변경
+2. `public/CNAME` 파일 생성 → 한 줄에 `205.kr` 적기
+3. DNS에 GitHub Pages용 A/CNAME 레코드 등록 (도메인 등록 업체 측)
+4. GitHub 레포 Settings → Pages → Custom domain에 `205.kr` 입력
+
+`이영호.com`(`xn--vj5bn0ab83a.com`) 같은 별칭은 별도 redirect 설정 필요 (DNS 측 또는 Cloudflare 같은 프록시).
 
 ### 8.4 빌드 실패 디버깅
 
@@ -731,7 +734,7 @@ GitHub `main` 브랜치 자체가 1차 백업. private 레포라 안전.
 ```bash
 git log --oneline -10                       # 최근 커밋 확인
 git revert <breaking-commit-sha>            # 안전한 되돌리기 (새 커밋 생성)
-git push origin main                         # Cloudflare Pages 재배포
+git push origin main                         # GitHub Actions가 재배포
 ```
 
 또는 직전 상태로 강제 복귀 (다른 사람과 협업 안 하므로 안전):
@@ -764,7 +767,7 @@ npm run dev
 - [ ] RSS 피드 (`@astrojs/rss`)
 - [ ] 본문 콜아웃 / 코드 박스 디자이너 스타일 매핑 (현재 기본 마크다운 렌더)
 - [ ] 검색 기능 (Pagefind 또는 Fuse.js)
-- [ ] 분석 (Umami 또는 Cloudflare Web Analytics)
+- [ ] 분석 (Umami, Plausible, GoatCounter 등 — GitHub Pages는 정적 호스팅이므로 클라이언트 스크립트 한 줄 추가하는 옵션이 가장 단순)
 - [ ] PR 자동 시각 비교 (Playwright + 이미지 diff)
 
 ---
