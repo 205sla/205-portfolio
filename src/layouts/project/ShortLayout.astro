@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
+import ProjectBase from './ProjectBase.astro';
+import ProjectHeader from '@/components/project/ProjectHeader.astro';
+import RelatedNav from '@/components/project/RelatedNav.astro';
+import { CATEGORY_LABEL } from '@/lib/labels';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+  headings: MarkdownHeading[];
+  prev: CollectionEntry<'projects'> | null;
+  next: CollectionEntry<'projects'> | null;
+}
+
+const { entry, prev, next } = Astro.props;
+const cat = CATEGORY_LABEL[entry.data.category];
+---
+<ProjectBase entry={entry}>
+  <ProjectHeader entry={entry} />
+
+  <div class="compact-card">
+    <div class="hero-img">
+      {entry.data.icon_emoji ?? cat.emoji}
+      {entry.data.result && <span class="ribbon">{entry.data.result}</span>}
+    </div>
+    <div class="body">
+      <slot />
+    </div>
+  </div>
+
+  <RelatedNav prev={prev} next={next} />
+</ProjectBase>

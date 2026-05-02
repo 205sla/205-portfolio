@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+import { CATEGORY_LABEL, CATEGORY_KEYS } from '@/lib/labels';
+import { sortByCategoryOrder } from '@/lib/variant';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+}
+
+const { projects } = Astro.props;
+
+const visible = projects.filter(p => !p.data.draft);
+const total = visible.length;
+const counts: Record<string, number> = {};
+for (const p of visible) {
+  counts[p.data.category] = (counts[p.data.category] ?? 0) + 1;
+}
+
+const sorted = sortByCategoryOrder(visible);
+---
+<section id="works" class="works">
+  <div class="section-head">
+    <div class="label"><span class="idx">03</span>Works</div>
+    <h2>만든 것들, <em>{total}+ 프로젝트</em></h2>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="chip active" data-cat="all">전체 <span class="count">{total}</span></button>
+    {CATEGORY_KEYS.map(c => (
+      <button class="chip" data-cat={c}>
+        {CATEGORY_LABEL[c].ko} <span class="count">{counts[c] ?? 0}</span>
+      </button>
+    ))}
+  </div>
+
+  <div class="masonry" id="masonry">
+    {sorted.map(p => <ProjectCard entry={p} />)}
+  </div>
+</section>
+
+<script>
+  const filterEl = document.getElementById('filters');
+  const cards = document.querySelectorAll<HTMLElement>('#masonry .card');
+  if (filterEl) {
+    filterEl.addEventListener('click', e => {
+      const target = e.target as HTMLElement;
+      const btn = target.closest('.chip') as HTMLElement | null;
+      if (!btn) return;
+      filterEl.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.getAttribute('data-cat');
+      cards.forEach(card => {
+        card.classList.toggle('is-hidden', cat !== 'all' && card.dataset.cat !== cat);
+      });
+    });
+  }
+</script>

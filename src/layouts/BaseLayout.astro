@@ -1,0 +1,32 @@
+---
+import '../styles/site.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  bodyClass?: string;
+}
+
+const {
+  title = '205 — 이영호 포트폴리오',
+  description = '이영호(205) — 게임 개발 학습 중. 책 두 권 저자 · SEF2023 발표자 · 엔트리 자문단.',
+  bodyClass = '',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://205.kr" />
+  <link rel="icon" href="/favicon.ico" />
+</head>
+<body class={bodyClass}>
+  <slot />
+</body>
+</html>

@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from 'astro:content';
+import LongLayout from '@/layouts/project/LongLayout.astro';
+import MediumLayout from '@/layouts/project/MediumLayout.astro';
+import ShortLayout from '@/layouts/project/ShortLayout.astro';
+import EmptyLayout from '@/layouts/project/EmptyLayout.astro';
+import { resolveVariant, findAdjacent } from '@/lib/variant';
+
+export async function getStaticPaths() {
+  const all = await getCollection('projects', e => !e.data.draft);
+  return all.map(entry => ({
+    params: { slug: entry.id.replace(/\/index$/, '').replace(/\.md$/, '') },
+    props: { entry, all },
+  }));
+}
+
+const { entry, all } = Astro.props;
+const { Content, headings } = await render(entry);
+const variant = resolveVariant(entry, headings);
+const { prev, next } = findAdjacent(all, entry);
+
+const Layout = ({
+  long: LongLayout,
+  medium: MediumLayout,
+  short: ShortLayout,
+  empty: EmptyLayout,
+} as const)[variant];
+---
+<Layout entry={entry} headings={headings} prev={prev} next={next}>
+  <Content />
+</Layout>

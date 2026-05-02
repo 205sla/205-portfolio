@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
+import ProjectBase from './ProjectBase.astro';
+import ProjectHeader from '@/components/project/ProjectHeader.astro';
+import RelatedNav from '@/components/project/RelatedNav.astro';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+  headings: MarkdownHeading[];
+  prev: CollectionEntry<'projects'> | null;
+  next: CollectionEntry<'projects'> | null;
+}
+
+const { entry, prev, next } = Astro.props;
+---
+<ProjectBase entry={entry}>
+  <ProjectHeader entry={entry} />
+  <div class="layout no-toc">
+    <article class="body">
+      <slot />
+    </article>
+  </div>
+  <RelatedNav prev={prev} next={next} />
+</ProjectBase>

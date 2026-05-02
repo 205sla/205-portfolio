@@ -1,0 +1,107 @@
+---
+import '../../styles/site.css';
+import '../../styles/project-detail.css';
+import type { CollectionEntry } from 'astro:content';
+import { CATEGORY_LABEL } from '@/lib/labels';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+}
+
+const { entry } = Astro.props;
+const cat = CATEGORY_LABEL[entry.data.category];
+const title = `${entry.data.title} · 205.kr`;
+---
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={entry.data.description} />
+  <meta property="og:title" content={entry.data.title} />
+  <meta property="og:description" content={entry.data.description} />
+  <link rel="icon" href="/favicon.ico" />
+</head>
+<body>
+
+<!-- top progress bar -->
+<div class="scroll-bar"><i id="scroll-fill"></i></div>
+
+<!-- nav -->
+<header class="nav">
+  <div class="left">
+    <a href="/" class="brand">205</a>
+    <a href="/#works" class="back">← 갤러리</a>
+    <div class="crumb">
+      <span>포트폴리오</span>
+      <span class="sep">／</span>
+      <span>{cat.ko}</span>
+      <span class="sep">／</span>
+      <span class="here">{entry.data.title}</span>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="icobtn" title="공유" id="share-btn">↗</button>
+    <button class="icobtn" title="목차" id="toc-toggle-btn">≡</button>
+  </div>
+</header>
+
+<slot />
+
+<!-- footer -->
+<footer class="foot">
+  <div>
+    <span class="brand">205</span>
+    <span style="margin-left:14px;">© 이영호 · <a href="mailto:205@205.kr">205@205.kr</a></span>
+  </div>
+  <div>
+    <a href="https://205.kr">205.kr</a>
+    {entry.data.links.notion && (
+      <>
+        <span> · </span>
+        <a href={entry.data.links.notion} target="_blank" rel="noopener">노션 원본</a>
+      </>
+    )}
+  </div>
+</footer>
+
+<script>
+  // scroll progress bar
+  const fill = document.getElementById('scroll-fill') as HTMLElement | null;
+  if (fill) {
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / Math.max(1, (h.scrollHeight - h.clientHeight))) * 100;
+      fill.style.width = pct + '%';
+    }, { passive: true });
+  }
+
+  // share button
+  document.getElementById('share-btn')?.addEventListener('click', async () => {
+    const url = window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      alert('링크가 복사되었습니다.');
+    } catch {
+      window.prompt('링크를 복사하세요', url);
+    }
+  });
+
+  // copy buttons in code blocks
+  document.querySelectorAll<HTMLButtonElement>('.code .copy').forEach(b => {
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      const pre = b.closest('.code')?.querySelector('pre');
+      if (pre) {
+        navigator.clipboard?.writeText((pre as HTMLElement).innerText);
+        b.textContent = '복사됨 ✓';
+        b.classList.add('copied');
+        setTimeout(() => { b.textContent = '복사'; b.classList.remove('copied'); }, 1400);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

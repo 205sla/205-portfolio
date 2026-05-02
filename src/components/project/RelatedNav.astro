@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { CATEGORY_LABEL } from '@/lib/labels';
+
+interface Props {
+  prev: CollectionEntry<'projects'> | null;
+  next: CollectionEntry<'projects'> | null;
+  related?: CollectionEntry<'projects'>[];
+}
+
+const { prev, next, related = [] } = Astro.props;
+
+function hrefOf(e: CollectionEntry<'projects'>) {
+  return `/projects/${e.id.replace(/\/index$/, '').replace(/\.md$/, '')}/`;
+}
+---
+<section class="page-end">
+  <div class="row">
+    {prev ? (
+      <a class="nav-card prev" href={hrefOf(prev)}>
+        <span class="arrow">←</span>
+        <div class="stack">
+          <span class="lab">이전</span>
+          <span class="ttl">{prev.data.title}</span>
+        </div>
+      </a>
+    ) : <span></span>}
+    {next ? (
+      <a class="nav-card next" href={hrefOf(next)}>
+        <span class="arrow">→</span>
+        <div class="stack">
+          <span class="lab">다음</span>
+          <span class="ttl">{next.data.title}</span>
+        </div>
+      </a>
+    ) : <span></span>}
+  </div>
+
+  {related.length > 0 && (
+    <div class="related">
+      <h4>비슷한 태그의 다른 작업</h4>
+      <div class="grid">
+        {related.map(r => (
+          <a class="card" href={hrefOf(r)} data-cat={r.data.category}>
+            <div class={`cover cover-${r.data.cover.style ?? 'cream'}`}>
+              {r.data.cover.icon && <span>{r.data.cover.icon}</span>}
+              {!r.data.cover.icon && <span>{CATEGORY_LABEL[r.data.category].emoji}</span>}
+            </div>
+            <div class="b">
+              <div class="cat">{CATEGORY_LABEL[r.data.category].ko}</div>
+              <div class="ttl">{r.data.title}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+</section>

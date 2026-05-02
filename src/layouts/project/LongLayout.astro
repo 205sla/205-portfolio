@@ -1,0 +1,85 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
+import ProjectBase from './ProjectBase.astro';
+import ProjectHeader from '@/components/project/ProjectHeader.astro';
+import RelatedNav from '@/components/project/RelatedNav.astro';
+import { CATEGORY_LABEL } from '@/lib/labels';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+  headings: MarkdownHeading[];
+  prev: CollectionEntry<'projects'> | null;
+  next: CollectionEntry<'projects'> | null;
+}
+
+const { entry, headings, prev, next } = Astro.props;
+const cat = CATEGORY_LABEL[entry.data.category];
+const tocItems = headings.filter(h => h.depth === 2 || h.depth === 3);
+---
+<ProjectBase entry={entry}>
+  <ProjectHeader entry={entry} />
+
+  <div class="layout">
+    <aside class="left">
+      <div class="mini-meta">
+        {entry.data.dateRange && (
+          <>
+            <div class="lab">발행</div>
+            <div class="v">{entry.data.dateRange}</div>
+          </>
+        )}
+        {entry.data.year && !entry.data.dateRange && (
+          <>
+            <div class="lab">발행</div>
+            <div class="v">{entry.data.year}</div>
+          </>
+        )}
+        <div class="lab">카테고리</div>
+        <div class="v" style="font-size:13px;font-family:var(--font-sans);">{cat.ko}</div>
+      </div>
+    </aside>
+
+    <article class="body">
+      <slot />
+    </article>
+
+    {tocItems.length > 0 && (
+      <aside class="toc">
+        <h5>목차</h5>
+        <ul id="toc-list">
+          {tocItems.map(h => (
+            <li class={h.depth === 3 ? 'h3' : ''}>
+              <a href={`#${h.slug}`}>{h.text}</a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    )}
+  </div>
+
+  <RelatedNav prev={prev} next={next} />
+</ProjectBase>
+
+<script>
+  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('#toc-list a');
+  if (tocLinks.length > 0) {
+    const sections = Array.from(tocLinks)
+      .map(a => document.getElementById((a.getAttribute('href') ?? '').slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
+    function updateToc() {
+      const y = window.scrollY + 160;
+      let active: HTMLElement | null = sections[0] ?? null;
+      for (const s of sections) {
+        if (s.offsetTop <= y) active = s;
+      }
+      if (!active) return;
+      tocLinks.forEach(a => {
+        const href = a.getAttribute('href') ?? '';
+        a.classList.toggle('active', href === '#' + active!.id);
+      });
+    }
+    window.addEventListener('scroll', updateToc, { passive: true });
+    updateToc();
+  }
+</script>
