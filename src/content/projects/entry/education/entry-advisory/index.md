@@ -16,11 +16,4 @@ description: 엔트리를 함께 만들어가는 엔트리 자문단. **2기 학
 
 - 자문단 페이지: https://playentry.org/advisory/2
 
-
----
-
-## 첨부 자료
-
 ![image.png](image.png)
-
-

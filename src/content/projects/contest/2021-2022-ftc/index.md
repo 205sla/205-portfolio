@@ -13,15 +13,8 @@ description: 2021-2022 코리아로봇챔피언십 **FIRST Tech Challenge — FR
 
 퀄컴 장학 팀으로 선정되어 각종 로봇 부품을 지원받았습니다.
 
-
----
-
-## 첨부 자료
-
 ![image-1.jpg](image-1.jpg)
 
 ![image-2.jpg](image-2.jpg)
 
 ![image-3.jpg](image-3.jpg)
-
-

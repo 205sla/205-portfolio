@@ -16,11 +16,6 @@ description: 자격증에 관한 기록.
 - **KPC SW코딩자격 1급** (엔트리 부문)
 - **창의융합인재교육원 CDT 1급** (엔트리 부문)
 
-
----
-
-## 첨부 자료
-
 ![image-1.jpg](image-1.jpg)
 
 ![image-1.png](image-1.png)
@@ -28,5 +23,3 @@ description: 자격증에 관한 기록.
 ![image-2.jpg](image-2.jpg)
 
 ![image-3.jpg](image-3.jpg)
-
-

@@ -21,15 +21,4 @@ description: 엔트리 「[100만 공모전](https://blog.naver.com/PostView.nav
 
 > 엔트리 작품 100만 돌파를 기념하여 열린 공모전입니다.
 
-
----
-
-## 첨부 자료
-
 ![image.png](image.png)
-
-**PDF**
-
-- [이영호님_확인서.pdf](이영호님_확인서.pdf)
-
-

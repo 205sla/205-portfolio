@@ -19,11 +19,6 @@ description: 30개월 주기로 20명 이상의 인원을 모집하여 미니게
 3. [미니게임 (흑백) - 대규모 합작](https://playentry.org/project/63031a048101a101d5c42614) — 22.08.22
 4. [미니게임 (파쿠르) - 대규모 합작](https://playentry.org/project/677b9344ccf1ebf11665e38c) — 25.01.06
 
-
----
-
-## 첨부 자료
-
 ![image-1.png](image-1.png)
 
 ![image-2.png](image-2.png)
@@ -31,5 +26,3 @@ description: 30개월 주기로 20명 이상의 인원을 모집하여 미니게
 ![image-3.png](image-3.png)
 
 ![image-4.png](image-4.png)
-
-

@@ -16,11 +16,4 @@ description: 2022 메타버스 개발자 경진대회 참가.
 
 - 대회 정보: https://metaversedev.kr/board_notice/show/bffe7921-42d3-423f-87cf-a272d8766929
 
-
----
-
-## 첨부 자료
-
 ![image.png](image.png)
-
-

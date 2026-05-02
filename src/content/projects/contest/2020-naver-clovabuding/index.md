@@ -14,11 +14,4 @@ description: "수상작: [붓으로 체력바 만들기](https://youtu.be/YC6EN9
 
 수상작: [붓으로 체력바 만들기](https://youtu.be/YC6EN9ID5aw)
 
-
----
-
-## 첨부 자료
-
 ![image.png](image.png)
-
-

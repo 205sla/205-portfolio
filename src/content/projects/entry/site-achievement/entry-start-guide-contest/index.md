@@ -19,13 +19,6 @@ description: "[엔트리 시작하기 가이드 공모전](https://playentry.org
 
 엔트리의 메인 페이지에 게시되었습니다.
 
-
----
-
-## 첨부 자료
-
 ![image-1.jpg](image-1.jpg)
 
 ![image-1.png](image-1.png)
-
-

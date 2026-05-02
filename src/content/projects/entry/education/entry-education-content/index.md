@@ -27,11 +27,4 @@ description: 누구나 쉽게 엔트리를 학습할 수 있도록 동영상 콘
 - **딜라이브 OTT**: 2019년 딜라이브와 엔트리 강의 콘텐츠 계약 체결. ([관련 기사](https://www.topdaily.kr/articles/25245))
 - **EBS 이솦**: 교육 콘텐츠 등록. <https://www.ebssw.kr/205entry>
 
-
----
-
-## 첨부 자료
-
 ![image.png](image.png)
-
-

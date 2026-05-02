@@ -15,15 +15,8 @@ description: 2020-2021 **FIRST Tech Challenge — ULTIMATE GOAL** 미션에 참�
 - **Rising Star Award**를 수상했습니다. (팀 5093)
 - 시상 영상: https://youtu.be/gOtpV3jDu3M?t=3168
 
-
----
-
-## 첨부 자료
-
 ![image-1.jpg](image-1.jpg)
 
 ![image-1.png](image-1.png)
 
 ![image-2.jpg](image-2.jpg)
-
-

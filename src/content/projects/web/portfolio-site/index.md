@@ -26,6 +26,8 @@ description: 이영호.com — Notion + Cloudflare 기반 개인 포트폴리오
 
 ## 개발 일지
 
+
+![image.png](image.png)
 ### 고대디에서 도메인 구매
 
 고대디에서 [이영호.com](http://이영호.com) 도메인을 구매했습니다.
@@ -81,12 +83,3 @@ async function sendNotification(url) {
 ```
 
 > 노션 정책 변경으로 현재는 동작하지 않음
-
-
----
-
-## 첨부 자료
-
-![image.png](image.png)
-
-

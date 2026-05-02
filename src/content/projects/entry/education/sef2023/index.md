@@ -23,19 +23,12 @@ description: 네이버 SEF(소프트웨어 교육 페스티벌)에서 엔트리 
 - 행사 스케치: https://youtu.be/lvllpmkN-sc
 - SEF2023 사이트: https://sef.connect.or.kr/2023
 
-
----
-
-## 첨부 자료
-
 ![image-1.png](image-1.png)
 
 ![image-2.png](image-2.png)
 
 ![image-3.png](image-3.png)
 
-
 ![EDC 발표 실물 사진](발표-실물.jpg)
 
 ![엔트리봇과 함께](엔트리봇.jpg)
-
