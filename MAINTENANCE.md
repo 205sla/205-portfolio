@@ -236,8 +236,27 @@ featured: true   # 큰 카드(.feat)로 강조 + 무조건 최상위
 | `cover.label` | string | — | 큰 텍스트 (예: `"205.kr"`) |
 | `cover.badge` | string | — | 작은 라벨 (예: `"Unreal · 5인"`) |
 | `cover.aspect` | enum | — | `1 / 4-5 / 3-4 / 4-3 / 16-9 / 16-10` |
-| `cover.image` | image | — | 표지 이미지 (마크다운 같은 폴더에서) |
+| `cover.image` | image | — | 카드 썸네일 이미지. 지정 시 fallback 이모지·도트 패턴 자동 숨김 |
 | `featured` | boolean | `false` | `true`면 큰 카드(`.feat`)로 표시 |
+
+### 카드 썸네일 이미지 사용
+
+같은 폴더(또는 `src/assets/`)에 이미지를 두고 frontmatter에서 상대 경로로 지정:
+
+```yaml
+cover:
+  style: mood       # 이미지 로드 전 placeholder 색상
+  image: ./thumb.png  # 같은 폴더의 thumb.png를 카드 썸네일로
+  badge: "Released" # (선택) 좌하단 배지
+```
+
+이미지가 있으면:
+- 자동으로 `object-fit: cover`로 채움 + 호버 시 1.04배 줌
+- 카테고리 fallback 이모지, 도트 패턴, 글로우 모두 비활성화
+- 좌상단 카테고리 칩 / 우상단 연도 칩 / 좌하단 배지는 유지 (backdrop-blur로 가독성 확보)
+- 빌드 시 자동 WebP 변환 + 반응형 srcset (400/600/800/1200) 생성
+
+이미지가 없으면 (현재 대부분의 항목): 카테고리별 그라데이션 + 도트 패턴 + 카테고리 이모지 fallback이 자동 적용.
 
 ### 카테고리별 default 톤 (디자이너 시안 기준)
 | 카테고리 | 권장 `cover.style` |

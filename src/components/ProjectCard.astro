@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { CATEGORY_LABEL } from '@/lib/labels';
 
@@ -15,22 +16,34 @@ const {
 const cat = CATEGORY_LABEL[category];
 const slug = entry.id.replace(/\/index$/, '').replace(/\.md$/, '');
 const href = `${import.meta.env.BASE_URL}projects/${slug}/`.replace(/\/{2,}/g, '/');
-const coverClass = `cover cover-${cover.style ?? 'cream'}`;
+
+const hasCoverImage = !!cover.image;
+const coverClass = `cover cover-${cover.style ?? 'cream'}${hasCoverImage ? ' has-image' : ''}`;
 const styleAttr = cover.aspect ? `--ar: ${cover.aspect.replace('-', '/')};` : undefined;
 const teamLabel = team
   ? (team.startsWith('1') || team.includes('1인') ? 'Solo' : team)
   : undefined;
 
-// fallback: 명시적 cover.icon/label이 없으면 카테고리 이모지로 큰 시각 요소 표시
-const hasExplicitCenter = !!(cover.icon || cover.label);
+// fallback: 이미지·아이콘·라벨이 모두 없을 때만 카테고리 이모지로 큰 시각 요소 표시
+const hasExplicitCenter = !!(cover.icon || cover.label || cover.image);
 const fallbackIcon = cat.emoji;
 ---
 <a class={`card${featured ? ' feat' : ''}`} data-cat={category} href={href}>
   <div class={coverClass} style={styleAttr}>
+    {cover.image && (
+      <Image
+        src={cover.image}
+        alt={`${title} 썸네일`}
+        class="cover-bg"
+        widths={[400, 600, 800, 1200]}
+        sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
+        loading="lazy"
+      />
+    )}
     <span class="cover-cat">{cat.ko}</span>
     {year && <span class="yr">{year}</span>}
-    {cover.label && <span class="cover-label">{cover.label}</span>}
-    {cover.icon && <span class="cover-icon">{cover.icon}</span>}
+    {!cover.image && cover.label && <span class="cover-label">{cover.label}</span>}
+    {!cover.image && cover.icon && <span class="cover-icon">{cover.icon}</span>}
     {!hasExplicitCenter && (
       <span class="cover-icon cover-icon-fallback" aria-hidden="true">{fallbackIcon}</span>
     )}

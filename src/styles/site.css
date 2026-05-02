@@ -570,6 +570,33 @@ section {
 }
 .card:hover .cover::after { opacity: 0.18; }
 
+/* 커버 이미지 (frontmatter cover.image) */
+.card .cover .cover-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform 480ms var(--ease-standard, ease);
+}
+.card:hover .cover .cover-bg {
+  transform: scale(1.04);
+}
+/* 이미지가 있으면 도트 패턴/그라데이션 글로우/fallback 이모지 비활성화 */
+.card .cover.has-image { background: #1a1a1a; }
+.card .cover.has-image::before { opacity: 0; }
+.card .cover.has-image::after { display: none; }
+/* 이미지 위에 가독성 향상용 어둠 그라데이션 (위/아래 양쪽) */
+.card .cover.has-image .cover-bg {
+  filter: brightness(0.92);
+}
+.card .cover.has-image > .cover-cat,
+.card .cover.has-image > .yr,
+.card .cover.has-image > .badge {
+  /* 칩들이 이미지 위에 잘 보이도록 z-index는 이미 2 */
+}
+
 /* 큰 중앙 아이콘/라벨 */
 .card .cover .cover-icon,
 .card .cover .cover-label {
