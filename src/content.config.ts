@@ -38,7 +38,7 @@ const projects = defineCollection({
       badge: z.string().optional(),
       aspect: z.enum(['1', '4-5', '3-4', '4-3', '16-9', '16-10']).optional(),
       image: image().optional(),
-    }).default({}),
+    }).default({ style: 'cream' }),
     description: z.string(),
     featured: z.boolean().default(false),
     catLabel: z.string().optional(),
@@ -64,7 +64,7 @@ const projects = defineCollection({
         url: z.string().url(),
         kind: z.enum(['video', 'site', 'doc', 'other']).default('other'),
       })).default([]),
-    }).default({}),
+    }).default({ others: [] }),
 
     /* 정렬 */
     order: z.number().optional(),
