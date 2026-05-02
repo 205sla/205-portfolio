@@ -87,20 +87,6 @@ const title = `${entry.data.title} · 205.kr`;
       window.prompt('링크를 복사하세요', url);
     }
   });
-
-  // copy buttons in code blocks
-  document.querySelectorAll<HTMLButtonElement>('.code .copy').forEach(b => {
-    b.addEventListener('click', e => {
-      e.stopPropagation();
-      const pre = b.closest('.code')?.querySelector('pre');
-      if (pre) {
-        navigator.clipboard?.writeText((pre as HTMLElement).innerText);
-        b.textContent = '복사됨 ✓';
-        b.classList.add('copied');
-        setTimeout(() => { b.textContent = '복사'; b.classList.remove('copied'); }, 1400);
-      }
-    });
-  });
 </script>
 
 </body>
