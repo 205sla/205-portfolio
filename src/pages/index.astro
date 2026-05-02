@@ -96,8 +96,6 @@ const projects = await getCollection('projects');
     <div class="about-text">
       <p>초등학생 시절 코딩 교육 플랫폼인 <strong>엔트리</strong>로 개발을 처음 접했습니다. 개발이 너무 즐거워서 다른 친구들에게도 이 즐거움을 알리고자 다양한 활동을 하다 보니 <strong>SEF2023</strong>에 연사로도 참여하고 책도 두 권이나 쓰게 되었습니다.</p>
       <p>엔트리로는 할 수 있는 거 다 해본 것 같아서 최근에는 <strong>게임 개발자</strong>로써 필요한 역량을 기르는데 힘쓰고 있습니다.</p>
-      <div class="hand-note">— 그냥 만드는 게 좋아요. 그게 다입니다.</div>
-
       <div class="code-block" style="margin-top:32px;" id="codeblock">
         <div class="top">
           <i class="dot r"></i><i class="dot y"></i><i class="dot g"></i>
@@ -106,10 +104,6 @@ const projects = await getCollection('projects');
         </div>
         <div class="body">
           <div id="codetype"></div>
-          <div class="output" id="codeout" style="display:none;">
-            <span class="label">stdout</span>
-            <span id="outtext"></span>
-          </div>
         </div>
       </div>
     </div>
@@ -423,8 +417,6 @@ secret.addEventListener('click', () => secret.classList.toggle('open'));
 
 /* ===== C++ typing animation ===== */
 const codeEl = document.getElementById('codetype');
-const outBox = document.getElementById('codeout');
-const outText = document.getElementById('outtext');
 const runBtn = document.getElementById('runbtn');
 
 const tokens = [
@@ -463,7 +455,6 @@ let typingState = { idx: 0, charIdx: 0, running: false, timer: null };
 function startTyping() {
   if (typingState.running) return;
   typingState = { idx: 0, charIdx: 0, running: true, timer: null };
-  outBox.style.display = 'none';
   codeEl.innerHTML = '';
   step();
 }
@@ -500,26 +491,12 @@ function step() {
   }
 }
 
-function runCode() {
-  outBox.style.display = 'block';
-  outText.textContent = '';
-  const target = '열심히 공부하는 중!';
-  let i = 0;
-  function tick() {
-    outText.textContent = target.substring(0, i++);
-    if (i <= target.length) setTimeout(tick, 40);
-  }
-  tick();
-}
-
 // Trigger typing on first scroll into view
 const codeBlock = document.getElementById('codeblock');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       startTyping();
-      // run after typing finishes (~6s)
-      setTimeout(runCode, 5500);
       io.disconnect();
     }
   });
@@ -529,7 +506,6 @@ io.observe(codeBlock);
 runBtn.addEventListener('click', () => {
   if (typingState.timer) clearTimeout(typingState.timer);
   startTyping();
-  setTimeout(runCode, 5500);
 });
 
 /* ===== Easter egg: click 205 hero number ===== */
