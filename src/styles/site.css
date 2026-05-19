@@ -1116,8 +1116,8 @@ footer.foot {
   background-repeat: no-repeat;
   background-position: 160% 50%;
 
-  -webkit-mask-image: url("/205-portfolio/assets/205-logo.png");
-          mask-image: url("/205-portfolio/assets/205-logo.png");
+  -webkit-mask-image: url("/assets/205-logo.png");
+          mask-image: url("/assets/205-logo.png");
   -webkit-mask-size: contain;
           mask-size: contain;
   -webkit-mask-repeat: no-repeat;

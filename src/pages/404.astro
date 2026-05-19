@@ -1,0 +1,452 @@
+---
+/**
+ * 404 — Page not found.
+ *
+ * 디자인 출처: temp/error/404.html (디자이너 시안)
+ *
+ * BaseLayout 를 쓰지 않고 self-contained 로 둔다. site.css 의
+ * .nav/.foot 같은 공용 컴포넌트 규칙과 충돌하면 404 의 톤이 깨지므로,
+ * 404 페이지는 tokens.css (색·폰트·간격 토큰만) 만 가져와서 독자적인
+ * 레이아웃을 그린다.
+ *
+ * GitHub Pages 는 매칭되는 라우트가 없을 때 사이트 루트의 404.html 을
+ * 자동으로 서빙한다 — Astro 의 src/pages/404.astro 가 그 자리로
+ * 빌드된다.
+ */
+import '@/styles/tokens.css';
+
+const base = import.meta.env.BASE_URL;
+const title = '404 — 이 페이지는 합작에 빠졌어요 · 205';
+const description =
+  '찾으시는 페이지를 찾을 수 없습니다. 이영호(205) 포트폴리오로 안내해 드릴게요.';
+---
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.site?.toString() ?? 'https://205.kr/'} />
+  <link rel="icon" href={`${base}favicon.ico`} />
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<header class="nav">
+  <a class="brand" href={base}>
+    <span class="num">205</span>
+    <span class="name">Lee&nbsp;Youngho</span>
+  </a>
+  <div class="meta">
+    <span class="dot" aria-hidden="true"></span>
+    <span><strong style="color:var(--ink-2);">HTTP&nbsp;404</strong> · Page not found</span>
+  </div>
+  <a class="back" href={base}>← 포트폴리오로 돌아가기</a>
+</header>
+
+<!-- ========== STAGE ========== -->
+<main class="stage">
+  <div class="stage-meta">
+    <div class="left">
+      <div><strong>error/404.html</strong> · 길을 잃으셨네요</div>
+      <div>Status&nbsp;·&nbsp;<strong style="color:#FF5151;">404 NOT FOUND</strong></div>
+    </div>
+    <div class="right">
+      <div><strong>205.kr</strong> · Personal Portfolio</div>
+      <div>Lost since · <span id="ts">just now</span></div>
+    </div>
+  </div>
+
+  <h1 class="h404" aria-label="404">
+    <span class="d d-4"><span class="d-4-content"><span class="original">4</span></span></span><span class="d zero" aria-hidden="true"><span class="original">0</span></span><span class="d d-second-4"><span class="original">4</span></span>
+  </h1>
+
+  <div class="debris" aria-hidden="true">
+    <span class="crack">✦</span>
+  </div>
+
+  <div class="char" aria-hidden="true">
+    <div class="speech">어… 여긴 어디지?</div>
+    <img src={`${base}assets/205-arms.png`} alt="" />
+  </div>
+
+  <div class="info">
+    <div>
+      <p class="lead">
+        이 페이지는 <strong>엔트리 합작에 참여하지 못한 것 같습니다.</strong>
+        링크가 잘못됐거나, 제가 <span class="hl">정리하다가 잘못 옮긴</span> 모양이에요.
+        대신 다른 좋은 곳으로 안내해 드릴게요.
+      </p>
+      <div class="hand-note">— 미안해요, 다음엔 잃어버리지 않을게요.</div>
+    </div>
+  </div>
+
+  <div class="suggest">
+    <h3><span class="idx">↳</span>대신 이 곳들은 어떠세요</h3>
+    <div class="suggest-grid">
+      <a class="sug is-pink" href={`${base}#hero`}>
+        <div class="key">01 / Home</div>
+        <h4>포트폴리오<br/>처음으로</h4>
+        <p>2 0 5 의 시작점.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a class="sug" href={`${base}#about`}>
+        <div class="key">02 / About</div>
+        <h4>이영호는<br/>누구인가요?</h4>
+        <p>엔트리 · 책 · 게임 개발.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a class="sug is-mint" href={`${base}#works`}>
+        <div class="key">03 / Works</div>
+        <h4>만든 것들<br/>50+ 프로젝트</h4>
+        <p>게임 · 웹 · 엔트리.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a class="sug is-mood" href={`${base}#contact`}>
+        <div class="key">04 / Contact</div>
+        <h4>이메일을<br/>보내주세요</h4>
+        <p>205@205.kr</p>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</main>
+
+<!-- ========== FOOT ========== -->
+<footer class="foot">
+  <span>© 2026 이영호 / 205 · 길 잃은 페이지도 제 작품입니다.</span>
+  <span>
+    팁: <strong style="color:var(--ink-2);">404</strong>를 다섯 번 클릭해 보세요
+    &nbsp;·&nbsp;<span class="tm">™ KIPO 40-2334925</span>
+  </span>
+</footer>
+
+<style is:global>
+  /* ============================================================
+     404 page — self-contained styles.
+     tokens.css (위에서 import) 가 색·폰트·간격 토큰을 제공한다.
+     이 페이지에는 BaseLayout/site.css 를 거치지 않으므로
+     .nav, .foot 같은 클래스명을 다시 써도 충돌이 없다.
+     ============================================================ */
+
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  ::selection { background: var(--pink); color: #fff; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; background: none; border: none; padding: 0; color: inherit; }
+
+  /* =========== NAV =========== */
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px var(--gut);
+    border-bottom: 1px solid var(--line);
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+  }
+  .nav .brand { display: flex; align-items: baseline; gap: 10px; }
+  .nav .brand .num {
+    font-family: var(--serif);
+    font-weight: 700; font-size: 28px; line-height: 1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(180deg, var(--ink) 0%, var(--ink) 50%, var(--pink) 50%, var(--pink) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .nav .brand .name {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
+  }
+  .nav .meta {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 12px; color: var(--ink-4);
+  }
+  .nav .meta .dot {
+    width: 6px; height: 6px; border-radius: 999px; background: #FF5151;
+    animation: pulse-404 1.6s infinite;
+  }
+  @keyframes pulse-404 {
+    0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,81,81,0.55); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(255,81,81,0); }
+  }
+  .nav .back {
+    font-size: 13px; font-weight: 500; color: var(--ink-2);
+    padding: 8px 14px; border: 1px solid var(--line-2);
+    border-radius: 999px; transition: all 180ms ease;
+  }
+  .nav .back:hover { background: var(--ink); color: #fff; border-color: var(--ink); text-decoration: none; }
+
+  /* =========== STAGE =========== */
+  .stage {
+    flex: 1 0 auto;
+    position: relative;
+    padding: 40px var(--gut) 64px;
+    overflow: hidden;
+  }
+
+  .stage-meta {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    font-size: 12px; color: var(--ink-3);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .stage-meta strong { color: var(--ink); font-weight: 600; }
+  .stage-meta .right { text-align: right; }
+
+  /* big 404 */
+  .h404 {
+    position: relative;
+    text-align: center;
+    line-height: 0.78;
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(240px, 44vw, 660px);
+    letter-spacing: -0.06em;
+    color: var(--ink);
+    user-select: none;
+    z-index: 1;
+  }
+  .h404 .d {
+    display: inline-block;
+    position: relative;
+    transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1), color 300ms ease;
+    cursor: pointer;
+  }
+  .h404 .d:nth-child(1):hover { color: var(--pink); transform: translateY(-12px) rotate(-4deg); }
+  .h404 .d:nth-child(2):hover { color: var(--mint); transform: translateY(-12px) rotate(0deg); }
+  .h404 .d:nth-child(3):hover { color: var(--pink); transform: translateY(-12px) rotate(4deg); }
+
+  /* The 0 ring — punched out */
+  .h404 .d.zero { position: relative; }
+  .h404 .d.zero::after {
+    content: "";
+    position: absolute;
+    width: 16%; height: 16%;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--pink);
+    border-radius: 999px;
+    box-shadow: 0 0 0 4px #fff inset;
+    opacity: 0;
+    transition: opacity 240ms ease;
+  }
+  .h404 .d.zero:hover::after { opacity: 1; }
+
+  /* Falling debris — the missing piece */
+  .debris {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+    font-family: var(--num);
+    font-weight: 700;
+    font-size: clamp(60px, 8vw, 96px);
+    color: var(--pink);
+    line-height: 1;
+    pointer-events: none;
+    animation: bob 3.2s ease-in-out infinite;
+    user-select: none;
+  }
+  .debris .crack {
+    display: inline-block;
+    transform-origin: top center;
+    animation: tilt 3.2s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%,100% { transform: translate(-50%, 0); }
+    50%     { transform: translate(-50%, -6px); }
+  }
+  @keyframes tilt {
+    0%,100% { transform: rotate(-6deg); }
+    50%     { transform: rotate(6deg); }
+  }
+
+  /* Character */
+  .char {
+    position: absolute;
+    right: clamp(120px, 14vw, 260px);
+    top: 40%;
+    width: clamp(160px, 14vw, 240px);
+    z-index: 3;
+    transform: rotate(6deg);
+  }
+  .char img {
+    width: 100%; height: auto;
+    filter: drop-shadow(0 14px 30px rgba(0,0,0,0.10));
+  }
+  .char .speech {
+    position: absolute; top: -44px; left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    background: var(--ink); color: #fff;
+    font-size: 13px; padding: 10px 16px; border-radius: 16px;
+    font-weight: 500; white-space: nowrap;
+    font-family: var(--hand);
+  }
+  .char .speech::after {
+    content: ""; position: absolute; bottom: -6px; left: 50%;
+    width: 12px; height: 12px; background: var(--ink);
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  /* =========== INFO ROW =========== */
+  .info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .info .lead {
+    font-size: 22px; line-height: 1.5; color: var(--ink-2);
+    font-weight: 500;
+    max-width: 560px;
+  }
+  .info .lead strong { color: var(--ink); font-weight: 700; }
+  .info .lead .hl { background: linear-gradient(transparent 60%, var(--pink-soft) 60%); padding: 0 2px; }
+
+  .hand-note {
+    font-family: var(--hand);
+    font-size: 22px;
+    color: var(--ink);
+    background: #fff;
+    padding: 14px 20px;
+    display: inline-block;
+    border: 1px dashed var(--line-2);
+    border-radius: 4px;
+    transform: rotate(-1deg);
+    margin-top: 16px;
+  }
+
+  /* =========== SUGGESTED LINKS =========== */
+  .suggest { margin-top: 56px; }
+  .suggest h3 {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-4);
+    margin: 0 0 18px; display: flex; align-items: center; gap: 12px;
+  }
+  .suggest h3 .idx { font-family: var(--num); color: var(--pink); font-weight: 700; }
+  .suggest h3::before { content: ""; width: 24px; height: 1px; background: var(--ink-4); }
+  .suggest-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .sug {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 22px 22px;
+    min-height: 160px;
+    background: #fff;
+    color: var(--ink);
+    display: flex; flex-direction: column;
+    transition: all 240ms ease;
+    overflow: hidden;
+  }
+  .sug:hover {
+    transform: translateY(-4px);
+    border-color: var(--ink);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    text-decoration: none;
+  }
+  .sug .key {
+    font-family: var(--num); font-weight: 700;
+    font-size: 12px; color: var(--pink);
+    letter-spacing: 0.02em;
+  }
+  .sug h4 {
+    font-size: 19px; font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: auto 0 6px;
+    line-height: 1.3;
+  }
+  .sug p {
+    font-size: 13px; color: var(--ink-3); margin: 0; line-height: 1.5;
+  }
+  .sug .arrow {
+    position: absolute; top: 22px; right: 22px;
+    width: 32px; height: 32px;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    transition: all 200ms ease;
+  }
+  .sug:hover .arrow {
+    background: var(--ink); color: #fff; border-color: var(--ink);
+    transform: rotate(-45deg);
+  }
+  .sug.is-pink { background: var(--pink-soft); border-color: var(--pink-soft); }
+  .sug.is-mint { background: var(--mint-soft); border-color: var(--mint-soft); }
+  .sug.is-mood { background: #2A2C30; color: #fff; border-color: #2A2C30; }
+  .sug.is-mood p { color: #B8BAC1; }
+  .sug.is-mood .arrow { border-color: #4E5158; color: #fff; }
+  .sug.is-mood:hover .arrow { background: var(--pink); border-color: var(--pink); }
+
+  /* =========== FOOTER =========== */
+  .foot {
+    flex-shrink: 0;
+    padding: 28px var(--gut);
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--ink-4);
+    background: var(--bg);
+  }
+  .foot .tm {
+    background: var(--bg-cool); color: var(--ink-3);
+    padding: 4px 10px; border-radius: 4px;
+    font-family: var(--font-mono); font-size: 11px;
+  }
+
+  /* responsive */
+  @media (max-width: 1100px) {
+    .nav, .stage, .foot { --gut: 32px; }
+    .info { grid-template-columns: 1fr; }
+    .suggest-grid { grid-template-columns: 1fr 1fr; }
+    .char { right: 8px; top: 35%; width: 130px; }
+    .char .speech { font-size: 12px; top: -38px; }
+  }
+  @media (max-width: 640px) {
+    .nav, .stage, .foot { --gut: 20px; }
+    .nav .meta { display: none; }
+    .stage-meta { font-size: 10px; }
+    .suggest-grid { grid-template-columns: 1fr; }
+    .char { display: none; }
+    .info .lead { font-size: 18px; }
+  }
+
+  /* easter egg: 205 mode (5번 클릭으로 토글) */
+  body.is-205 .h404 .d-4 { color: var(--pink); transform: rotate(180deg) translateY(0); }
+  body.is-205 .h404 .d-4-content::before { content: "2"; }
+  body.is-205 .h404 .d-4-content .original { display: none; }
+  body.is-205 .h404 .d.zero { color: var(--ink); }
+  body.is-205 .h404 .d-second-4 { color: var(--mint); }
+  body.is-205 .h404 .d-second-4 .original { display: none; }
+  body.is-205 .h404 .d-second-4::after { content: "5"; }
+  body.is-205 .stage-meta .right strong { color: var(--mint-deep); }
+  body.is-205 .debris { opacity: 0; }
+</style>
+
+<script>
+  import { setup404 } from '@/scripts/page-404';
+  setup404();
+</script>
+
+</body>
+</html>

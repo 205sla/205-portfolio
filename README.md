@@ -148,7 +148,7 @@ GitHub `main` 브랜치 푸시 시 GitHub Actions가 자동 빌드 후 GitHub Pa
 - Node: 22
 - build: `npm run build`
 - output: `dist` → `actions/upload-pages-artifact` → `actions/deploy-pages`
-- 라이브 URL: https://205sla.github.io/205-portfolio/ (커스텀 도메인 연결 시 `astro.config.mjs`의 `site`/`base` 수정 + `public/CNAME` 추가)
+- 라이브 URL: https://205.kr/ (커스텀 도메인 — `astro.config.mjs` 의 `site: 'https://205.kr', base: '/'` + `public/CNAME` 에 `205.kr`)
 
 ## 마이그레이션 출처
 

@@ -577,20 +577,28 @@ GitHub `main` 브랜치에 푸시하면 GitHub Actions가 자동 빌드 후 Page
 - Node: 22 (`actions/setup-node@v4`, `cache: npm`)
 - build: `npm ci` → `npm run build`
 - 아티팩트: `dist/` → `actions/upload-pages-artifact@v3` → `actions/deploy-pages@v4`
-- 라이브 URL: https://205sla.github.io/205-portfolio/
+- 라이브 URL: https://205.kr/ (커스텀 도메인. repo 기본 URL 은 https://205sla.github.io/ 이지만 `public/CNAME` 으로 205.kr 로 리다이렉트됨)
 
 배포 상태는 GitHub 레포의 **Actions** 탭에서 확인. PR 단위 preview URL은 현재 미설정 — 검증은 로컬 `npm run preview`로.
 
-### 8.3 커스텀 도메인 (현재 미연결)
+### 8.3 커스텀 도메인 (205.kr — 현재 사용 중)
 
-현재는 GitHub Pages 기본 URL(`205sla.github.io/205-portfolio/`) 사용. `205.kr` 등을 연결하려면 ([astro.config.mjs](astro.config.mjs) 주석 참조):
+설정된 항목:
+- `astro.config.mjs` → `site: 'https://205.kr'`, `base: '/'`
+- `public/CNAME` → 한 줄 `205.kr`
+- 폰트·이미지 CSS 절대경로 → 모두 `/fonts/...`, `/assets/...` (베이스 prefix 없음)
 
-1. `astro.config.mjs`에서 `site: 'https://205.kr'`, `base: '/'`로 변경
-2. `public/CNAME` 파일 생성 → 한 줄에 `205.kr` 적기
-3. DNS에 GitHub Pages용 A/CNAME 레코드 등록 (도메인 등록 업체 측)
-4. GitHub 레포 Settings → Pages → Custom domain에 `205.kr` 입력
+수동으로 한 일 (한 번만):
+1. DNS A 레코드 (apex 도메인용 GitHub Pages IP 4개): `185.199.108.153 / 109.153 / 110.153 / 111.153`
+2. (옵션) `www` 서브도메인 CNAME → `205sla.github.io`
+3. GitHub repo Settings → Pages → Custom domain `205.kr` → DNS 확인 후 **Enforce HTTPS** 체크
 
-`이영호.com`(`xn--vj5bn0ab83a.com`) 같은 별칭은 별도 redirect 설정 필요 (DNS 측 또는 Cloudflare 같은 프록시).
+다른 도메인(`이영호.com` = `xn--vj5bn0ab83a.com`, `엔트리.org` = `xn--oy2b95t44j.org`)으로 들어왔을 때 205.kr 로 redirect 하고 싶으면 DNS 측 또는 Cloudflare 같은 프록시에서 처리 (GitHub Pages 자체는 redirect 지원 안 함).
+
+다시 repo 기본 URL(`205sla.github.io/205-portfolio/`) 로 되돌리려면:
+- `astro.config.mjs` → `site: 'https://205sla.github.io'`, `base: '/205-portfolio/'`
+- `public/CNAME` 삭제
+- `src/styles/tokens.css` / `src/styles/site.css` 의 절대경로를 `/205-portfolio/fonts/...`, `/205-portfolio/assets/...` 로 되돌려야 함 (Vite 가 CSS `url()` 절대경로를 재작성하지 않으므로)
 
 ### 8.4 빌드 실패 디버깅
 
