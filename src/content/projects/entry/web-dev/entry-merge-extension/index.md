@@ -7,12 +7,22 @@ cover:
   image: ./화면.png
 links:
   github: https://github.com/205sla/EntryMerge-Extension
+  others:
+    - label: 크롬 웹스토어
+      url: https://chromewebstore.google.com/detail/entrymerge-%EC%97%94%ED%8A%B8%EB%A6%AC-%EC%9E%91%ED%92%88-%ED%95%A9%EC%B9%98%EA%B8%B0/afkojcdofphbphfalnjgidbefbmndgjm
+      kind: site
+    - label: 웹 버전 (entry.205.kr)
+      url: https://entry.205.kr
+      kind: site
+    - label: 서버 코드
+      url: https://github.com/205sla/EntryMergeServer
+      kind: other
 description: 엔트리(Entry) 작품 파일(`.ent`)을 합쳐주는 크롬 확장프로그램입니다. **서버를 거치지 않고 브라우저에서 바로 처리**하므로 작품 데이터가 외부로 나가지 않습니다.
 ---
 
 엔트리(Entry) 작품 파일(`.ent`)을 합쳐주는 크롬 확장프로그램입니다. **서버를 거치지 않고 브라우저에서 바로 처리**하므로 작품 데이터가 외부로 나가지 않습니다.
 
-> 같은 기능을 웹으로 제공하는 [엔트리 작품 합치기 프로그램](../엔트리-작품-합치기-프로그램/) (entry.205.kr / Render)도 운영 중입니다.
+> 같은 기능을 웹으로 제공하는 [엔트리 작품 합치기 프로그램](/projects/entry/web-dev/entry-merge-projects/) (entry.205.kr / Render)도 운영 중입니다.
 
 ## 주요 기능
 
@@ -33,8 +43,6 @@ description: 엔트리(Entry) 작품 파일(`.ent`)을 합쳐주는 크롬 확�
 
 - 파일당 최대 50MB / 전체 150MB / 최대 10개
 
-## 관련 링크
+## 문의
 
-- 웹 버전: <https://entry.205.kr>
-- 서버 코드: <https://github.com/205sla/EntryMergeServer>
-- 문의: 205@205.kr
+205@205.kr

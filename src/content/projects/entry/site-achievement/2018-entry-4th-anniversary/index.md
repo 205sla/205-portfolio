@@ -10,6 +10,10 @@ tags:
   - 2018년
 links:
   notion: https://www.notion.so/784b2e7354984125997f5f6f1b9d56f6
+  others:
+    - label: 수상 확인서 (PDF)
+      url: /docs/entry-contest-certificate.pdf
+      kind: doc
 description: 엔트리 「[4주년 공모전](https://post.naver.com/viewer/postView.nhn?volumeNo=14835207&memberNo=25082732)」 **내가이등이드론상** 수상.
 ---
 
@@ -32,3 +36,7 @@ description: 엔트리 「[4주년 공모전](https://post.naver.com/viewer/post
 - **속도 변환 기능**: 30km/h와 50km/h 속도 표지판이 있고, 통과할 때 해당 속도로 자동 변환되어 주행합니다.
 - **신호등 인지 기능**: 빨간불은 멈추고 초록불은 주행합니다. 차가 멈추었을 때 노랑불이면 출발하지 않지만, 주행 중에 노랑불이면 계속 주행합니다.
 - **돌발상황(행인의 무단 횡단)**: 자동차 앞에 행인이 무단횡단하는 것이 인지되면 자동으로 멈추고 경보를 울립니다.
+
+## 첨부
+
+수상 내역은 [엔트리 확인서 (PDF)](/docs/entry-contest-certificate.pdf)로도 확인할 수 있습니다.

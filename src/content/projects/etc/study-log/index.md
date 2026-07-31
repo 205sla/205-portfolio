@@ -14,5 +14,5 @@ description: 노션의 「공부」 페이지는 다음 3개 분야로 정리되
 - **언리얼** — <https://www.notion.so/2d95b696de7b807ca40ec9b2d203d325>
 - **유니티** — <https://www.notion.so/2f05b696de7b80609e78c6701cd2e624>
 
-각 분야별 세부 학습 기록은 [유니티 튜토리얼 모음](../유니티-튜토리얼-모음/) 파일에 정리해 두었습니다.
+각 분야별 세부 학습 기록은 [유니티 튜토리얼 모음](/projects/etc/unity-tutorials/) 항목에 정리해 두었습니다.
 

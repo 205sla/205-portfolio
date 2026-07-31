@@ -61,7 +61,8 @@ const projects = defineCollection({
       kyobo: z.string().url().optional(),
       others: z.array(z.object({
         label: z.string(),
-        url: z.string().url(),
+        // 외부 URL 또는 사이트 내부 절대 경로(예: /docs/foo.pdf)
+        url: z.union([z.string().url(), z.string().startsWith('/')]),
         kind: z.enum(['video', 'site', 'doc', 'other']).default('other'),
       })).default([]),
     }).default({ others: [] }),

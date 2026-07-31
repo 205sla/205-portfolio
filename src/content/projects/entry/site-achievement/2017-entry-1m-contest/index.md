@@ -10,6 +10,10 @@ tags:
   - 2017년
 links:
   notion: https://www.notion.so/04b8f7f32ec747f6827a49db6719349b
+  others:
+    - label: 수상 확인서 (PDF)
+      url: /docs/entry-contest-certificate.pdf
+      kind: doc
 description: 엔트리 「[100만 공모전](https://blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=entrylabs&logNo=220986419658)」 작품설명상 수상.
 ---
 
@@ -22,3 +26,5 @@ description: 엔트리 「[100만 공모전](https://blog.naver.com/PostView.nav
 > 엔트리 작품 100만 돌파를 기념하여 열린 공모전입니다.
 
 ![image.png](image.png)
+
+수상 내역은 [엔트리 확인서 (PDF)](/docs/entry-contest-certificate.pdf)로도 확인할 수 있습니다.

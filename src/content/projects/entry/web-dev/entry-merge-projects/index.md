@@ -38,4 +38,4 @@ description: 🔥 **엔트리 프로젝트 파일 (.ent)을 합치는 프로그�
 
 - 깃허브 (Python 원본): <https://github.com/205sla/EntryMerge-python>
 - 깃허브 (웹 서버): <https://github.com/205sla/EntryMergeServer>
-- 크롬 확장 버전은 [엔트리-merge-크롬-확장](../엔트리-merge-크롬-확장/) 참고
+- 크롬 확장 버전은 [엔트리 merge 크롬 확장](/projects/entry/web-dev/entry-merge-extension/) 참고

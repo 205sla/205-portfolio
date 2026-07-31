@@ -11,7 +11,7 @@ Astro 기반 정적 사이트입니다. 콘텐츠는 `src/content/projects/<cate
 ```
 .
 ├── _reference/                  # 디자이너 원본 시안 (read-only)
-├── public/                      # 정적 자산 (폰트, 이미지)
+├── public/                      # 정적 자산 (폰트, 이미지, docs/ PDF 첨부)
 │   ├── assets/
 │   └── fonts/
 ├── scripts/
@@ -20,11 +20,16 @@ Astro 기반 정적 사이트입니다. 콘텐츠는 `src/content/projects/<cate
 │   ├── components/              # Astro 컴포넌트
 │   │   ├── ProjectCard.astro
 │   │   ├── WorksGallery.astro
+│   │   ├── Awards.astro         # 수상 이력 (src/data/awards.ts)
+│   │   ├── ExternalChannels.astro
 │   │   └── project/
 │   │       ├── ProjectHeader.astro
 │   │       └── RelatedNav.astro
+│   ├── data/                    # 콘텐츠 컬렉션 밖의 정적 데이터
+│   │   ├── awards.ts
+│   │   └── channels.ts
 │   ├── content/
-│   │   └── projects/            # 콘텐츠 컬렉션 (62개 항목)
+│   │   └── projects/            # 콘텐츠 컬렉션 (자동 카운트)
 │   │       ├── game/
 │   │       ├── web/
 │   │       ├── entry/{site-achievement,education,web-dev}/
@@ -41,15 +46,22 @@ Astro 기반 정적 사이트입니다. 콘텐츠는 `src/content/projects/<cate
 │   │       └── EmptyLayout.astro
 │   ├── lib/
 │   │   ├── labels.ts            # 카테고리 라벨 매핑
-│   │   └── variant.ts           # 본문 길이로 variant 자동 선택
+│   │   ├── variant.ts           # 본문 길이로 variant 자동 선택
+│   │   ├── href.ts              # 프로젝트 URL 생성
+│   │   ├── sort.ts              # 목록 정렬
+│   │   └── year.ts              # 연도 표기 정규화
 │   ├── pages/
 │   │   ├── index.astro          # 메인
 │   │   └── projects/
-│   │       └── [...slug].astro  # 동적 라우트 (62 페이지)
+│   │       └── [...slug].astro  # 동적 라우트 (콘텐츠 수만큼 생성)
 │   └── styles/
 │       ├── tokens.css           # 디자인 토큰 + @font-face
 │       ├── site.css             # 메인 페이지
 │       └── project-detail.css
+├── scripts/                     # 일회성 유틸 (빌드 파이프라인 아님)
+│   ├── migrate.mjs              # README → 콘텐츠 컬렉션 이관
+│   ├── auto-cover-image.mjs     # 커버 이미지 자동 지정
+│   └── restore-image-positions.mjs
 ├── astro.config.mjs
 ├── package.json
 └── tsconfig.json

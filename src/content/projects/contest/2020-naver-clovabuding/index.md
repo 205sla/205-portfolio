@@ -7,6 +7,7 @@ cover:
 year: 2020
 tags:
   - 2020년
+result: 수상
 links:
   notion: https://www.notion.so/b4e9211c7282436180eccb658ca1bc1d
 description: "수상작: [붓으로 체력바 만들기](https://youtu.be/YC6EN9ID5aw)"

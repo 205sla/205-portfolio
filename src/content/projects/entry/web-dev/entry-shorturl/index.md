@@ -14,6 +14,8 @@ tags:
 team: 1인 개발
 links:
   notion: https://www.notion.so/11a5b696de7b801d9330e9ce6c62acd7
+  github: https://github.com/205sla/ShortENT
+  site: https://xn--oy2b95t44j.org/
 description: 엔트리의 작품, 프로필, 탐험하기 등의 URL을 단축하는 서비스
 ---
 
@@ -27,10 +29,7 @@ description: 엔트리의 작품, 프로필, 탐험하기 등의 URL을 단축�
 
 ![image-1.png](image-1.png)
 
-## 도메인 / 링크
-
-- **운영 도메인**: <https://xn--oy2b95t44j.org/> (한글로 「엔트리.org」 — 본인 보유)
-- 깃허브: <https://github.com/205sla/ShortENT>
+운영 도메인은 <https://xn--oy2b95t44j.org/> — 한글로 「엔트리.org」이며 본인이 보유하고 있습니다.
 
 ![image-2.png](image-2.png)
 

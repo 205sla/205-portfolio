@@ -41,6 +41,7 @@ npm run preview    # 빌드된 dist/를 로컬에서 미리보기
 ### 파일을 어디에 둬야 할지 헷갈릴 때
 - **새 프로젝트 마크다운** → `src/content/projects/<카테고리>/<슬러그>/index.md`
 - **프로젝트 이미지** → 같은 폴더 (`src/content/projects/.../<슬러그>/`)
+- **PDF·문서 첨부** → `public/docs/` (★ 콘텐츠 폴더에 두면 dist로 복사되지 않음 — 아래 5.4 참고)
 - **공통 자산 (아이콘, 폰트 등)** → `public/assets/` 또는 `public/fonts/`
 - **메인 페이지 텍스트 변경** → `src/pages/index.astro`
 - **푸터 변경** → `src/pages/index.astro` (메인) + `src/layouts/project/ProjectBase.astro` (상세)
@@ -373,7 +374,46 @@ links:
 > 실행 영상: https://youtu.be/xxx
 ```
 
-### 5.4 코드 블록
+### 5.4 PDF·문서 첨부 (★ 함정)
+
+**Astro 콘텐츠 컬렉션은 이미지만 처리한다.** 콘텐츠 폴더(`src/content/projects/.../<슬러그>/`)에
+PDF를 두고 상대 경로로 링크하면 **빌드 결과에 PDF가 복사되지 않아 링크가 404가 된다.**
+README에서는 정상 동작하기 때문에 눈에 잘 띄지 않는다.
+
+올바른 방법:
+
+1. `public/docs/`에 파일을 두고 (파일명은 **영문 + 하이픈으로 정규화**)
+2. `/docs/<파일명>.pdf` 절대 경로로 링크
+
+```yaml
+links:
+  others:
+    - label: 수상 확인서 (PDF)
+      url: /docs/entry-contest-certificate.pdf
+      kind: doc
+```
+
+본문에서도 같은 절대 경로를 쓴다:
+```md
+[엔트리 확인서 (PDF)](/docs/entry-contest-certificate.pdf)
+```
+
+README용 원본 PDF는 콘텐츠 폴더/README 폴더에 그대로 남긴다(README는 상대 경로로 참조).
+즉 같은 파일이 두 곳에 존재하는 게 정상이며, 이미지가 `_assets/`로 변환 복사되는 것과 같은 구조다.
+
+**파일명 정규화가 특히 중요한 이유**: 기존 PDF들은 macOS에서 만들어져 파일명이 **NFD(자모 분리)**
+로 저장돼 있다. Windows 도구·일부 CLI에서 같은 이름으로 열리지 않고, URL에서도 퍼센트 인코딩이
+길게 붙는다. `public/docs/`로 옮길 때 ASCII 슬러그로 바꿔 이 문제를 끊는다.
+
+현재 `public/docs/` 목록:
+
+| 파일 | 쓰는 곳 |
+|---|---|
+| `entry-advisory-official-letter.pdf` | 엔트리 자문단 |
+| `entry-contest-certificate.pdf` | 2017 100만 공모전 · 2018 4주년 공모전 (동일 파일 공용) |
+| `design-thinking-ar-presentation.pdf` | 디자인적 사고 AR앱 기획 |
+
+### 5.5 코드 블록
 
 ```md
 ```javascript
@@ -395,7 +435,7 @@ const x = 1;
 </details>
 ```
 
-### 5.5 콜아웃 (인용 블록)
+### 5.6 콜아웃 (인용 블록)
 
 ```md
 > 💡 처음 유니티 게임이라 시행착오가 많았다.
@@ -403,13 +443,13 @@ const x = 1;
 
 디자이너 시안의 `.callout` 스타일이 적용되도록 차후 컴포넌트 매핑 가능 (현재는 기본 `<blockquote>`로 렌더).
 
-### 5.6 외부 링크
+### 5.7 외부 링크
 
 ```md
 [GitHub에서 보기](https://github.com/205sla/...)
 ```
 
-### 5.7 표
+### 5.8 표
 
 ```md
 | 항목 | 값 |
@@ -607,6 +647,7 @@ GitHub `main` 브랜치에 푸시하면 GitHub Actions가 자동 빌드 후 Page
 | `LegacyContentConfigError` | `src/content/config.ts` (구) → `src/content.config.ts` (신)로 이전 |
 | `Invalid frontmatter` (zod) | 출력 메시지의 파일 경로 + 필드 확인. 필수 필드 누락? |
 | 이미지가 빌드 결과에 안 보임 | 마크다운 폴더에 같이 두기. 절대 경로 (`/foo.png`) 사용 시 `public/`로 이동 필요 |
+| PDF 링크가 404 | 콘텐츠 컬렉션은 **이미지만** emit함. `public/docs/`에 두고 `/docs/<파일>.pdf`로 링크 (5.4 참고) |
 | `URL invalid` | `links.github` 등이 빈 문자열이면 안 됨. 누락이면 필드 자체를 제거 |
 | 한글 슬러그 라우트 깨짐 | 영문 슬러그로 변경 또는 frontmatter `slug:` override |
 
@@ -685,21 +726,29 @@ GitHub `main` 브랜치 자체가 1차 백업. private 레포라 안전.
 │   └── colors_and_type.css
 ├── public/
 │   ├── assets/                        ← 디자이너 자산 (캐릭터 일러스트, 사진)
+│   ├── docs/                          ★ PDF 첨부 (콘텐츠 폴더의 PDF는 emit 안 됨)
 │   └── fonts/                         ← 5종 한글 OTF
-├── scripts/
-│   └── migrate.mjs                    ← 1회용 마이그레이션 (실행 완료)
+├── scripts/                           ← 일회성 유틸 (빌드 파이프라인 아님)
+│   ├── migrate.mjs                    ← 1회용 마이그레이션 (실행 완료)
+│   ├── auto-cover-image.mjs           ← 커버 이미지 자동 지정
+│   └── restore-image-positions.mjs    ← 본문 이미지 위치 복원
 ├── src/
 │   ├── components/
 │   │   ├── ProjectCard.astro          ★ 갤러리 카드 모양
 │   │   ├── WorksGallery.astro         ★ 갤러리 (자동 카운트)
+│   │   ├── Awards.astro               ★ 수상 이력 섹션
+│   │   ├── ExternalChannels.astro     ★ 외부 채널 섹션
 │   │   └── project/
 │   │       ├── ProjectHeader.astro    ★ 상세 페이지 헤더
 │   │       └── RelatedNav.astro       ★ 페이지 끝 prev/next
+│   ├── data/                          ★★ 콘텐츠 컬렉션 밖의 정적 데이터
+│   │   ├── awards.ts                  ★ 수상 목록 (projectSlug로 상세 연결)
+│   │   └── channels.ts                ★ 외부 채널 목록
 │   ├── content/
-│   │   └── projects/                  ★★★ 콘텐츠 (62개)
+│   │   └── projects/                  ★★★ 콘텐츠 (자동 카운트)
 │   │       ├── game/<slug>/index.md
 │   │       ├── web/<slug>/index.md
-│   │       ├── entry/{사이트-내-성과,교육-성과,웹-개발}/<slug>/index.md
+│   │       ├── entry/{site-achievement,education,web-dev}/<slug>/index.md
 │   │       ├── contest/<slug>/index.md
 │   │       └── etc/<slug>/index.md (+ highschool/<slug>/index.md)
 │   ├── content.config.ts              ★★ zod 스키마 — 변경 시 모든 항목 영향
@@ -713,11 +762,14 @@ GitHub `main` 브랜치 자체가 1차 백업. private 레포라 안전.
 │   │       └── EmptyLayout.astro      ← empty variant
 │   ├── lib/
 │   │   ├── labels.ts                  ★ 카테고리 라벨 매핑
-│   │   └── variant.ts                 ★ variant 자동 판정 + 정렬
+│   │   ├── variant.ts                 ★ variant 자동 판정 + prev/next
+│   │   ├── href.ts                    ★ 프로젝트 URL 생성
+│   │   ├── sort.ts                    ★ 목록 정렬
+│   │   └── year.ts                    ★ 연도 표기 정규화
 │   ├── pages/
 │   │   ├── index.astro                ★★★ 메인 페이지 (Hero, Skills 등 정적 데이터)
 │   │   └── projects/
-│   │       └── [...slug].astro        ★ 동적 라우트 (62 페이지 생성)
+│   │       └── [...slug].astro        ★ 동적 라우트 (콘텐츠 수만큼 생성)
 │   └── styles/
 │       ├── tokens.css                 ★★ 디자인 토큰 + 폰트
 │       ├── site.css                   ★ 메인 페이지 스타일
