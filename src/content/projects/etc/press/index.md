@@ -17,7 +17,7 @@ description: 유튜브에서 코딩 강의로 활동하고 있는 '**205와 엔�
 
 ## 2023년 8월 — SEF 2023 / EDC 2023 발표자
 
-> 6개 매체에서 "**10년간 엔트리와 함께 성장해 대학생이 된 사용자**"로 소개됨.
+> 14개 매체에서 "**10년간 엔트리와 함께 성장해 대학생이 된 사용자**"로 소개됨.
 
 - **뉴시스** — [네이버 SW 교육 플랫폼 '엔트리', 누적 가입자 400만 돌파](https://www.newsis.com/view/?id=NISX20230816_0002414820&cID=10406&pID=13100)
 - **지디넷** — [10주년 네이버 엔트리 "국내 최대 SW창작 커뮤니티로 성장"](https://zdnet.co.kr/view/?no=20230816110712)
@@ -25,6 +25,14 @@ description: 유튜브에서 코딩 강의로 활동하고 있는 '**205와 엔�
 - **조선비즈** — [네이버 SW 교육 플랫폼 '엔트리', 누적 가입자 400만 돌파](https://biz.chosun.com/it-science/ict/2023/08/16/4BURVL2L6NDWPFYYLAC6LAPAJ4/)
 - **전자신문** — [10주년 엔트리, 국내 최대 SW 창작 커뮤니티로 성장](https://www.etnews.com/20230816000082)
 - **이데일리** — [네이버 커넥트재단 '엔트리', 국내 최대 SW 창작 커뮤니티로 성장](https://www.edaily.co.kr/news/read?newsId=01580966635707976&mediaCodeNo=257&OutLnkChk=Y)
+- **아시아경제** — [네이버 소프트웨어 교육 플랫폼 '엔트리' 10주년…가입자 400만 돌파](https://www.asiae.co.kr/article/2023081609103998279)
+- **서울경제TV** — [네이버 '엔트리' 10주년…"양질의 SW·AI 교육 프로그램 제공 노력"](https://www.sentv.co.kr/article/view/sentv202308160111)
+- **테크M** — [네이버 '엔트리' SW 교육 10주년, 누적 가입자 400만 돌파](https://www.techm.kr/news/articleView.html?idxno=113376)
+- **이코노믹리뷰** — [SW 교육 플랫폼 '엔트리' "10년 만에 누적가입자 400만 돌파"](https://www.econovill.com/news/articleView.html?idxno=622256)
+- **디지털투데이** — [네이버 SW 교육 플랫폼 '엔트리' 10주년…누적 가입자 400만 돌파](https://www.digitaltoday.co.kr/news/articleView.html?idxno=484945)
+- **천지일보** — [네이버 커넥트재단, 교육 플랫폼 '엔트리' 10주년 기념 페이지 공개](https://www.newscj.com/news/articleView.html?idxno=3054552)
+- **한국아이닷컴** — [네이버 커넥트재단, '엔트리' 10주년 맞이 기념 페이지 공개](https://www.hankooki.com/news/articleView.html?idxno=97874)
+- **스트레이트뉴스** — [네이버 엔트리, 소프트웨어 창작 커뮤니티 괄목 성장](https://www.straightnews.co.kr/news/articleView.html?idxno=236058)
 
 ## 2026년 3월 — 경희대 AI·SW 나눔봉사단
 
@@ -34,17 +42,22 @@ description: 유튜브에서 코딩 강의로 활동하고 있는 '**205와 엔�
 - **한국대학신문** — [경희대, 'AI·SW 나눔봉사단' 발족… 지역 디지털 격차 해소 앞장](https://news.unn.net/news/articleView.html?idxno=590756)
 - **뉴시스** — [경희대, 'AI·SW 나눔봉사단' 출범…지역사회 디지털 교육 지원](https://mobile.newsis.com/view_amp.html?ar_id=NISX20260313_0003547466)
 - **전자신문** — [\[에듀플러스\] 경희대, AI·SW 나눔봉사단으로 지역사회에 디지털 교육 확산](https://www.etnews.com/20260313000269)
+- **메트로서울** — [경희대, AI·SW 나눔봉사단 출범…청소년 디지털 교육 나선다](https://www.metroseoul.co.kr/article/20260315500028)
+- **스마트경제** — [경희대, AI·SW 나눔봉사단으로 지역사회에 디지털 교육 확산 '박차'](https://www.dailysmart.co.kr/news/articleView.html?idxno=121084)
 
 ## 2026년 9월 — 경희대 저자직강 엔트리 수업
 
 경희대 SW중심대학사업단이 운영하는 중학생 대상 무료 코딩 교실에 직접 집필한 교재 『나는야 엔트리 게임 개발자』·『나는야 엔트리 화가』의 저자 자격으로 강사 참여. 9월 중 6회, 회당 3시간씩 경희대 국제캠퍼스 전자정보대학관에서 무료로 진행.
 
-> 6개 매체에서 "**'나는야 엔트리' 저자인 경희대 소프트웨어융합학과 이영호 학생이 직접 강사로 참여**"로 소개됨.
+> 9개 매체에서 "**'나는야 엔트리' 저자인 경희대 소프트웨어융합학과 이영호 학생이 직접 강사로 참여**"로 소개됨.
 
 - **베리타스알파** — [경희대 SW중심대학사업단 중학생 대상 무료 코딩교실 개설.. '나는야 엔트리' 저자가 강사로](https://www.veritas-a.com/news/articleView.html?idxno=625946)
+- **한겨레** — [경희대, 중학생 대상 무료 코딩 교실 열어 지역사회에 AI·SW 교육](https://www.hani.co.kr/arti/economy/biznews/1276342.html)
 - **전자신문** — [경희대, 중학생 대상 무료 코딩 교실 열어 지역사회에 AI·SW 교육](https://www.etnews.com/20260903000172)
 - **한국강사신문** — [경희대학교, 중학생 대상 무료 코딩 교실 운영…AI·SW 교육 나눔 확대](https://www.lecturernews.com/news/articleView.html?idxno=209939)
 - **중앙일보** — [경희대, 9월 중학생 대상 무료 코딩 교실 운영](https://www.joongang.co.kr/article/25458767)
 - **교수신문** — [경희대 SW중심대학, 중학생 대상 무료 코딩 교실 9월 개강](https://www.kyosu.net/news/articleView.html?idxno=209767)
 - **핀포인트뉴스** — [경희대, 중학생 대상 무료 코딩 교실 운영… AI·SW 교육 기회 확대](https://www.pinpointnews.co.kr/news/articleView.html?idxno=483453)
+- **대학IN** — [경희대, 중학생 대상 무료 코딩 교실 열어 지역사회 AI·SW 교육](http://www.dhinsight.co.kr/news/articleView.html?idxno=24927)
+- **스마트경제** — [“글자만 보던 아이가 3D 게임 만든다”… 중학생 잡은 경희대의 ‘무료 코딩 신화’](https://www.dailysmart.co.kr/news/articleView.html?idxno=129167)
 
