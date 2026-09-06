@@ -604,22 +604,37 @@ const x = 1;
 ### 8.1 로컬 빌드
 
 ```bash
-npm run build      # astro check (타입검사) + astro build
-npm run preview    # 로컬 서버로 dist/ 결과 확인
+npm run build         # astro build (약 4초, 67페이지)
+npm run build:strict  # astro check (타입검사) + astro build
+npm run preview       # 로컬 서버로 dist/ 결과 확인
 ```
 
-`astro check`가 frontmatter zod 스키마 위반을 잡아냅니다. 위반 시 어느 파일·어느 필드가 문제인지 즉시 출력.
+frontmatter zod 스키마 위반은 `astro build`의 **content sync 단계**에서 잡히므로 콘텐츠 검증에는 `npm run build`로 충분합니다. 위반 시 어느 파일·어느 필드가 문제인지 즉시 출력.
+`.astro`/`.ts` 타입까지 검사하려면 `npm run build:strict`를 쓰세요 (CI는 `npm run build`만 돌립니다).
 
 ### 8.2 GitHub Pages 자동 배포
 
 GitHub `main` 브랜치에 푸시하면 GitHub Actions가 자동 빌드 후 Pages로 배포 ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)):
 - runner: `ubuntu-latest`
-- Node: 22 (`actions/setup-node@v4`, `cache: npm`)
+- checkout: `actions/checkout@v7`
+- Node: 22 (`actions/setup-node@v6`, `cache: npm`)
 - build: `npm ci` → `npm run build`
-- 아티팩트: `dist/` → `actions/upload-pages-artifact@v3` → `actions/deploy-pages@v4`
+- 아티팩트: `dist/` → `actions/upload-pages-artifact@v5` → `actions/deploy-pages@v5`
+- 소요: build ~35초 + deploy ~10초
 - 라이브 URL: https://205.kr/ (커스텀 도메인. repo 기본 URL 은 https://205sla.github.io/ 이지만 `public/CNAME` 으로 205.kr 로 리다이렉트됨)
 
-배포 상태는 GitHub 레포의 **Actions** 탭에서 확인. PR 단위 preview URL은 현재 미설정 — 검증은 로컬 `npm run preview`로.
+> 액션 버전은 Node 20 EOL 대응으로 한 차례 올렸습니다(2026-08). GitHub이 러너에서 구버전 액션을 끊으면 빌드가
+> 코드 변경 없이 갑자기 실패하므로, 실패 시 먼저 액션 버전 경고를 확인하세요.
+
+배포 상태는 GitHub 레포의 **Actions** 탭 또는 CLI에서 확인:
+
+```bash
+gh run list --limit 3
+gh run watch <run-id> --exit-status
+```
+
+배포 후에는 라이브 URL(`https://205.kr/projects/<category>/<slug>/`)을 실제로 열어 확인합니다.
+PR 단위 preview URL은 현재 미설정 — 사전 검증은 로컬 `npm run preview`로.
 
 ### 8.3 커스텀 도메인 (205.kr — 현재 사용 중)
 
@@ -678,6 +693,10 @@ GitHub `main` 브랜치에 푸시하면 GitHub Actions가 자동 빌드 후 Page
 ### Q. 노션 원본을 더 이상 동기화하지 않아도 되나요?
 - 마이그레이션이 끝났으므로 더 이상 자동 동기화는 없음. 노션은 백업 / 메모 용도로 유지.
 - 새로 작성한 콘텐츠는 노션 → 사이트가 아니라, **사이트(마크다운)가 정본**이고 노션은 보존용.
+- 다만 노션 페이지 자체를 갱신하는 작업(예: 언론 보도 추가)은 여전히 있음. 그때는 **노션 라이브를 직접 수정**하고,
+  같은 내용을 카테고리 README + 사이트 `index.md`에 손으로 옮긴다.
+- **`../00. 노션원본/`은 손으로 편집하지 않는다** (2026-09-07 결정). 그 폴더는 사용자가 노션 "내보내기"로
+  통째로 갱신하는 읽기 전용 사본이다. 자세한 건 [`../CLAUDE.md`](../CLAUDE.md) 참고.
 
 ### Q. 디자이너 시안을 다시 보고 싶어요
 - `_reference/portfolio.html`, `_reference/project-detail.html` (read-only 보존). 브라우저에서 file:// 로 직접 열기.
@@ -834,4 +853,4 @@ npm run dev
 
 질문/추가 작업 요청은 노션 원본의 메모 페이지에 남기거나, GitHub Issues에 등록.
 
-— 마지막 업데이트: 2026-05-02
+— 마지막 업데이트: 2026-09-07 (배포 액션 버전·빌드 스크립트·노션 원본 정책 반영)
