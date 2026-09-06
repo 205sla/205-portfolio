@@ -35,3 +35,16 @@ description: 유튜브에서 코딩 강의로 활동하고 있는 '**205와 엔�
 - **뉴시스** — [경희대, 'AI·SW 나눔봉사단' 출범…지역사회 디지털 교육 지원](https://mobile.newsis.com/view_amp.html?ar_id=NISX20260313_0003547466)
 - **전자신문** — [\[에듀플러스\] 경희대, AI·SW 나눔봉사단으로 지역사회에 디지털 교육 확산](https://www.etnews.com/20260313000269)
 
+## 2026년 9월 — 경희대 저자직강 엔트리 수업
+
+경희대 SW중심대학사업단이 운영하는 중학생 대상 무료 코딩 교실에 직접 집필한 교재 『나는야 엔트리 게임 개발자』·『나는야 엔트리 화가』의 저자 자격으로 강사 참여. 9월 중 6회, 회당 3시간씩 경희대 국제캠퍼스 전자정보대학관에서 무료로 진행.
+
+> 6개 매체에서 "**'나는야 엔트리' 저자인 경희대 소프트웨어융합학과 이영호 학생이 직접 강사로 참여**"로 소개됨.
+
+- **베리타스알파** — [경희대 SW중심대학사업단 중학생 대상 무료 코딩교실 개설.. '나는야 엔트리' 저자가 강사로](https://www.veritas-a.com/news/articleView.html?idxno=625946)
+- **전자신문** — [경희대, 중학생 대상 무료 코딩 교실 열어 지역사회에 AI·SW 교육](https://www.etnews.com/20260903000172)
+- **한국강사신문** — [경희대학교, 중학생 대상 무료 코딩 교실 운영…AI·SW 교육 나눔 확대](https://www.lecturernews.com/news/articleView.html?idxno=209939)
+- **중앙일보** — [경희대, 9월 중학생 대상 무료 코딩 교실 운영](https://www.joongang.co.kr/article/25458767)
+- **교수신문** — [경희대 SW중심대학, 중학생 대상 무료 코딩 교실 9월 개강](https://www.kyosu.net/news/articleView.html?idxno=209767)
+- **핀포인트뉴스** — [경희대, 중학생 대상 무료 코딩 교실 운영… AI·SW 교육 기회 확대](https://www.pinpointnews.co.kr/news/articleView.html?idxno=483453)
+
