@@ -3,7 +3,7 @@
 > 본 문서는 사이트를 운영하면서 자주 하게 될 작업을 정리합니다.
 > 콘텐츠 추가·수정·삭제부터 디자인 토큰 변경, 배포 흐름, 문제 해결까지 한 곳에서 다룹니다.
 
-**한 줄 요약**: 새 항목은 `src/content/projects/<카테고리>/<슬러그>/index.md` 만들면 끝. `git push`하면 GitHub Actions가 GitHub Pages로 자동 배포.
+**기본 작업 범위**: 활동 기록은 상위 카테고리 README와 사이트 `index.md`를 함께 갱신하고 빌드·로컬 검수까지 진행합니다. 커밋·푸시·공개 배포는 해당 요청이 있을 때만 수행합니다. 요청 범위·출처·학생 사진 처리 기준은 [공통 작업 가이드](../_포트폴리오-작업-가이드.md), 진입 규칙은 [AGENTS.md](AGENTS.md)를 먼저 확인하세요.
 
 ---
 
@@ -34,7 +34,8 @@ npm install
 ### 일상 명령
 ```bash
 npm run dev        # http://localhost:4321/  (변경사항 즉시 반영)
-npm run build      # dist/ 생성 (astro check 자동 포함)
+npm run build      # astro build: 콘텐츠 스키마 검사 + dist/ 생성
+npm run build:strict # 타입 검사(astro check) + 빌드
 npm run preview    # 빌드된 dist/를 로컬에서 미리보기
 ```
 
@@ -92,13 +93,20 @@ links:
 
 이미지 복사:
 ```bash
-cp /path/to/screenshots/*.png .
+# 검수한 게시용 파일만 선택해서 복사합니다.
+# 학생 사진은 모자이크·얼굴 가림본이며 사진 속 개인정보도 확인해야 합니다.
+cp /path/to/selected-public-image.png .
 ```
 
-검증 → 푸시:
+기본 검증:
 ```bash
 cd "C:/Users/young/prg/포트폴리오/02. 사이트"
-npm run dev   # 카드가 갤러리에 즉시 등장하는지 확인
+npm run build
+npm run preview   # 생성된 카드·상세 페이지·이미지 확인
+```
+
+상위 카테고리 README와 인덱스도 함께 반영합니다. **배포 요청이 있는 경우에만**, 요청한 변경 파일을 확인한 뒤:
+```bash
 git add src/content/projects/game/unity-shooter
 git commit -m "feat: add Unity 별빛 슈터"
 git push origin main
@@ -110,7 +118,7 @@ git push origin main
 - 같은 카테고리 내 prev/next 자동 재계산
 - variant 자동 판정 (본문 길이로 long/medium/short/empty)
 - TOC (목차)는 H2가 있으면 자동
-- GitHub Actions가 푸시 감지 → 빌드 후 GitHub Pages로 배포 (보통 1~2분)
+- 배포 요청에 따라 푸시한 경우 GitHub Actions가 빌드 후 GitHub Pages로 배포
 
 ### 2.2 항목 수정
 
@@ -132,7 +140,7 @@ code src/content/projects/game/unity-shooter/index.md
 
 ### 2.3 항목 삭제
 
-폴더 통째로 삭제:
+사용자가 해당 항목 삭제를 명시적으로 요청한 경우의 예입니다. 실제 작업에서는 대상을 확인하고 운영체제에 맞는 파일 명령을 사용합니다. 커밋·푸시는 해당 요청이 있을 때만 수행합니다.
 ```bash
 rm -rf src/content/projects/game/unity-shooter
 git add -A
@@ -604,7 +612,7 @@ const x = 1;
 ### 8.1 로컬 빌드
 
 ```bash
-npm run build         # astro build (약 4초, 67페이지)
+npm run build         # astro build (페이지 수·시간은 실행 로그에서 확인)
 npm run build:strict  # astro check (타입검사) + astro build
 npm run preview       # 로컬 서버로 dist/ 결과 확인
 ```
@@ -613,6 +621,8 @@ frontmatter zod 스키마 위반은 `astro build`의 **content sync 단계**에�
 `.astro`/`.ts` 타입까지 검사하려면 `npm run build:strict`를 쓰세요 (CI는 `npm run build`만 돌립니다).
 
 ### 8.2 GitHub Pages 자동 배포
+
+아래 절차는 사용자가 배포·푸시를 요청한 경우에 적용합니다. 단순 기록 요청은 로컬 반영·검수까지가 기본입니다.
 
 GitHub `main` 브랜치에 푸시하면 GitHub Actions가 자동 빌드 후 Pages로 배포 ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)):
 - runner: `ubuntu-latest`
@@ -718,7 +728,7 @@ GitHub `main` 브랜치 자체가 1차 백업. private 레포라 안전.
 
 ### 10.2 노션 원본
 
-`../{게임개발,웹사이트,엔트리,공모전,기타활동}/` 폴더에 마이그레이션 시점의 README.md들이 그대로 보존됨. 만약 새 사이트의 콘텐츠를 잃으면 이 백업에서 다시 마이그레이션 가능 (`scripts/migrate.mjs` 재실행).
+`../{게임개발,웹사이트,엔트리,공모전,기타활동}/`의 README는 현재 사이트와 함께 갱신하는 정리본입니다. 초기 마이그레이션 시점의 고정 백업으로 취급하지 않습니다. 복구할 때는 필요한 항목을 직접 대조하고, 전체 마이그레이션 재실행을 일상 작업에 사용하지 않습니다.
 
 **주의**: `migrate.mjs`를 다시 돌리면 `src/content/projects/`가 **덮어쓰기**됩니다. 그 사이 사용자가 수동으로 보정한 frontmatter도 같이 사라지므로, 마이그레이션은 정말 필요할 때만.
 
@@ -853,4 +863,4 @@ npm run dev
 
 질문/추가 작업 요청은 노션 원본의 메모 페이지에 남기거나, GitHub Issues에 등록.
 
-— 마지막 업데이트: 2026-09-07 (배포 액션 버전·빌드 스크립트·노션 원본 정책 반영)
+— 마지막 업데이트: 2026-09-30 (공통 기록 절차 연결, 로컬 반영·배포 범위 구분, 학생 사진·빌드 안내 갱신)

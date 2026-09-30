@@ -2,7 +2,9 @@
 
 이영호(205)의 개인 포트폴리오 사이트. https://205.kr
 
-Astro 기반 정적 사이트입니다. 콘텐츠는 `src/content/projects/<category>/<slug>/index.md` 마크다운 파일로 관리되며, 새 항목 추가/수정/삭제는 마크다운 파일 한 개 작업이면 끝납니다.
+Astro 기반 정적 사이트입니다. 콘텐츠는 `src/content/projects/<category>/<slug>/index.md`로 관리합니다. 포트폴리오 활동 기록은 상위 카테고리 README와 이 사이트 콘텐츠를 함께 갱신합니다.
+
+작업 시작점은 [AGENTS.md](AGENTS.md)와 [공통 콘텐츠 작업 가이드](../_포트폴리오-작업-가이드.md)입니다. 기본 범위는 로컬 반영·검수이며, 커밋·푸시·배포는 해당 요청이 있을 때 진행합니다.
 
 > 📖 **사이트 운영 가이드**: [MAINTENANCE.md](MAINTENANCE.md) — 콘텐츠 추가·수정·삭제, 디자인 변경, 배포, 문제 해결까지 일상 운영에 필요한 모든 것이 정리되어 있습니다.
 
@@ -72,16 +74,19 @@ Astro 기반 정적 사이트입니다. 콘텐츠는 `src/content/projects/<cate
 ```bash
 npm install              # 1회
 npm run dev              # http://localhost:4321/
-npm run build            # dist/ 생성 (astro check 포함)
+npm run build            # astro build: 콘텐츠 스키마 검사 + dist/ 생성
+npm run build:strict     # 타입 검사(astro check) + 빌드
 npm run preview          # 빌드 결과 로컬 서버
 ```
 
 ## 새 항목 추가 워크플로
 
-1. `src/content/projects/<category>/<slug>/index.md` 작성. `<category>`는 `game / web / entry / contest / etc` 중 하나.
-2. 같은 폴더에 이미지/영상 자산 함께 두기.
-3. `npm run dev`로 즉시 미리보기. 갤러리에 카드가 자동 등장하고 카운트도 +1.
-4. `git add . && git commit -m "..."` & `git push`.
+1. 원본 자료와 기존 항목을 확인하고 상위 카테고리의 활동 `README.md`를 작성합니다.
+2. `src/content/projects/<category>/.../<slug>/index.md`에 같은 사실을 반영합니다. `<category>`는 `game / web / entry / contest / etc` 중 하나입니다.
+3. 두 활동 폴더에 검수한 게시용 이미지를 둡니다. 학생 사진은 모자이크·얼굴 가림본만 사용하고 사진 속 개인정보도 확인합니다.
+4. 새 항목을 상위 카테고리·세부 카테고리 인덱스에 연결하고 필요한 출처 기록과 메인 갱신일을 반영합니다. 사이트 카드는 자동 수집됩니다.
+5. `npm run build`와 로컬 상세 페이지로 내용·링크·이미지를 확인합니다. `npm run preview`는 빌드 결과를 보여 줍니다. Windows에서 인수를 전달할 때는 `npm.cmd`를 사용합니다.
+6. 반영 파일과 검증·배포 상태를 보고합니다. 커밋·푸시·배포를 요청받은 경우에만 관련 파일을 지정해 해당 작업을 수행합니다.
 
 ### 최소 frontmatter 예시
 
@@ -156,6 +161,8 @@ links:
 
 ## 배포
 
+“기록·정리·추가”만 요청받았을 때는 로컬 검수까지 수행합니다. 아래 공개 배포는 사용자가 배포·푸시를 요청한 경우의 절차입니다.
+
 GitHub `main` 브랜치 푸시 시 GitHub Actions가 자동 빌드 후 GitHub Pages로 배포합니다 ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)).
 - Node: 22
 - build: `npm run build`
@@ -167,5 +174,5 @@ GitHub `main` 브랜치 푸시 시 GitHub Actions가 자동 빌드 후 GitHub Pa
 본 사이트는 노션 기반 포트폴리오에서 마이그레이션되었습니다.
 
 - 디자이너 원본 시안: `_reference/portfolio.html`, `_reference/project-detail.html` (read-only)
-- 콘텐츠 원본 백업: `../{게임개발,웹사이트,엔트리,공모전,기타활동}/` (보존)
+- 카테고리 정리 문서: `../{게임개발,웹사이트,엔트리,공모전,기타활동}/` (사이트와 함께 갱신하는 정본)
 - 마이그레이션 스크립트: `scripts/migrate.mjs` (1회용, 실행 완료 — 재실행 시 `src/content/projects/` 덮어쓰기)
