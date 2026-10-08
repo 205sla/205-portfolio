@@ -5,7 +5,7 @@ cover:
   style: mood
   image: ./garden-gameplay.png
   aspect: 4-3
-  badge: 144레벨 · Android
+  badge: 144레벨 · Google Play 출시
 year: 2026
 tags:
   - Unity
@@ -14,6 +14,7 @@ tags:
   - "2026"
 team: 3인 (개발 2, 아트 1)
 links:
+  store: https://play.google.com/store/apps/details?id=com.GDH.ChainPuzzle
   youtube: https://youtu.be/YmatuzFfjdQ
   github: https://github.com/205sla/ChainPuzzleGame
   notion: https://www.notion.so/1ad5b696de7b8036a7a7ede1c9864f5b
@@ -21,7 +22,7 @@ links:
     - label: 엔트리 프로토타입
       url: https://youtu.be/i7EZjwsBEGI
       kind: video
-description: 고리를 그려 꽃을 옮기는 도자기풍 모바일 퍼즐. 144레벨 캠페인과 맵 제작·공유, Android 실기기 개선과 Play 심사 제출까지 진행했습니다.
+description: 고리를 그려 꽃을 옮기는 도자기풍 모바일 퍼즐. 144레벨 캠페인과 맵 제작·공유를 구현하고, Android 실기기 검증을 거쳐 Google Play에 출시했습니다.
 ---
 
 <style>
@@ -31,6 +32,7 @@ article.body table:has(img) { table-layout: fixed; }
 article.body table img { display: block; width: 100%; height: auto; border-radius: 8px; }
 @media (max-width: 640px) {
   article.body th, article.body td { padding: 10px 8px; }
+  .page-end .row > * { min-width: 0; }
 }
 </style>
 
@@ -43,7 +45,8 @@ article.body table img { display: block; width: 100%; height: auto; border-radiu
 | 장르 | 캐주얼 퍼즐 (선 잇기 / 순환 이동) |
 | 엔진 | Unity 6 (6000.3.9f1), 2D URP |
 | 플랫폼 | Android (세로 모드), `com.GDH.ChainPuzzle` |
-| 버전 | 1.0.2 |
+| 버전 | 1.0.2 (최종 제출 versionCode 7) |
+| 상태 | Google Play 출시 확인 (2026.10.08), 최종 소스 보관 완료 |
 | 분량 | 기본 캠페인 144레벨 (12레벨 × 12페이지) + 사용자 제작 맵 |
 | 언어 | 한국어 / 영어 / 일본어 (런타임 전환) |
 
@@ -57,7 +60,7 @@ article.body table img { display: block; width: 100%; height: auto; border-radiu
 |---|---|
 | ![타일과 유닛 팔레트를 갖춘 맵 에디터](garden-editor.png) | ![필요한 코인과 잔액을 구분한 힌트 구매 팝업](garden-hint.png) |
 
-2026년 9월 29일 최신 작업본을 Unity Play Mode에서 직접 캡처했습니다. 720×1560 해상도이며, 별도 테스트 저장과 오프라인 설정을 사용했습니다. 에디터 화면은 도구가 해제된 테스트 진행 상태입니다.
+2026년 9월 29일 당시 작업본을 Unity Play Mode에서 직접 캡처했습니다. 720×1560 해상도이며, 별도 테스트 저장과 오프라인 설정을 사용했습니다. 에디터 화면은 도구가 해제된 테스트 진행 상태입니다.
 
 ## 역할 분담
 
@@ -73,7 +76,7 @@ article.body table img { display: block; width: 100%; height: auto; border-radiu
 - 개발 친구 — 홈(메인 메뉴)·레벨 선택·설정 화면, Firebase로 **사용자 제작 맵 불러오기**
 - 디자이너 친구 — 꽃 / 돌꽃 유닛의 **Spine 2D 애니메이션 제작**
 
-## 2026년 9월 — 캠페인·사용성·출시 준비
+## 2026년 9~10월 — 캠페인·사용성 개선과 출시
 
 초기 공동 개발 이후 진행 구조·화면·저장·온라인 연결을 점검했습니다. 실제 Android에서 발견한 입력 문제도 수정한 뒤 다시 검사했습니다.
 
@@ -99,7 +102,13 @@ article.body table img { display: block; width: 100%; height: auto; border-radiu
 
 Android에서 짧은 뒤로가기 입력이 빠지거나, 키보드를 닫으려다 화면까지 나가는 문제를 추적했습니다. 네이티브 Back 전달과 키보드 가장자리 입력 처리를 보완하고, LG V50에서 재검증했습니다. 맵 제목은 3~15자, 힌트는 3코인, 정답은 10코인으로 표시·차감·취소 동작을 맞췄습니다.
 
-**2026년 9월 21일, 빙글정원 1.0.2/code6를 대한민국·일본·미국 대상으로 Google Play 심사에 제출했습니다.** Play Games 서비스의 인증 설정과 업적 게시도 완료했습니다. 9월 21일 심사 접수를 확인했으며, 이후 승인·일반 공개 여부는 추가 확인이 필요합니다.
+2026년 9월 21일, 빙글정원 1.0.2/code6를 대한민국·일본·미국 대상으로 Google Play 심사에 제출했습니다. Play Games 서비스의 인증 설정과 업적 게시도 완료했습니다.
+
+### Google Play 출시와 최종 보관
+
+10월 2일 심사에서 스토어 이름과 기기에 설치된 앱 이름의 불일치가 지적됐습니다. 패키지 ID와 기존 저장 경로는 유지하면서 Android 표시 이름을 **빙글정원**으로 맞췄습니다. 최신 메인 화면·플레이 HUD·힌트 안내 개선을 포함한 **1.0.2/versionCode 7**을 검증한 뒤 10월 3일 다시 제출했습니다.
+
+**2026년 10월 8일, Google Play 공개 페이지에서 빙글정원과 설치 버튼을 확인했습니다.** 10월 8일은 출시 확인일입니다. 최종 소스와 출시·검증 기록은 Unity Version Control의 `/main`(cs268)과 GitHub의 `main`(6e8f99f)에 반영해 보관했습니다.
 
 ### 검증 기록
 
@@ -107,12 +116,14 @@ Android에서 짧은 뒤로가기 입력이 빠지거나, 키보드를 닫으려
 
 | 검증 범위 | 확인한 결과 | 남은 확인 |
 |---|---|---|
-| 9월 23일 UI 개선 | Unity 화면·레이아웃 985개, Safe Area·입력 23개, 구매·Back·입력 회귀 131개 검사 통과 | 최신 UI의 실제 기기 입력 재검증 |
+| 9월 23일 UI 개선 | Unity 화면·레이아웃 985개, Safe Area·입력 23개, 구매·Back·입력 회귀 131개 검사 통과 | 10월 3일 code7에서 주요 흐름 재검증, IME·일부 편집 동작은 남음 |
 | 같은 UI 변경본 Android 빌드 | Unity 6000.3.9f1, 오류 0·경고 3, 로컬 비개발 APK 생성 | 디버그 서명 검증본으로, 스토어 제출본과 구별 |
 | 9월 20일 Android Back 수정 | LG V50에서 케이스 묶음 34개 통과·4개 미실행 | 사람 손/OS IME 대조와 일부 편집 동작 |
 | 9월 21일 계정·목록 수정 | LG V50에서 계정 변경·취소·재실행·온라인 목록 등 14개 검사 통과 | 평점·강화 rules 등 온라인 후속 인수 |
+| 10월 3일 최종 제출본 | Unity UI 회귀 131개 검사 통과, Release AAB 오류 0·경고 76 | 16KB 메모리 페이지 크기 실제 기기 검사 |
+| 10월 3일 Play 업데이트 | LG V50(Android 12)에서 code6→7 업데이트 후 저장 파일 3개 동일·기존 계정 재연결 확인 | 신규 설치 인증·다른 기기·IME와 일부 구매 동작 |
 
-144레벨의 데이터 통합과 전체 실기기 플레이 완료는 구분합니다. 기존 QA에서 남긴 125레벨 전수 플레이, 일부 온라인 운영 검증, Google 심사 결과 확인은 후속 작업입니다.
+144레벨 데이터 통합을 완료했고, 기존 QA의 잔여 항목도 보관했습니다. 남은 범위는 125레벨 전수 실기기 플레이, 신규 설치 인증, 다른 기기와 16KB 메모리 페이지 크기 환경, 일부 IME·구매 동작 및 온라인 운영 검증입니다.
 
 ## 게임 소개
 
